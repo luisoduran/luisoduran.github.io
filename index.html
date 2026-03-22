@@ -337,6 +337,7 @@
         @media (min-width: 768px) { .artist-name { font-size: 1.125rem; } }
         .artist-item:hover .artist-name { color: var(--cian); }
 
+        /* Galería */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -351,14 +352,17 @@
             overflow: hidden;
             cursor: pointer;
             border-radius: 8px;
+            background: var(--negro);
         }
-        .gallery-item img {
+        .gallery-item img, .gallery-item video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item:hover img, .gallery-item:hover video {
+            transform: scale(1.1);
+        }
         .gallery-overlay {
             position: absolute;
             inset: 0;
@@ -369,8 +373,79 @@
             align-items: flex-end;
             padding: 1rem;
             border-radius: 8px;
+            pointer-events: none;
         }
         .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        /* ================================================================ */
+        /* REPRODUCTOR DE VIDEO - Mantiene proporción original */
+        /* ================================================================ */
+        .video-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 2rem;
+        }
+        .video-modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .video-modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            background: var(--negro);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+        }
+        /* El video mantiene sus dimensiones originales */
+        .video-modal-content video {
+            display: block;
+            max-width: 100%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+            background: #000;
+        }
+        .video-modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--blanco);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 10;
+            transition: color 0.3s ease;
+        }
+        .video-modal-close:hover {
+            color: var(--cian);
+        }
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .video-modal {
+                padding: 1rem;
+            }
+            .video-modal-close {
+                top: -35px;
+                font-size: 1.8rem;
+            }
+            .video-modal-content video {
+                max-height: 85vh;
+            }
+        }
+        /* ================================================================ */
 
         .filter-btn {
             padding: 0.5rem 1rem;
@@ -464,7 +539,7 @@
 
 <main>
 
-    <!-- HERO CON SVG ORIGINAL (fondo transparente) -->
+    <!-- ========== SECCIÓN 1: HERO (Portada con ondas) ========== -->
     <section class="hero-section">
         <div class="hero-wave-container">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500">
@@ -485,7 +560,6 @@
                         <stop offset="100%" style="stop-color:#cc00cc;stop-opacity:1" />
                     </linearGradient>
                 </defs>
-                <!-- Fondo transparente para que herede el color de la página -->
                 <g id="ondas-azules" opacity="0.6">
                     <path d="M0,250 C200,70 400,430 600,250 C800,70 1000,430 1200,250" stroke="url(#grad-azul)" stroke-width="2" fill="none"/>
                     <path d="M0,250 C200,50 400,450 600,250 C800,50 1000,450 1200,250" stroke="url(#grad-azul)" stroke-width="3" fill="none"/>
@@ -521,7 +595,7 @@
         </div>
     </section>
 
-    <!-- SERVICIOS -->
+    <!-- ========== SECCIÓN 2: SERVICIOS ========== -->
     <section id="servicios">
         <div class="container">
             <h2 class="section-title" data-key="services.title">SERVICIOS</h2>
@@ -548,7 +622,7 @@
         </div>
     </section>
 
-    <!-- SOBRE -->
+    <!-- ========== SECCIÓN 3: SOBRE MÍ ========== -->
     <section id="sobre">
         <div class="container">
             <h2 class="section-title" data-key="about.title">SOBRE</h2>
@@ -560,7 +634,7 @@
         </div>
     </section>
 
-    <!-- PREMIOS -->
+    <!-- ========== SECCIÓN 4: PREMIOS ========== -->
     <section id="premios">
         <div class="container">
             <h2 class="section-title" data-key="awards.title">PREMIOS Y RECONOCIMIENTOS</h2>
@@ -568,7 +642,7 @@
         </div>
     </section>
 
-    <!-- ARTISTAS -->
+    <!-- ========== SECCIÓN 5: ARTISTAS ========== -->
     <section id="artistas">
         <div class="container">
             <h2 class="section-title" data-key="artists.title">ARTISTAS</h2>
@@ -576,7 +650,7 @@
         </div>
     </section>
 
-    <!-- GALERÍA -->
+    <!-- ========== SECCIÓN 6: GALERÍA (Fotos y Videos) ========== -->
     <section id="galeria">
         <div class="container-wide">
             <h2 class="section-title" data-key="gallery.title">GALERÍA</h2>
@@ -584,13 +658,12 @@
                 <button class="filter-btn active" data-filter="all" data-key="gallery.filter.all">Todos</button>
                 <button class="filter-btn" data-filter="foto" data-key="gallery.filter.photos">Fotos</button>
                 <button class="filter-btn" data-filter="video" data-key="gallery.filter.videos">Videos</button>
-                <button class="filter-btn" data-filter="entrevista" data-key="gallery.filter.interviews">Entrevistas</button>
             </div>
             <div class="gallery-grid" id="galleryGrid"></div>
         </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- ========== SECCIÓN 7: CONTACTO ========== -->
     <section id="contacto">
         <div class="container">
             <h2 class="section-title" data-key="contact.title">CONTACTO</h2>
@@ -621,6 +694,7 @@
 
 </main>
 
+<!-- ========== FOOTER ========== -->
 <footer class="footer">
     <div style="max-width: 64rem; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1rem;">
         <p class="text-[var(--gris-oscuro)] text-sm" id="copyright" data-key="footer.copyright">© 2025 Luis Durán. Todos los derechos reservados.</p>
@@ -628,8 +702,13 @@
     </div>
 </footer>
 
+<!-- ================================================================ -->
+<!-- JAVASCRIPT PRINCIPAL - Todo el código funcional -->
+<!-- ================================================================ -->
 <script>
-    // DATOS DE PREMIOS - CORREGIDOS CON NOMBRES DE FESTIVALES
+    // ================================================================
+    // DATOS DE PREMIOS
+    // ================================================================
     const awardsData = {
         es: [
             { year: "2003", type: "nominacion", typeText: "NOMINACIÓN CUBADISCO", artist: "David Blanco", album: "Tengo para dar" },
@@ -716,7 +795,9 @@
         }).join('');
     }
 
-    // TRADUCCIONES
+    // ================================================================
+    // TRADUCCIONES (ESPAÑOL e INGLÉS)
+    // ================================================================
     const translations = {
         es: {
             "nav.services": "Servicios", "nav.about": "Sobre", "nav.awards": "Premios", "nav.artists": "Artistas", "nav.gallery": "Galería", "nav.contact": "Contacto",
@@ -733,7 +814,7 @@
             "artists.title": "ARTISTAS",
             "artists.list": ["Tesis de Menta", "David Blanco", "Real Project", "Cimafunk", "Leoni Torres", "Haydée Milanés", "Omara Portuondo", "Eliades Ochoa", "Pablo Milanés", "Ruly Herrera"],
             "gallery.title": "GALERÍA",
-            "gallery.filter.all": "Todos", "gallery.filter.photos": "Fotos", "gallery.filter.videos": "Videos", "gallery.filter.interviews": "Entrevistas",
+            "gallery.filter.all": "Todos", "gallery.filter.photos": "Fotos", "gallery.filter.videos": "Videos",
             "contact.title": "CONTACTO",
             "contact.email.label": "Email", "contact.phone.label": "Teléfono", "contact.location.label": "Ubicación", "contact.location.value": "Luarca, Asturias, España", "contact.social.label": "Sígueme",
             "footer.copyright": "© {year} Luis Durán. Todos los derechos reservados.",
@@ -754,7 +835,7 @@
             "artists.title": "ARTISTS",
             "artists.list": ["Tesis de Menta", "David Blanco", "Real Project", "Cimafunk", "Leoni Torres", "Haydée Milanés", "Omara Portuondo", "Eliades Ochoa", "Pablo Milanés", "Ruly Herrera"],
             "gallery.title": "GALLERY",
-            "gallery.filter.all": "All", "gallery.filter.photos": "Photos", "gallery.filter.videos": "Videos", "gallery.filter.interviews": "Interviews",
+            "gallery.filter.all": "All", "gallery.filter.photos": "Photos", "gallery.filter.videos": "Videos",
             "contact.title": "CONTACT",
             "contact.email.label": "Email", "contact.phone.label": "Phone", "contact.location.label": "Location", "contact.location.value": "Luarca, Asturias, Spain", "contact.social.label": "Follow me",
             "footer.copyright": "© {year} Luis Durán. All rights reserved.",
@@ -793,14 +874,18 @@
     document.getElementById('langBtn').addEventListener('click', () => updateLanguage(currentLang === 'es' ? 'en' : 'es'));
     updateLanguage('es');
 
-    // Header scroll
+    // ================================================================
+    // HEADER SCROLL (cambia fondo al hacer scroll)
+    // ================================================================
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) header.classList.add('header-scrolled');
         else header.classList.remove('header-scrolled');
     });
     
-    // Menú móvil
+    // ================================================================
+    // MENÚ MÓVIL (abrir/cerrar con botón)
+    // ================================================================
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const menuLinks = document.querySelectorAll('.menu-link');
@@ -829,7 +914,9 @@
         if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('closed')) toggleMenu();
     });
     
-    // ANIMACIÓN DE ONDAS
+    // ================================================================
+    // ANIMACIÓN DE ONDAS (movimiento suave)
+    // ================================================================
     const azulesPaths = document.querySelectorAll('#ondas-azules path');
     const cianPaths = document.querySelectorAll('#ondas-cian path');
     const magentaPaths = document.querySelectorAll('#ondas-magenta path');
@@ -849,23 +936,106 @@
     }
     animateWaves();
     
-    // GALERÍA
+    // ================================================================
+    // GALERÍA: FOTOS (8) + VIDEOS (4)
+    // ================================================================
     const galleryGrid = document.getElementById('galleryGrid');
     const fotos = ["Foto-01.jpg", "Foto-02.jpg", "Foto-03.jpg", "Foto-04.jpg", "Foto-05.jpg", "Foto-06.jpg", "Foto-07.jpg", "Foto-08.jpg"];
+    const videos = ["Video-01.mp4", "Video-02.mp4", "Video-03.mp4", "Video-04.mp4"];
     
-    galleryGrid.innerHTML = fotos.map(foto => `
+    // Generar fotos
+    let galleryHTML = fotos.map(foto => `
         <div class="gallery-item" data-category="foto">
             <img src="img/${foto}" alt="Luis Durán">
             <div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Foto</span></div>
         </div>
     `).join('');
     
-    galleryGrid.innerHTML += `
-        <div class="gallery-item hidden" data-category="video"><img src="https://placehold.co/600x600/1a1a1a/00d4ff?text=Video+proximamente" alt="Próximamente video"><div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Video</span></div></div>
-        <div class="gallery-item hidden" data-category="entrevista"><img src="https://placehold.co/600x600/1a1a1a/00d4ff?text=Entrevista+proximamente" alt="Próximamente entrevista"><div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Entrevista</span></div></div>
-    `;
+    // Generar videos
+    galleryHTML += videos.map(video => `
+        <div class="gallery-item video-item" data-category="video" data-video="vid/${video}">
+            <video src="vid/${video}" muted preload="metadata"></video>
+            <div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Video</span></div>
+        </div>
+    `).join('');
     
-    // Filtros
+    galleryGrid.innerHTML = galleryHTML;
+    
+    // ================================================================
+    // REPRODUCTOR DE VIDEO MODAL (mantiene proporción original)
+    // ================================================================
+    const videoModal = document.createElement('div');
+    videoModal.className = 'video-modal';
+    videoModal.innerHTML = `
+        <div class="video-modal-content">
+            <button class="video-modal-close">&times;</button>
+            <video controls preload="metadata">
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+    `;
+    document.body.appendChild(videoModal);
+    const videoModalVideo = videoModal.querySelector('video');
+    const videoModalClose = videoModal.querySelector('.video-modal-close');
+    
+    function openVideoModal(src) {
+        videoModalVideo.src = src;
+        videoModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        videoModalVideo.play();
+    }
+    
+    function closeVideoModal() {
+        videoModalVideo.pause();
+        videoModalVideo.src = '';
+        videoModal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    
+    videoModalClose.addEventListener('click', closeVideoModal);
+    videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) closeVideoModal();
+    });
+    
+    // Configurar eventos de clic para videos
+    document.querySelectorAll('.video-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const videoSrc = item.getAttribute('data-video');
+            if (videoSrc) openVideoModal(videoSrc);
+        });
+    });
+    
+    // ================================================================
+    // LIGHTBOX PARA FOTOS
+    // ================================================================
+    function createLightbox() {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `<div class="lightbox-content"><img src="" alt=""></div>`;
+        document.body.appendChild(lightbox);
+        lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
+        return lightbox;
+    }
+    
+    const lightbox = createLightbox();
+    const lightboxImg = lightbox.querySelector('img');
+    
+    document.querySelectorAll('.gallery-item[data-category="foto"]').forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            if (img) {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+    
+    lightbox.addEventListener('click', () => document.body.style.overflow = '');
+    
+    // ================================================================
+    // FILTROS DE GALERÍA (Todos, Fotos, Videos)
+    // ================================================================
     const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
     
@@ -883,32 +1053,6 @@
             });
         });
     });
-    
-    // Lightbox
-    function createLightbox() {
-        const lightbox = document.createElement('div');
-        lightbox.className = 'lightbox';
-        lightbox.innerHTML = `<div class="lightbox-content"><img src="" alt=""></div>`;
-        document.body.appendChild(lightbox);
-        lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
-        return lightbox;
-    }
-    
-    const lightbox = createLightbox();
-    const lightboxImg = lightbox.querySelector('img');
-    
-    document.querySelectorAll('.gallery-item').forEach(item => {
-        item.addEventListener('click', () => {
-            const img = item.querySelector('img');
-            if (img && !item.classList.contains('hidden') && !img.src.includes('placehold')) {
-                lightboxImg.src = img.src;
-                lightbox.classList.add('open');
-                document.body.style.overflow = 'hidden';
-            }
-        });
-    });
-    
-    lightbox.addEventListener('click', () => document.body.style.overflow = '');
 </script>
 
 </body>
