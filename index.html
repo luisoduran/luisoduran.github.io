@@ -260,7 +260,7 @@
         .service-item:hover .service-title { color: var(--cian); }
         .service-description { color: var(--gris); }
 
-        /* Premios - Espaciado mejorado */
+        /* Premios */
         .awards-container {
             display: flex;
             flex-direction: column;
@@ -315,7 +315,7 @@
             .award-type { width: auto; }
         }
 
-        /* Artistas - Espaciado mejorado */
+        /* Artistas */
         .artists-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -337,14 +337,38 @@
         @media (min-width: 768px) { .artist-name { font-size: 1.125rem; } }
         .artist-item:hover .artist-name { color: var(--cian); }
 
-        /* Galería */
+        /* ================================================================ */
+        /* GALERÍA - Grid denso (más columnas en todos los dispositivos) */
+        /* ================================================================ */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);  /* 4 columnas en móvil */
+            gap: 0.75rem;
         }
-        @media (min-width: 768px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (min-width: 1024px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        /* Tablet pequeña: 5 columnas */
+        @media (min-width: 640px) {
+            .gallery-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 0.85rem;
+            }
+        }
+
+        /* Tablet grande: 6 columnas */
+        @media (min-width: 900px) {
+            .gallery-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        /* Escritorio: 8 columnas */
+        @media (min-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(8, 1fr);
+                gap: 1rem;
+            }
+        }
 
         .gallery-item {
             position: relative;
@@ -371,11 +395,15 @@
             transition: opacity 0.3s ease;
             display: flex;
             align-items: flex-end;
-            padding: 1rem;
+            padding: 0.5rem;
             border-radius: 8px;
             pointer-events: none;
         }
         .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay span {
+            font-size: 0.65rem;
+        }
+        /* ================================================================ */
 
         /* ================================================================ */
         /* REPRODUCTOR DE VIDEO - Mantiene proporción original */
@@ -406,7 +434,6 @@
             overflow: hidden;
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
         }
-        /* El video mantiene sus dimensiones originales */
         .video-modal-content video {
             display: block;
             max-width: 100%;
@@ -432,18 +459,10 @@
         .video-modal-close:hover {
             color: var(--cian);
         }
-        /* Responsive para móviles */
         @media (max-width: 768px) {
-            .video-modal {
-                padding: 1rem;
-            }
-            .video-modal-close {
-                top: -35px;
-                font-size: 1.8rem;
-            }
-            .video-modal-content video {
-                max-height: 85vh;
-            }
+            .video-modal { padding: 1rem; }
+            .video-modal-close { top: -35px; font-size: 1.8rem; }
+            .video-modal-content video { max-height: 85vh; }
         }
         /* ================================================================ */
 
@@ -702,9 +721,6 @@
     </div>
 </footer>
 
-<!-- ================================================================ -->
-<!-- JAVASCRIPT PRINCIPAL - Todo el código funcional -->
-<!-- ================================================================ -->
 <script>
     // ================================================================
     // DATOS DE PREMIOS
@@ -875,7 +891,7 @@
     updateLanguage('es');
 
     // ================================================================
-    // HEADER SCROLL (cambia fondo al hacer scroll)
+    // HEADER SCROLL
     // ================================================================
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
@@ -884,7 +900,7 @@
     });
     
     // ================================================================
-    // MENÚ MÓVIL (abrir/cerrar con botón)
+    // MENÚ MÓVIL
     // ================================================================
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -915,7 +931,7 @@
     });
     
     // ================================================================
-    // ANIMACIÓN DE ONDAS (movimiento suave)
+    // ANIMACIÓN DE ONDAS
     // ================================================================
     const azulesPaths = document.querySelectorAll('#ondas-azules path');
     const cianPaths = document.querySelectorAll('#ondas-cian path');
@@ -937,11 +953,11 @@
     animateWaves();
     
     // ================================================================
-    // GALERÍA: FOTOS (8) + VIDEOS (4)
+    // GALERÍA: 8 FOTOS + 8 VIDEOS (Video-01 a Video-08)
     // ================================================================
     const galleryGrid = document.getElementById('galleryGrid');
     const fotos = ["Foto-01.jpg", "Foto-02.jpg", "Foto-03.jpg", "Foto-04.jpg", "Foto-05.jpg", "Foto-06.jpg", "Foto-07.jpg", "Foto-08.jpg"];
-    const videos = ["Video-01.mp4", "Video-02.mp4", "Video-03.mp4", "Video-04.mp4"];
+    const videos = ["Video-01.mp4", "Video-02.mp4", "Video-03.mp4", "Video-04.mp4", "Video-05.mp4", "Video-06.mp4", "Video-07.mp4", "Video-08.mp4"];
     
     // Generar fotos
     let galleryHTML = fotos.map(foto => `
@@ -962,7 +978,7 @@
     galleryGrid.innerHTML = galleryHTML;
     
     // ================================================================
-    // REPRODUCTOR DE VIDEO MODAL (mantiene proporción original)
+    // REPRODUCTOR DE VIDEO MODAL
     // ================================================================
     const videoModal = document.createElement('div');
     videoModal.className = 'video-modal';
@@ -1034,7 +1050,7 @@
     lightbox.addEventListener('click', () => document.body.style.overflow = '');
     
     // ================================================================
-    // FILTROS DE GALERÍA (Todos, Fotos, Videos)
+    // FILTROS DE GALERÍA
     // ================================================================
     const filterBtns = document.querySelectorAll('.filter-btn');
     const galleryItems = document.querySelectorAll('.gallery-item');
