@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Durán — Ingeniería de Sonido</title>
-    <meta name="description" content="Ingeniero de sonido con más de 30 años de experiencia">
+    <title>Luis Durán — Ingeniería de Sonido · Soporte Técnico · Producción para Eventos</title>
+    <meta name="description" content="Ingeniero de sonido con más de 30 años de experiencia. Ofrezco soporte técnico y producción ejecutiva para eventos en Asturias.">
     
-    <!-- Fuente Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -76,21 +75,35 @@
         }
 
         .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             color: var(--cian);
             border: 1px solid var(--cian);
             padding: 0.5rem 1rem;
             border-radius: 4px;
             font-size: 0.75rem;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
             background: transparent;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .lang-btn:hover {
             background: var(--cian);
             color: var(--negro);
+        }
+        .lang-btn:hover svg {
+            filter: brightness(0);
+        }
+
+        .lang-flag {
+            width: 20px;
+            height: 15px;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         .menu-btn {
@@ -200,11 +213,22 @@
             color: var(--cian);
             letter-spacing: 0.3em;
             text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+        .hero-subtitle-line2 {
+            font-size: 0.8rem;
+            color: var(--cian);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
             margin-bottom: 1.5rem;
         }
 
         @media (min-width: 768px) {
-            .hero-subtitle { font-size: 0.9rem; letter-spacing: 0.4em; }
+            .hero-subtitle, .hero-subtitle-line2 {
+                font-size: 0.9rem;
+                letter-spacing: 0.4em;
+            }
         }
 
         .hero-location {
@@ -223,6 +247,18 @@
             color: var(--cian);
             margin-bottom: 2.5rem;
             font-weight: 500;
+        }
+
+        .gallery-subtitle {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--cian);
+            margin: 2rem 0 1.5rem 0;
+            font-weight: 500;
+        }
+        .gallery-subtitle:first-of-type {
+            margin-top: 0;
         }
 
         .service-item {
@@ -260,20 +296,19 @@
         .service-item:hover .service-title { color: var(--cian); }
         .service-description { color: var(--gris); }
 
-        /* Premios */
         .awards-container {
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            gap: 0.5rem;
         }
 
         .award-row {
             display: flex;
             flex-wrap: wrap;
             align-items: baseline;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--bordes);
-            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            border-bottom: none;
+            transition: all 0.2s ease;
         }
 
         .award-row:hover {
@@ -283,15 +318,15 @@
 
         .award-year {
             width: 70px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--cian);
             flex-shrink: 0;
         }
 
         .award-type {
-            width: 260px;
-            font-size: 0.85rem;
+            width: 240px;
+            font-size: 0.8rem;
             font-weight: 500;
             flex-shrink: 0;
         }
@@ -300,22 +335,60 @@
         .award-type.nominacion { color: var(--plata); }
         .award-type.disco-oro { color: #ffd700; }
         .award-type.disco-plata { color: #c0c0c0; }
+        .award-type.grammy { color: #ff6666; }
 
         .award-detail {
             flex: 1;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--gris);
         }
 
         .award-icon { margin-right: 0.5rem; }
 
-        @media (max-width: 768px) {
-            .award-row { flex-direction: column; gap: 0.35rem; padding: 0.8rem 0; }
-            .award-year { width: auto; }
-            .award-type { width: auto; }
+        .awards-section-spacer {
+            margin: 0.5rem 0;
+            border-top: 1px solid var(--bordes);
+            opacity: 0.5;
         }
 
-        /* Artistas */
+        .award-row-resumen {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            padding: 0.5rem 0;
+            margin: 0;
+            border-bottom: none;
+            transition: all 0.2s ease;
+        }
+        
+        .award-row-resumen:hover {
+            background: rgba(0, 212, 255, 0.05);
+            padding-left: 0.5rem;
+        }
+        
+        .award-row-resumen .resumen-year {
+            width: 70px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--cian);
+            flex-shrink: 0;
+        }
+        
+        .award-row-resumen .resumen-text {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--dorado);
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            .award-row { flex-direction: column; gap: 0.2rem; padding: 0.6rem 0; }
+            .award-year { width: auto; }
+            .award-type { width: auto; }
+            .award-row-resumen { flex-direction: column; gap: 0.2rem; padding: 0.6rem 0; }
+            .award-row-resumen .resumen-year { width: auto; }
+        }
+
         .artists-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -337,16 +410,12 @@
         @media (min-width: 768px) { .artist-name { font-size: 1.125rem; } }
         .artist-item:hover .artist-name { color: var(--cian); }
 
-        /* ================================================================ */
-        /* GALERÍA - Grid denso (más columnas en todos los dispositivos) */
-        /* ================================================================ */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);  /* 4 columnas en móvil */
+            grid-template-columns: repeat(4, 1fr);
             gap: 0.75rem;
         }
 
-        /* Tablet pequeña: 5 columnas */
         @media (min-width: 640px) {
             .gallery-grid {
                 grid-template-columns: repeat(5, 1fr);
@@ -354,7 +423,6 @@
             }
         }
 
-        /* Tablet grande: 6 columnas */
         @media (min-width: 900px) {
             .gallery-grid {
                 grid-template-columns: repeat(6, 1fr);
@@ -362,7 +430,6 @@
             }
         }
 
-        /* Escritorio: 8 columnas */
         @media (min-width: 1200px) {
             .gallery-grid {
                 grid-template-columns: repeat(8, 1fr);
@@ -403,11 +470,7 @@
         .gallery-overlay span {
             font-size: 0.65rem;
         }
-        /* ================================================================ */
 
-        /* ================================================================ */
-        /* REPRODUCTOR DE VIDEO - Mantiene proporción original */
-        /* ================================================================ */
         .video-modal {
             position: fixed;
             inset: 0;
@@ -464,25 +527,6 @@
             .video-modal-close { top: -35px; font-size: 1.8rem; }
             .video-modal-content video { max-height: 85vh; }
         }
-        /* ================================================================ */
-
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            border: 1px solid var(--bordes);
-            background: transparent;
-            color: var(--gris);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
-        .filter-btn.active {
-            border-color: var(--cian);
-            background: rgba(0, 212, 255, 0.1);
-            color: var(--cian);
-        }
 
         .lightbox {
             position: fixed;
@@ -538,7 +582,19 @@
 
 <header class="header" id="header">
     <div class="header-inner">
-        <button class="lang-btn" id="langBtn">EN</button>
+        <button class="lang-btn" id="langBtn">
+            <svg class="lang-flag" id="langFlagSvg" width="20" height="15" viewBox="0 0 60 40" preserveAspectRatio="none">
+                <!-- UK Flag por defecto -->
+                <rect width="60" height="40" fill="#012169"/>
+                <path d="M0,0 L60,40 M60,0 L0,40" stroke="white" stroke-width="4"/>
+                <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="2"/>
+                <rect x="20" y="0" width="20" height="40" fill="white"/>
+                <rect x="0" y="15" width="60" height="10" fill="white"/>
+                <rect x="20" y="0" width="20" height="40" fill="#C8102E"/>
+                <rect x="0" y="15" width="60" height="10" fill="#C8102E"/>
+            </svg>
+            <span id="langText">EN</span>
+        </button>
         <button class="menu-btn" id="menuBtn" aria-label="Menú">
             <span></span>
             <span></span>
@@ -558,7 +614,7 @@
 
 <main>
 
-    <!-- ========== SECCIÓN 1: HERO (Portada con ondas) ========== -->
+    <!-- HERO -->
     <section class="hero-section">
         <div class="hero-wave-container">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500">
@@ -609,12 +665,13 @@
         <div class="animate-fade-in-up">
             <h1 class="hero-title" data-key="hero.title">Luis Durán</h1>
             <div class="w-24 h-0.5 bg-[var(--cian)] mx-auto mb-6"></div>
-            <p class="hero-subtitle" data-key="hero.subtitle">Ingeniería de Sonido</p>
+            <p class="hero-subtitle" data-key="hero.subtitle">Ingeniería de Sonido · Soporte Técnico</p>
+            <p class="hero-subtitle-line2" data-key="hero.subtitle2">Producción para Eventos</p>
             <p class="hero-location" data-key="hero.location">Luarca · Valdés · Asturias</p>
         </div>
     </section>
 
-    <!-- ========== SECCIÓN 2: SERVICIOS ========== -->
+    <!-- SERVICIOS -->
     <section id="servicios">
         <div class="container">
             <h2 class="section-title" data-key="services.title">SERVICIOS</h2>
@@ -622,26 +679,32 @@
                 <div class="service-item">
                     <div class="flex items-start gap-5">
                         <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></svg></div>
-                        <div><h3 class="service-title" data-key="services.item1.title">Sonido en vivo</h3><p class="service-description" data-key="services.item1.desc">Conciertos · Festivales · Actos institucionales · Bodas</p></div>
+                        <div><h3 class="service-title" data-key="services.item1.title">Sonido en directo</h3><p class="service-description" data-key="services.item1.desc">Conciertos y Festivales · Actos Institucionales y Protocolarios</p></div>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="flex items-start gap-5">
+                        <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                        <div><h3 class="service-title" data-key="services.item2.title">Soporte técnico y producción ejecutiva</h3><p class="service-description" data-key="services.item2.desc">Coordinación del soporte técnico y logístico para eventos y actos</p></div>
                     </div>
                 </div>
                 <div class="service-item">
                     <div class="flex items-start gap-5">
                         <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="2"/></svg></div>
-                        <div><h3 class="service-title" data-key="services.item2.title">Estudio</h3><p class="service-description" data-key="services.item2.desc">Grabación · Mezcla · Masterización</p></div>
+                        <div><h3 class="service-title" data-key="services.item3.title">Producción musical</h3><p class="service-description" data-key="services.item3.desc">Grabación en directo · Mezcla y masterización para audio y video</p></div>
                     </div>
                 </div>
                 <div class="service-item">
                     <div class="flex items-start gap-5">
                         <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></div>
-                        <div><h3 class="service-title" data-key="services.item3.title">Consultoría técnica</h3><p class="service-description" data-key="services.item3.desc">Asesoramiento en equipamiento · Dirección de proyectos · Formación</p></div>
+                        <div><h3 class="service-title" data-key="services.item4.title">Consultoría técnica</h3><p class="service-description" data-key="services.item4.desc">Asesoramiento en equipamiento · Análisis de proyectos de sonorización</p></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== SECCIÓN 3: SOBRE MÍ ========== -->
+    <!-- SOBRE -->
     <section id="sobre">
         <div class="container">
             <h2 class="section-title" data-key="about.title">SOBRE</h2>
@@ -653,7 +716,7 @@
         </div>
     </section>
 
-    <!-- ========== SECCIÓN 4: PREMIOS ========== -->
+    <!-- PREMIOS -->
     <section id="premios">
         <div class="container">
             <h2 class="section-title" data-key="awards.title">PREMIOS Y RECONOCIMIENTOS</h2>
@@ -661,7 +724,7 @@
         </div>
     </section>
 
-    <!-- ========== SECCIÓN 5: ARTISTAS ========== -->
+    <!-- ARTISTAS -->
     <section id="artistas">
         <div class="container">
             <h2 class="section-title" data-key="artists.title">ARTISTAS</h2>
@@ -669,20 +732,20 @@
         </div>
     </section>
 
-    <!-- ========== SECCIÓN 6: GALERÍA (Fotos y Videos) ========== -->
+    <!-- GALERÍA -->
     <section id="galeria">
         <div class="container-wide">
             <h2 class="section-title" data-key="gallery.title">GALERÍA</h2>
-            <div class="flex flex-wrap gap-3 mb-10">
-                <button class="filter-btn active" data-filter="all" data-key="gallery.filter.all">Todos</button>
-                <button class="filter-btn" data-filter="foto" data-key="gallery.filter.photos">Fotos</button>
-                <button class="filter-btn" data-filter="video" data-key="gallery.filter.videos">Videos</button>
-            </div>
-            <div class="gallery-grid" id="galleryGrid"></div>
+            
+            <h3 class="gallery-subtitle" data-key="gallery.photos.title">FOTOS</h3>
+            <div class="gallery-grid" id="fotosGrid"></div>
+            
+            <h3 class="gallery-subtitle" data-key="gallery.videos.title">VIDEOS</h3>
+            <div class="gallery-grid" id="videosGrid"></div>
         </div>
     </section>
 
-    <!-- ========== SECCIÓN 7: CONTACTO ========== -->
+    <!-- CONTACTO -->
     <section id="contacto">
         <div class="container">
             <h2 class="section-title" data-key="contact.title">CONTACTO</h2>
@@ -713,11 +776,10 @@
 
 </main>
 
-<!-- ========== FOOTER ========== -->
 <footer class="footer">
     <div style="max-width: 64rem; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1rem;">
         <p class="text-[var(--gris-oscuro)] text-sm" id="copyright" data-key="footer.copyright">© 2025 Luis Durán. Todos los derechos reservados.</p>
-        <p class="text-[var(--gris-oscuro)] text-xs" data-key="footer.tagline">Ingeniería de Sonido · Luarca, Asturias</p>
+        <p class="text-[var(--gris-oscuro)] text-xs" data-key="footer.tagline">Ingeniería de Sonido · Soporte Técnico · Producción para Eventos · Luarca, Asturias</p>
     </div>
 </footer>
 
@@ -726,46 +788,42 @@
     // DATOS DE PREMIOS
     // ================================================================
     const awardsData = {
-        es: [
-            { year: "2003", type: "nominacion", typeText: "NOMINACIÓN CUBADISCO", artist: "David Blanco", album: "Tengo para dar" },
-            { year: "2005", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "El Despechao" },
-            { year: "2006", type: "nominacion", typeText: "NOMINACIÓN LATIN GRAMMY", artist: "David Blanco", album: "Cuando me dijiste adiós" },
-            { year: "2007", type: "premio", typeText: "PREMIO CUERDA VIVA", artist: "Qva Libre", album: "Resistencia y Reciclaje" },
-            { year: "2007", type: "nominacion", typeText: "NOMINACIÓN CUBADISCO", artist: "Leoni Torres", album: "Bajo la Piel" },
-            { year: "2008", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "La Evolución" },
-            { year: "2010", type: "nominacion", typeText: "NOMINACIÓN CUBADISCO", artist: "Ernesto Blanco", album: "Kilómetro Cero" },
-            { year: "2013", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Hipnosis", album: "Revelation" },
-            { year: "2015", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Adrián Berazaín", album: "Si te hago canción" },
-            { year: "2019", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Orquesta Aragón & Michel Herrera", album: "" },
-            { year: "2021", type: "disco-oro", typeText: "DISCO DE ORO", artist: "Festival de la Canción de Las Vegas — Roberto Javier", album: "De nuevo sin ti" },
-            { year: "2022", type: "disco-oro", typeText: "DISCO DE ORO", artist: "Festival de la Canción de California — Roberto Javier", album: "Espérame" },
-            { year: "2022", type: "nominacion", typeText: "FINALISTA USA Songwriting Comp.", artist: "Roberto Javier", album: "La Única" },
-            { year: "2022", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "Feudalismo Moderno" },
-            { year: "2023", type: "disco-plata", typeText: "DISCO DE PLATA", artist: "Festival de la Canción de California — Roberto Javier", album: "Siempre te amé" },
-            { year: "2023", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Adrián Berazaín", album: "Julián" },
-            { year: "2023", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Ruly Herrera", album: "Fascinantemente Mundo" },
-            { year: "2024", type: "nominacion", typeText: "FINALISTA USA Songwriting Comp.", artist: "Roberto Javier", album: "Morena" }
-        ],
-        en: [
-            { year: "2003", type: "nominacion", typeText: "CUBADISCO NOMINATION", artist: "David Blanco", album: "Tengo para dar" },
-            { year: "2005", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "El Despechao" },
-            { year: "2006", type: "nominacion", typeText: "LATIN GRAMMY NOMINATION", artist: "David Blanco", album: "Cuando me dijiste adiós" },
-            { year: "2007", type: "premio", typeText: "CUERDA VIVA AWARD", artist: "Qva Libre", album: "Resistencia y Reciclaje" },
-            { year: "2007", type: "nominacion", typeText: "CUBADISCO NOMINATION", artist: "Leoni Torres", album: "Bajo la Piel" },
-            { year: "2008", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "La Evolución" },
-            { year: "2010", type: "nominacion", typeText: "CUBADISCO NOMINATION", artist: "Ernesto Blanco", album: "Kilómetro Cero" },
-            { year: "2013", type: "premio", typeText: "CUBADISCO AWARD", artist: "Hipnosis", album: "Revelation" },
-            { year: "2015", type: "premio", typeText: "CUBADISCO AWARD", artist: "Adrián Berazaín", album: "Si te hago canción" },
-            { year: "2019", type: "premio", typeText: "CUBADISCO AWARD", artist: "Orquesta Aragón & Michel Herrera", album: "" },
-            { year: "2021", type: "disco-oro", typeText: "GOLD DISC", artist: "Las Vegas Song Festival — Roberto Javier", album: "De nuevo sin ti" },
-            { year: "2022", type: "disco-oro", typeText: "GOLD DISC", artist: "California Song Festival — Roberto Javier", album: "Espérame" },
-            { year: "2022", type: "nominacion", typeText: "FINALIST USA Songwriting Comp.", artist: "Roberto Javier", album: "La Única" },
-            { year: "2022", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "Feudalismo Moderno" },
-            { year: "2023", type: "disco-plata", typeText: "SILVER DISC", artist: "California Song Festival — Roberto Javier", album: "Siempre te amé" },
-            { year: "2023", type: "premio", typeText: "CUBADISCO AWARD", artist: "Adrián Berazaín", album: "Julián" },
-            { year: "2023", type: "premio", typeText: "CUBADISCO AWARD", artist: "Ruly Herrera", album: "Fascinantemente Mundo" },
-            { year: "2024", type: "nominacion", typeText: "FINALIST USA Songwriting Comp.", artist: "Roberto Javier", album: "Morena" }
-        ]
+        es: {
+            items: [
+                { year: "2006", type: "grammy", typeText: "NOMINACIÓN LATIN GRAMMY", artist: "David Blanco", album: "Cuando me dijiste adiós" },
+                { year: "2021", type: "disco-oro", typeText: "DISCO DE ORO", artist: "Festival Las Vegas — Roberto Javier", album: "De nuevo sin ti" },
+                { year: "2022", type: "disco-oro", typeText: "DISCO DE ORO", artist: "Festival California — Roberto Javier", album: "Espérame" },
+                { year: "2023", type: "disco-plata", typeText: "DISCO DE PLATA", artist: "Festival California — Roberto Javier", album: "Siempre te amé" },
+                { year: "2024", type: "nominacion", typeText: "FINALISTA USA Songwriting Comp.", artist: "Roberto Javier", album: "Morena" },
+                { year: "2005", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "El Despechao" },
+                { year: "2008", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "La Evolución" },
+                { year: "2013", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Hipnosis", album: "Revelation" },
+                { year: "2015", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Adrián Berazaín", album: "Si te hago canción" },
+                { year: "2019", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Orquesta Aragón & Michel Herrera", album: "" },
+                { year: "2022", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "Feudalismo Moderno" },
+                { year: "2023", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Adrián Berazaín", album: "Julián" },
+                { year: "2023", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Ruly Herrera", album: "Fascinantemente Mundo" }
+            ],
+            resumen: { year: "2003-2024", text: "28 NOMINACIONES A CUBADISCO" }
+        },
+        en: {
+            items: [
+                { year: "2006", type: "grammy", typeText: "LATIN GRAMMY NOMINATION", artist: "David Blanco", album: "Cuando me dijiste adiós" },
+                { year: "2021", type: "disco-oro", typeText: "GOLD DISC", artist: "Las Vegas Festival — Roberto Javier", album: "De nuevo sin ti" },
+                { year: "2022", type: "disco-oro", typeText: "GOLD DISC", artist: "California Festival — Roberto Javier", album: "Espérame" },
+                { year: "2023", type: "disco-plata", typeText: "SILVER DISC", artist: "California Festival — Roberto Javier", album: "Siempre te amé" },
+                { year: "2024", type: "nominacion", typeText: "FINALIST USA Songwriting Comp.", artist: "Roberto Javier", album: "Morena" },
+                { year: "2005", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "El Despechao" },
+                { year: "2008", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "La Evolución" },
+                { year: "2013", type: "premio", typeText: "CUBADISCO AWARD", artist: "Hipnosis", album: "Revelation" },
+                { year: "2015", type: "premio", typeText: "CUBADISCO AWARD", artist: "Adrián Berazaín", album: "Si te hago canción" },
+                { year: "2019", type: "premio", typeText: "CUBADISCO AWARD", artist: "Orquesta Aragón & Michel Herrera", album: "" },
+                { year: "2022", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "Feudalismo Moderno" },
+                { year: "2023", type: "premio", typeText: "CUBADISCO AWARD", artist: "Adrián Berazaín", album: "Julián" },
+                { year: "2023", type: "premio", typeText: "CUBADISCO AWARD", artist: "Ruly Herrera", album: "Fascinantemente Mundo" }
+            ],
+            resumen: { year: "2003-2024", text: "28 CUBADISCO NOMINATIONS" }
+        }
     };
 
     function getIconByType(type) {
@@ -774,6 +832,7 @@
             case 'nominacion': return '🎯';
             case 'disco-oro': return '💿';
             case 'disco-plata': return '💿';
+            case 'grammy': return '🏆';
             default: return '•';
         }
     }
@@ -784,6 +843,7 @@
             case 'nominacion': return 'nominacion';
             case 'disco-oro': return 'disco-oro';
             case 'disco-plata': return 'disco-plata';
+            case 'grammy': return 'grammy';
             default: return '';
         }
     }
@@ -791,15 +851,18 @@
     function renderAwards(lang) {
         const container = document.getElementById('awardsContainer');
         if (!container) return;
-        const awards = awardsData[lang];
-        container.innerHTML = awards.map(award => {
+        const data = awardsData[lang];
+        
+        let html = '';
+        
+        data.items.forEach((award) => {
             const icon = getIconByType(award.type);
             const typeClass = getTypeClass(award.type);
             const albumDisplay = award.album ? ` — ${award.album}` : '';
             const artistDisplay = award.artist ? award.artist : '';
             const detailText = artistDisplay + albumDisplay;
             
-            return `
+            html += `
                 <div class="award-row">
                     <div class="award-year">${award.year}</div>
                     <div class="award-type ${typeClass}">
@@ -808,54 +871,75 @@
                     <div class="award-detail">${detailText || '—'}</div>
                 </div>
             `;
-        }).join('');
+        });
+        
+        html += `<div class="awards-section-spacer"></div>`;
+        
+        html += `
+            <div class="award-row-resumen">
+                <div class="resumen-year">📌 ${data.resumen.year}</div>
+                <div class="resumen-text">${data.resumen.text}</div>
+            </div>
+        `;
+        
+        container.innerHTML = html;
     }
 
     // ================================================================
-    // TRADUCCIONES (ESPAÑOL e INGLÉS)
+    // TRADUCCIONES
     // ================================================================
     const translations = {
         es: {
             "nav.services": "Servicios", "nav.about": "Sobre", "nav.awards": "Premios", "nav.artists": "Artistas", "nav.gallery": "Galería", "nav.contact": "Contacto",
-            "hero.title": "Luis Durán", "hero.subtitle": "Ingeniería de Sonido", "hero.location": "Luarca · Valdés · Asturias",
+            "hero.title": "Luis Durán",
+            "hero.subtitle": "Ingeniería de Sonido · Soporte Técnico",
+            "hero.subtitle2": "Producción para Eventos",
+            "hero.location": "Luarca · Valdés · Asturias",
             "about.title": "SOBRE",
             "about.p1": "Ingeniero de sonido con más de 30 años de experiencia en Cuba, España, Italia, Canadá y México.",
             "about.p2": "He trabajado tanto en conciertos y espectáculos en directo como estudios de grabación participando en más de 70 fonogramas con artistas de primer nivel, la familia Milanés (Pablo, Haydée, Suylen, Lynn y Camila), miembros de Buena Vista Social Club como Omara Portuondo, Eliades Ochoa, estrellas de renombre internacional como Cimafunk, Leoni Torres, David Blanco, Ruly Herrera y muchos más.",
             "about.p3": "Vasta experiencia en eventos internacionales como el Festival del Habano, la Feria Internacional de Turismo de La Habana y Varadero, el Festival Jazz Plaza. A lo largo de estos años he realizado espectáculos de alto perfil para las cadenas hoteleras Meliá e Iberostar, además de lugares icónicos como el Cabaret Tropicana, el Gran Teatro de La Habana, el Cabaret Parisien, y en los Carnavales de La Habana y Santiago de Cuba, también en los Carnavales de Las Palmas de Gran Canaria, en la sala Arena de Madrid, y en la Luz de Gas de Barcelona entre muchos mas.",
             "awards.title": "PREMIOS Y RECONOCIMIENTOS",
             "services.title": "SERVICIOS",
-            "services.item1.title": "Sonido en vivo", "services.item1.desc": "Conciertos · Festivales · Actos institucionales · Bodas",
-            "services.item2.title": "Estudio", "services.item2.desc": "Grabación · Mezcla · Masterización",
-            "services.item3.title": "Consultoría técnica", "services.item3.desc": "Asesoramiento en equipamiento · Dirección de proyectos · Formación",
+            "services.item1.title": "Sonido en directo", "services.item1.desc": "Conciertos y Festivales · Actos Institucionales y Protocolarios",
+            "services.item2.title": "Soporte técnico y producción ejecutiva", "services.item2.desc": "Coordinación del soporte técnico y logístico para eventos y actos",
+            "services.item3.title": "Producción musical", "services.item3.desc": "Grabación en directo · Mezcla y masterización para audio y video",
+            "services.item4.title": "Consultoría técnica", "services.item4.desc": "Asesoramiento en equipamiento · Análisis de proyectos de sonorización",
             "artists.title": "ARTISTAS",
             "artists.list": ["Tesis de Menta", "David Blanco", "Real Project", "Cimafunk", "Leoni Torres", "Haydée Milanés", "Omara Portuondo", "Eliades Ochoa", "Pablo Milanés", "Ruly Herrera"],
             "gallery.title": "GALERÍA",
-            "gallery.filter.all": "Todos", "gallery.filter.photos": "Fotos", "gallery.filter.videos": "Videos",
+            "gallery.photos.title": "FOTOS",
+            "gallery.videos.title": "VIDEOS",
             "contact.title": "CONTACTO",
             "contact.email.label": "Email", "contact.phone.label": "Teléfono", "contact.location.label": "Ubicación", "contact.location.value": "Luarca, Asturias, España", "contact.social.label": "Sígueme",
             "footer.copyright": "© {year} Luis Durán. Todos los derechos reservados.",
-            "footer.tagline": "Ingeniería de Sonido · Luarca, Asturias"
+            "footer.tagline": "Ingeniería de Sonido · Soporte Técnico · Producción para Eventos · Luarca, Asturias"
         },
         en: {
             "nav.services": "Services", "nav.about": "About", "nav.awards": "Awards", "nav.artists": "Artists", "nav.gallery": "Gallery", "nav.contact": "Contact",
-            "hero.title": "Luis Durán", "hero.subtitle": "Sound Engineering", "hero.location": "Luarca · Valdés · Asturias",
+            "hero.title": "Luis Durán",
+            "hero.subtitle": "Sound Engineering · Technical Support",
+            "hero.subtitle2": "Event Production",
+            "hero.location": "Luarca · Valdés · Asturias",
             "about.title": "ABOUT",
             "about.p1": "Sound engineer with over 30 years of experience in Cuba, Spain, Italy, Canada, and Mexico.",
             "about.p2": "I have worked both in live concerts and shows as well as in recording studios, participating in more than 70 phonograms with top-level artists: the Milanés family (Pablo, Haydée, Suylen, Lynn, and Camila), members of Buena Vista Social Club such as Omara Portuondo and Eliades Ochoa, and internationally renowned stars like Cimafunk, Leoni Torres, David Blanco, Ruly Herrera, and many more.",
             "about.p3": "Extensive experience in international events such as the Habano Festival, the Havana and Varadero International Tourism Fair, and the Jazz Plaza Festival. Over the years, I have performed high-profile shows for Meliá and Iberostar hotel chains, as well as iconic venues such as the Tropicana Cabaret, the Gran Teatro de La Habana, the Cabaret Parisien, the Havana and Santiago de Cuba Carnivals, the Las Palmas de Gran Canaria Carnivals, the Arena de Madrid concert hall, and the Luz de Gas in Barcelona, among many others.",
             "awards.title": "AWARDS & RECOGNITIONS",
             "services.title": "SERVICES",
-            "services.item1.title": "Live Sound", "services.item1.desc": "Concerts · Festivals · Corporate events · Weddings",
-            "services.item2.title": "Studio", "services.item2.desc": "Recording · Mixing · Mastering",
-            "services.item3.title": "Technical Consulting", "services.item3.desc": "Equipment advice · Project management · Training",
+            "services.item1.title": "Live sound", "services.item1.desc": "Concerts and Festivals · Institutional and Protocolary Events",
+            "services.item2.title": "Technical support & executive production", "services.item2.desc": "Coordination of technical and logistical support for events and shows",
+            "services.item3.title": "Music production", "services.item3.desc": "Live recording · Mixing and mastering for audio and video",
+            "services.item4.title": "Technical consulting", "services.item4.desc": "Equipment advice · Sound project analysis",
             "artists.title": "ARTISTS",
             "artists.list": ["Tesis de Menta", "David Blanco", "Real Project", "Cimafunk", "Leoni Torres", "Haydée Milanés", "Omara Portuondo", "Eliades Ochoa", "Pablo Milanés", "Ruly Herrera"],
             "gallery.title": "GALLERY",
-            "gallery.filter.all": "All", "gallery.filter.photos": "Photos", "gallery.filter.videos": "Videos",
+            "gallery.photos.title": "PHOTOS",
+            "gallery.videos.title": "VIDEOS",
             "contact.title": "CONTACT",
             "contact.email.label": "Email", "contact.phone.label": "Phone", "contact.location.label": "Location", "contact.location.value": "Luarca, Asturias, Spain", "contact.social.label": "Follow me",
             "footer.copyright": "© {year} Luis Durán. All rights reserved.",
-            "footer.tagline": "Sound Engineering · Luarca, Asturias"
+            "footer.tagline": "Sound Engineering · Technical Support · Event Production · Luarca, Asturias"
         }
     };
 
@@ -882,26 +966,45 @@
         
         renderAwards(lang);
         
-        const langBtn = document.getElementById('langBtn');
-        if (langBtn) langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
+        const langFlagSvg = document.getElementById('langFlagSvg');
+        const langText = document.getElementById('langText');
+        if (lang === 'es') {
+            // Mostrar bandera de Reino Unido (idioma al que se puede cambiar)
+            langFlagSvg.innerHTML = `
+                <rect width="60" height="40" fill="#012169"/>
+                <path d="M0,0 L60,40 M60,0 L0,40" stroke="white" stroke-width="4"/>
+                <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="2"/>
+                <rect x="20" y="0" width="20" height="40" fill="white"/>
+                <rect x="0" y="15" width="60" height="10" fill="white"/>
+                <rect x="20" y="0" width="20" height="40" fill="#C8102E"/>
+                <rect x="0" y="15" width="60" height="10" fill="#C8102E"/>
+            `;
+            langText.textContent = 'EN';
+        } else {
+            // Mostrar bandera de España
+            langFlagSvg.innerHTML = `
+                <rect width="60" height="40" fill="#AA151B"/>
+                <rect y="10" width="60" height="20" fill="#F1BF00"/>
+                <circle cx="30" cy="20" r="8" fill="#AA151B"/>
+                <circle cx="30" cy="20" r="6" fill="#F1BF00"/>
+            `;
+            langText.textContent = 'ES';
+        }
+        
         document.documentElement.lang = lang === 'es' ? 'es' : 'en';
     }
     
     document.getElementById('langBtn').addEventListener('click', () => updateLanguage(currentLang === 'es' ? 'en' : 'es'));
     updateLanguage('es');
 
-    // ================================================================
-    // HEADER SCROLL
-    // ================================================================
+    // Header scroll
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) header.classList.add('header-scrolled');
         else header.classList.remove('header-scrolled');
     });
     
-    // ================================================================
-    // MENÚ MÓVIL
-    // ================================================================
+    // Menú móvil
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const menuLinks = document.querySelectorAll('.menu-link');
@@ -930,9 +1033,7 @@
         if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('closed')) toggleMenu();
     });
     
-    // ================================================================
-    // ANIMACIÓN DE ONDAS
-    // ================================================================
+    // Animación de ondas
     const azulesPaths = document.querySelectorAll('#ondas-azules path');
     const cianPaths = document.querySelectorAll('#ondas-cian path');
     const magentaPaths = document.querySelectorAll('#ondas-magenta path');
@@ -953,33 +1054,29 @@
     animateWaves();
     
     // ================================================================
-    // GALERÍA: 8 FOTOS + 8 VIDEOS (Video-01 a Video-08)
+    // GALERÍA
     // ================================================================
-    const galleryGrid = document.getElementById('galleryGrid');
     const fotos = ["Foto-01.jpg", "Foto-02.jpg", "Foto-03.jpg", "Foto-04.jpg", "Foto-05.jpg", "Foto-06.jpg", "Foto-07.jpg", "Foto-08.jpg"];
     const videos = ["Video-01.mp4", "Video-02.mp4", "Video-03.mp4", "Video-04.mp4", "Video-05.mp4", "Video-06.mp4", "Video-07.mp4", "Video-08.mp4"];
     
-    // Generar fotos
-    let galleryHTML = fotos.map(foto => `
+    const fotosGrid = document.getElementById('fotosGrid');
+    const videosGrid = document.getElementById('videosGrid');
+    
+    fotosGrid.innerHTML = fotos.map(foto => `
         <div class="gallery-item" data-category="foto">
             <img src="img/${foto}" alt="Luis Durán">
             <div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Foto</span></div>
         </div>
     `).join('');
     
-    // Generar videos
-    galleryHTML += videos.map(video => `
+    videosGrid.innerHTML = videos.map(video => `
         <div class="gallery-item video-item" data-category="video" data-video="vid/${video}">
             <video src="vid/${video}" muted preload="metadata"></video>
             <div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Video</span></div>
         </div>
     `).join('');
     
-    galleryGrid.innerHTML = galleryHTML;
-    
-    // ================================================================
-    // REPRODUCTOR DE VIDEO MODAL
-    // ================================================================
+    // Modal de video
     const videoModal = document.createElement('div');
     videoModal.className = 'video-modal';
     videoModal.innerHTML = `
@@ -1013,7 +1110,6 @@
         if (e.target === videoModal) closeVideoModal();
     });
     
-    // Configurar eventos de clic para videos
     document.querySelectorAll('.video-item').forEach(item => {
         item.addEventListener('click', () => {
             const videoSrc = item.getAttribute('data-video');
@@ -1021,9 +1117,7 @@
         });
     });
     
-    // ================================================================
-    // LIGHTBOX PARA FOTOS
-    // ================================================================
+    // Lightbox para fotos
     function createLightbox() {
         const lightbox = document.createElement('div');
         lightbox.className = 'lightbox';
@@ -1048,27 +1142,6 @@
     });
     
     lightbox.addEventListener('click', () => document.body.style.overflow = '');
-    
-    // ================================================================
-    // FILTROS DE GALERÍA
-    // ================================================================
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const filter = btn.getAttribute('data-filter');
-            galleryItems.forEach(item => {
-                if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                    item.classList.remove('hidden');
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
-        });
-    });
 </script>
 
 </body>
