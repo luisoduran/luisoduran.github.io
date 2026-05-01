@@ -122,11 +122,19 @@
             height: 0.125rem;
             background: var(--cian);
             transition: all 0.3s ease;
+            transform-origin: center;
         }
 
-        .menu-btn.open span:first-child { transform: rotate(45deg) translateY(10px); }
-        .menu-btn.open span:nth-child(2) { opacity: 0; transform: scale(0); }
-        .menu-btn.open span:last-child { transform: rotate(-45deg) translateY(-10px); }
+        .menu-btn.open span:first-child {
+            transform: translateY(0.6875rem) rotate(45deg);
+        }
+        .menu-btn.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .menu-btn.open span:last-child {
+            transform: translateY(-0.6875rem) rotate(-45deg);
+        }
 
         .mobile-menu {
             position: fixed;
@@ -614,7 +622,7 @@
 
 <main>
 
-    <!-- HERO con nuevo orden: Producción > Sonido > Soporte -->
+    <!-- HERO -->
     <section class="hero-section">
         <div class="hero-wave-container">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500">
@@ -887,7 +895,7 @@
     }
 
     // ================================================================
-    // TRADUCCIONES (con nuevo orden)
+    // TRADUCCIONES
     // ================================================================
     const translations = {
         es: {
