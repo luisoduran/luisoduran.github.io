@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Durán — Ingeniería de Sonido · Soporte Técnico · Producción para Eventos</title>
+    <title>Luis Durán — Producción para Eventos · Ingeniería de Sonido · Soporte Técnico</title>
     <meta name="description" content="Ingeniero de sonido con más de 30 años de experiencia. Ofrezco soporte técnico y producción ejecutiva para eventos en Asturias.">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -94,9 +94,6 @@
         .lang-btn:hover {
             background: var(--cian);
             color: var(--negro);
-        }
-        .lang-btn:hover svg {
-            filter: brightness(0);
         }
 
         .lang-flag {
@@ -221,11 +218,20 @@
             color: var(--cian);
             letter-spacing: 0.3em;
             text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+        .hero-subtitle-line3 {
+            font-size: 0.8rem;
+            color: var(--cian);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
             margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
 
         @media (min-width: 768px) {
-            .hero-subtitle, .hero-subtitle-line2 {
+            .hero-subtitle, .hero-subtitle-line2, .hero-subtitle-line3 {
                 font-size: 0.9rem;
                 letter-spacing: 0.4em;
             }
@@ -356,25 +362,20 @@
             flex-wrap: wrap;
             align-items: baseline;
             padding: 0.5rem 0;
-            margin: 0;
-            border-bottom: none;
             transition: all 0.2s ease;
         }
-        
         .award-row-resumen:hover {
             background: rgba(0, 212, 255, 0.05);
             padding-left: 0.5rem;
         }
-        
-        .award-row-resumen .resumen-year {
+        .resumen-year {
             width: 70px;
             font-size: 0.8rem;
             font-weight: 600;
             color: var(--cian);
             flex-shrink: 0;
         }
-        
-        .award-row-resumen .resumen-text {
+        .resumen-text {
             font-size: 0.8rem;
             font-weight: 500;
             color: var(--dorado);
@@ -386,7 +387,7 @@
             .award-year { width: auto; }
             .award-type { width: auto; }
             .award-row-resumen { flex-direction: column; gap: 0.2rem; padding: 0.6rem 0; }
-            .award-row-resumen .resumen-year { width: auto; }
+            .resumen-year { width: auto; }
         }
 
         .artists-grid {
@@ -583,8 +584,7 @@
 <header class="header" id="header">
     <div class="header-inner">
         <button class="lang-btn" id="langBtn">
-            <svg class="lang-flag" id="langFlagSvg" width="20" height="15" viewBox="0 0 60 40" preserveAspectRatio="none">
-                <!-- UK Flag por defecto -->
+            <svg class="lang-flag" id="langFlagSvg" width="20" height="15" viewBox="0 0 60 40">
                 <rect width="60" height="40" fill="#012169"/>
                 <path d="M0,0 L60,40 M60,0 L0,40" stroke="white" stroke-width="4"/>
                 <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="2"/>
@@ -614,7 +614,7 @@
 
 <main>
 
-    <!-- HERO -->
+    <!-- HERO con nuevo orden: Producción > Sonido > Soporte -->
     <section class="hero-section">
         <div class="hero-wave-container">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500">
@@ -665,8 +665,9 @@
         <div class="animate-fade-in-up">
             <h1 class="hero-title" data-key="hero.title">Luis Durán</h1>
             <div class="w-24 h-0.5 bg-[var(--cian)] mx-auto mb-6"></div>
-            <p class="hero-subtitle" data-key="hero.subtitle">Ingeniería de Sonido · Soporte Técnico</p>
-            <p class="hero-subtitle-line2" data-key="hero.subtitle2">Producción para Eventos</p>
+            <p class="hero-subtitle" data-key="hero.subtitle">Producción para Eventos</p>
+            <p class="hero-subtitle-line2" data-key="hero.subtitle2">Ingeniería de Sonido</p>
+            <p class="hero-subtitle-line3" data-key="hero.subtitle3">Soporte Técnico</p>
             <p class="hero-location" data-key="hero.location">Luarca · Valdés · Asturias</p>
         </div>
     </section>
@@ -779,7 +780,7 @@
 <footer class="footer">
     <div style="max-width: 64rem; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1rem;">
         <p class="text-[var(--gris-oscuro)] text-sm" id="copyright" data-key="footer.copyright">© 2025 Luis Durán. Todos los derechos reservados.</p>
-        <p class="text-[var(--gris-oscuro)] text-xs" data-key="footer.tagline">Ingeniería de Sonido · Soporte Técnico · Producción para Eventos · Luarca, Asturias</p>
+        <p class="text-[var(--gris-oscuro)] text-xs" data-key="footer.tagline">Producción para Eventos · Ingeniería de Sonido · Soporte Técnico · Luarca, Asturias</p>
     </div>
 </footer>
 
@@ -886,14 +887,15 @@
     }
 
     // ================================================================
-    // TRADUCCIONES
+    // TRADUCCIONES (con nuevo orden)
     // ================================================================
     const translations = {
         es: {
             "nav.services": "Servicios", "nav.about": "Sobre", "nav.awards": "Premios", "nav.artists": "Artistas", "nav.gallery": "Galería", "nav.contact": "Contacto",
             "hero.title": "Luis Durán",
-            "hero.subtitle": "Ingeniería de Sonido · Soporte Técnico",
-            "hero.subtitle2": "Producción para Eventos",
+            "hero.subtitle": "Producción para Eventos",
+            "hero.subtitle2": "Ingeniería de Sonido",
+            "hero.subtitle3": "Soporte Técnico",
             "hero.location": "Luarca · Valdés · Asturias",
             "about.title": "SOBRE",
             "about.p1": "Ingeniero de sonido con más de 30 años de experiencia en Cuba, España, Italia, Canadá y México.",
@@ -913,13 +915,14 @@
             "contact.title": "CONTACTO",
             "contact.email.label": "Email", "contact.phone.label": "Teléfono", "contact.location.label": "Ubicación", "contact.location.value": "Luarca, Asturias, España", "contact.social.label": "Sígueme",
             "footer.copyright": "© {year} Luis Durán. Todos los derechos reservados.",
-            "footer.tagline": "Ingeniería de Sonido · Soporte Técnico · Producción para Eventos · Luarca, Asturias"
+            "footer.tagline": "Producción para Eventos · Ingeniería de Sonido · Soporte Técnico · Luarca, Asturias"
         },
         en: {
             "nav.services": "Services", "nav.about": "About", "nav.awards": "Awards", "nav.artists": "Artists", "nav.gallery": "Gallery", "nav.contact": "Contact",
             "hero.title": "Luis Durán",
-            "hero.subtitle": "Sound Engineering · Technical Support",
-            "hero.subtitle2": "Event Production",
+            "hero.subtitle": "Event Production",
+            "hero.subtitle2": "Sound Engineering",
+            "hero.subtitle3": "Technical Support",
             "hero.location": "Luarca · Valdés · Asturias",
             "about.title": "ABOUT",
             "about.p1": "Sound engineer with over 30 years of experience in Cuba, Spain, Italy, Canada, and Mexico.",
@@ -939,7 +942,7 @@
             "contact.title": "CONTACT",
             "contact.email.label": "Email", "contact.phone.label": "Phone", "contact.location.label": "Location", "contact.location.value": "Luarca, Asturias, Spain", "contact.social.label": "Follow me",
             "footer.copyright": "© {year} Luis Durán. All rights reserved.",
-            "footer.tagline": "Sound Engineering · Technical Support · Event Production · Luarca, Asturias"
+            "footer.tagline": "Event Production · Sound Engineering · Technical Support · Luarca, Asturias"
         }
     };
 
@@ -969,7 +972,6 @@
         const langFlagSvg = document.getElementById('langFlagSvg');
         const langText = document.getElementById('langText');
         if (lang === 'es') {
-            // Mostrar bandera de Reino Unido (idioma al que se puede cambiar)
             langFlagSvg.innerHTML = `
                 <rect width="60" height="40" fill="#012169"/>
                 <path d="M0,0 L60,40 M60,0 L0,40" stroke="white" stroke-width="4"/>
@@ -981,7 +983,6 @@
             `;
             langText.textContent = 'EN';
         } else {
-            // Mostrar bandera de España
             langFlagSvg.innerHTML = `
                 <rect width="60" height="40" fill="#AA151B"/>
                 <rect y="10" width="60" height="20" fill="#F1BF00"/>
