@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luis Durán — Producción para Eventos · Ingeniería de Sonido · Soporte Técnico</title>
-    <meta name="description" content="Ingeniero de sonido con más de 30 años de experiencia. Ofrezco soporte técnico y producción ejecutiva para eventos en Asturias.">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <meta name="description"
+        content="Ingeniero de sonido con más de 30 años de experiencia. Ofrezco soporte técnico y producción ejecutiva para eventos en Asturias.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -36,16 +39,34 @@
             overflow-x: hidden;
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--negro); }
-        ::-webkit-scrollbar-thumb { background: var(--cian); border-radius: 4px; }
-
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
+        ::-webkit-scrollbar {
+            width: 8px;
         }
 
-        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        ::-webkit-scrollbar-track {
+            background: var(--negro);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--cian);
+            border-radius: 4px;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
 
         .header {
             position: fixed;
@@ -79,7 +100,9 @@
         }
 
         @media (min-width: 768px) {
-            .header-inner { padding: 0 2.5rem; }
+            .header-inner {
+                padding: 0 2.5rem;
+            }
         }
 
         .lang-btn {
@@ -136,10 +159,12 @@
         .menu-btn.open span:first-child {
             transform: translateY(0.6875rem) rotate(45deg);
         }
+
         .menu-btn.open span:nth-child(2) {
             opacity: 0;
             transform: scaleX(0);
         }
+
         .menu-btn.open span:last-child {
             transform: translateY(-0.6875rem) rotate(-45deg);
         }
@@ -174,17 +199,23 @@
         }
 
         @media (min-width: 768px) {
-            .mobile-menu a { font-size: 1.875rem; }
+            .mobile-menu a {
+                font-size: 1.875rem;
+            }
         }
 
-        .mobile-menu a:hover { color: var(--cian); }
+        .mobile-menu a:hover {
+            color: var(--cian);
+        }
 
         section {
             padding: 5rem 1.5rem;
         }
 
         @media (min-width: 768px) {
-            section { padding: 6rem 2.5rem; }
+            section {
+                padding: 6rem 2.5rem;
+            }
         }
 
         .hero-section {
@@ -218,7 +249,10 @@
         }
 
         @media (min-width: 768px) {
-            .hero-title { font-size: 3rem; letter-spacing: 0.25em; }
+            .hero-title {
+                font-size: 3rem;
+                letter-spacing: 0.25em;
+            }
         }
 
         .hero-subtitle {
@@ -229,6 +263,7 @@
             margin-bottom: 0.5rem;
             line-height: 1.8;
         }
+
         .hero-subtitle-line2 {
             font-size: 0.8rem;
             color: var(--cian);
@@ -237,6 +272,7 @@
             margin-bottom: 0.5rem;
             line-height: 1.8;
         }
+
         .hero-subtitle-line3 {
             font-size: 0.8rem;
             color: var(--cian);
@@ -247,7 +283,10 @@
         }
 
         @media (min-width: 768px) {
-            .hero-subtitle, .hero-subtitle-line2, .hero-subtitle-line3 {
+
+            .hero-subtitle,
+            .hero-subtitle-line2,
+            .hero-subtitle-line3 {
                 font-size: 0.9rem;
                 letter-spacing: 0.4em;
             }
@@ -259,8 +298,15 @@
             letter-spacing: 0.15em;
         }
 
-        .container { max-width: 64rem; margin: 0 auto; }
-        .container-wide { max-width: 80rem; margin: 0 auto; }
+        .container {
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+
+        .container-wide {
+            max-width: 80rem;
+            margin: 0 auto;
+        }
 
         .section-title {
             font-size: 0.75rem;
@@ -279,6 +325,7 @@
             margin: 2rem 0 1.5rem 0;
             font-weight: 500;
         }
+
         .gallery-subtitle:first-of-type {
             margin-top: 0;
         }
@@ -289,8 +336,15 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .service-item:first-child { padding-top: 0; }
-        .service-item:last-child { border-bottom: none; }
+
+        .service-item:first-child {
+            padding-top: 0;
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
         .service-item:hover {
             background: rgba(0, 212, 255, 0.03);
             padding-left: 1rem;
@@ -307,11 +361,17 @@
             justify-content: center;
             transition: all 0.3s ease;
         }
+
         .service-item:hover .service-icon {
             border-color: var(--cian);
             background: rgba(0, 212, 255, 0.1);
         }
-        .service-icon svg { width: 1.25rem; height: 1.25rem; color: var(--cian); }
+
+        .service-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: var(--cian);
+        }
 
         .service-title {
             font-size: 1.25rem;
@@ -320,9 +380,20 @@
             margin-bottom: 0.5rem;
             transition: color 0.3s ease;
         }
-        @media (min-width: 768px) { .service-title { font-size: 1.5rem; } }
-        .service-item:hover .service-title { color: var(--cian); }
-        .service-description { color: var(--gris); }
+
+        @media (min-width: 768px) {
+            .service-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        .service-item:hover .service-title {
+            color: var(--cian);
+        }
+
+        .service-description {
+            color: var(--gris);
+        }
 
         .awards-container {
             display: flex;
@@ -359,11 +430,25 @@
             flex-shrink: 0;
         }
 
-        .award-type.premio { color: var(--dorado); }
-        .award-type.nominacion { color: var(--plata); }
-        .award-type.disco-oro { color: #ffd700; }
-        .award-type.disco-plata { color: #c0c0c0; }
-        .award-type.grammy { color: #ff3333; }
+        .award-type.premio {
+            color: var(--dorado);
+        }
+
+        .award-type.nominacion {
+            color: var(--plata);
+        }
+
+        .award-type.disco-oro {
+            color: #ffd700;
+        }
+
+        .award-type.disco-plata {
+            color: #c0c0c0;
+        }
+
+        .award-type.grammy {
+            color: #ff3333;
+        }
 
         .award-detail {
             flex: 1;
@@ -371,7 +456,9 @@
             color: var(--gris);
         }
 
-        .award-icon { margin-right: 0.5rem; }
+        .award-icon {
+            margin-right: 0.5rem;
+        }
 
         .awards-section-spacer {
             margin: 0.5rem 0;
@@ -386,10 +473,12 @@
             padding: 0.5rem 0;
             transition: all 0.2s ease;
         }
+
         .award-row-resumen:hover {
             background: rgba(0, 212, 255, 0.05);
             padding-left: 0.5rem;
         }
+
         .resumen-year {
             width: 70px;
             font-size: 0.8rem;
@@ -397,6 +486,7 @@
             color: var(--cian);
             flex-shrink: 0;
         }
+
         .resumen-text {
             font-size: 0.8rem;
             font-weight: 500;
@@ -405,11 +495,29 @@
         }
 
         @media (max-width: 768px) {
-            .award-row { flex-direction: column; gap: 0.2rem; padding: 0.6rem 0; }
-            .award-year { width: auto; }
-            .award-type { width: auto; }
-            .award-row-resumen { flex-direction: column; gap: 0.2rem; padding: 0.6rem 0; }
-            .resumen-year { width: auto; }
+            .award-row {
+                flex-direction: column;
+                gap: 0.2rem;
+                padding: 0.6rem 0;
+            }
+
+            .award-year {
+                width: auto;
+            }
+
+            .award-type {
+                width: auto;
+            }
+
+            .award-row-resumen {
+                flex-direction: column;
+                gap: 0.2rem;
+                padding: 0.6rem 0;
+            }
+
+            .resumen-year {
+                width: auto;
+            }
         }
 
         .artists-grid {
@@ -417,21 +525,38 @@
             grid-template-columns: 1fr;
             gap: 0;
         }
-        @media (min-width: 640px) { .artists-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        @media (min-width: 640px) {
+            .artists-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
         .artist-item {
             padding: 1rem 0;
             border-bottom: 1px solid var(--bordes);
             transition: all 0.5s ease;
         }
-        .artist-item:hover { padding-left: 0.5rem; }
+
+        .artist-item:hover {
+            padding-left: 0.5rem;
+        }
+
         .artist-name {
             color: var(--gris);
             font-size: 1rem;
             transition: color 0.3s ease;
         }
-        @media (min-width: 768px) { .artist-name { font-size: 1.125rem; } }
-        .artist-item:hover .artist-name { color: var(--cian); }
+
+        @media (min-width: 768px) {
+            .artist-name {
+                font-size: 1.125rem;
+            }
+        }
+
+        .artist-item:hover .artist-name {
+            color: var(--cian);
+        }
 
         .gallery-grid {
             display: grid;
@@ -468,15 +593,20 @@
             border-radius: 8px;
             background: var(--negro);
         }
-        .gallery-item img, .gallery-item video {
+
+        .gallery-item img,
+        .gallery-item video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        .gallery-item:hover img, .gallery-item:hover video {
+
+        .gallery-item:hover img,
+        .gallery-item:hover video {
             transform: scale(1.1);
         }
+
         .gallery-overlay {
             position: absolute;
             inset: 0;
@@ -489,7 +619,11 @@
             border-radius: 8px;
             pointer-events: none;
         }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
         .gallery-overlay span {
             font-size: 0.65rem;
         }
@@ -508,10 +642,12 @@
             transition: all 0.3s ease;
             padding: 2rem;
         }
+
         .video-modal.open {
             opacity: 1;
             visibility: visible;
         }
+
         .video-modal-content {
             position: relative;
             max-width: 90vw;
@@ -521,6 +657,7 @@
             overflow: hidden;
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
         }
+
         .video-modal-content video {
             display: block;
             max-width: 100%;
@@ -530,7 +667,7 @@
             margin: 0 auto;
             background: #000;
         }
-        
+
         /* Botón de cierre para ambos modales - AHORA DENTRO Y VISIBLE */
         .video-modal-close {
             position: absolute;
@@ -553,13 +690,18 @@
             align-items: center;
             justify-content: center;
         }
+
         .video-modal-close:hover {
             background: var(--cian);
             color: var(--negro);
             transform: scale(1.1);
         }
+
         @media (max-width: 768px) {
-            .video-modal { padding: 1rem; }
+            .video-modal {
+                padding: 1rem;
+            }
+
             .video-modal-close {
                 top: 8px;
                 right: 8px;
@@ -567,7 +709,10 @@
                 height: 32px;
                 font-size: 1.3rem;
             }
-            .video-modal-content video { max-height: 85vh; }
+
+            .video-modal-content video {
+                max-height: 85vh;
+            }
         }
 
         .lightbox {
@@ -582,18 +727,25 @@
             visibility: hidden;
             transition: all 0.3s ease;
         }
-        .lightbox.open { opacity: 1; visibility: visible; }
+
+        .lightbox.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .lightbox-content {
             position: relative;
             max-width: 90vw;
             max-height: 85vh;
         }
-        .lightbox-content img { 
-            max-width: 100%; 
-            max-height: 85vh; 
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
             object-fit: contain;
             border-radius: 8px;
         }
+
         .lightbox .video-modal-close {
             position: absolute;
             top: 10px;
@@ -605,6 +757,7 @@
             font-size: 1.5rem;
             z-index: 101;
         }
+
         @media (max-width: 768px) {
             .lightbox .video-modal-close {
                 top: 8px;
@@ -619,321 +772,527 @@
             padding: 2rem 1.5rem;
             border-top: 1px solid var(--bordes);
         }
-        @media (min-width: 768px) { .footer { padding: 2rem 2.5rem; } }
 
-        .flex { display: flex; }
-        .items-center { align-items: center; }
-        .gap-2 { gap: 0.5rem; }
-        .gap-3 { gap: 0.75rem; }
-        .gap-4 { gap: 1rem; }
-        .gap-5 { gap: 1.25rem; }
-        .flex-wrap { flex-wrap: wrap; }
-        .uppercase { text-transform: uppercase; }
-        .tracking-wider { letter-spacing: 0.05em; }
-        .w-12 { width: 3rem; }
-        .h-12 { height: 3rem; }
-        .w-24 { width: 6rem; }
-        .h-0\.5 { height: 0.125rem; }
-        .bg-\[var\(--cian\)\] { background-color: var(--cian); }
-        .mx-auto { margin-left: auto; margin-right: auto; }
-        .mb-6 { margin-bottom: 1.5rem; }
-        .mb-10 { margin-bottom: 2.5rem; }
-        .text-xs { font-size: 0.75rem; }
-        .text-sm { font-size: 0.875rem; }
-        .text-\[var\(--cian\)\] { color: var(--cian); }
-        .text-\[var\(--gris\)\] { color: var(--gris); }
-        .text-\[var\(--gris-oscuro\)\] { color: var(--gris-oscuro); }
-        .hidden { display: none; }
-        .grid { display: grid; }
-        .grid-cols-1 { grid-template-columns: 1fr; }
-        @media (min-width: 768px) { .md\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 768px) {
+            .footer {
+                padding: 2rem 2.5rem;
+            }
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .gap-2 {
+            gap: 0.5rem;
+        }
+
+        .gap-3 {
+            gap: 0.75rem;
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        .gap-5 {
+            gap: 1.25rem;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+
+        .tracking-wider {
+            letter-spacing: 0.05em;
+        }
+
+        .w-12 {
+            width: 3rem;
+        }
+
+        .h-12 {
+            height: 3rem;
+        }
+
+        .w-24 {
+            width: 6rem;
+        }
+
+        .h-0\.5 {
+            height: 0.125rem;
+        }
+
+        .bg-\[var\(--cian\)\] {
+            background-color: var(--cian);
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mb-10 {
+            margin-bottom: 2.5rem;
+        }
+
+        .text-xs {
+            font-size: 0.75rem;
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+        }
+
+        .text-\[var\(--cian\)\] {
+            color: var(--cian);
+        }
+
+        .text-\[var\(--gris\)\] {
+            color: var(--gris);
+        }
+
+        .text-\[var\(--gris-oscuro\)\] {
+            color: var(--gris-oscuro);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<header class="header" id="header">
-    <div class="header-inner">
-        <button class="lang-btn" id="langBtn">
-            <svg class="lang-flag" id="langFlagSvg" width="20" height="15" viewBox="0 0 60 40">
-                <rect width="60" height="40" fill="#012169"/>
-                <path d="M0,0 L60,40 M60,0 L0,40" stroke="white" stroke-width="4"/>
-                <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="2"/>
-                <rect x="20" y="0" width="20" height="40" fill="white"/>
-                <rect x="0" y="15" width="60" height="10" fill="white"/>
-                <rect x="20" y="0" width="20" height="40" fill="#C8102E"/>
-                <rect x="0" y="15" width="60" height="10" fill="#C8102E"/>
-            </svg>
-            <span id="langText">EN</span>
-        </button>
-        <button class="menu-btn" id="menuBtn" aria-label="Menú">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+    <header class="header" id="header">
+        <div class="header-inner">
+            <button class="lang-btn" id="langBtn">
+                <svg class="lang-flag" id="langFlagSvg" width="20" height="15" viewBox="0 0 60 40">
+                    <rect width="60" height="40" fill="#012169" />
+                    <path d="M0,0 L60,40 M60,0 L0,40" stroke="white" stroke-width="4" />
+                    <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="2" />
+                    <rect x="20" y="0" width="20" height="40" fill="white" />
+                    <rect x="0" y="15" width="60" height="10" fill="white" />
+                    <rect x="20" y="0" width="20" height="40" fill="#C8102E" />
+                    <rect x="0" y="15" width="60" height="10" fill="#C8102E" />
+                </svg>
+                <span id="langText">EN</span>
+            </button>
+            <button class="menu-btn" id="menuBtn" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu closed" id="mobileMenu">
+        <a href="#servicios" class="menu-link" data-key="nav.services">Servicios</a>
+        <a href="#sobre" class="menu-link" data-key="nav.about">Sobre</a>
+        <a href="#premios" class="menu-link" data-key="nav.awards">Premios</a>
+        <a href="#artistas" class="menu-link" data-key="nav.artists">Artistas</a>
+        <a href="#galeria" class="menu-link" data-key="nav.gallery">Galería</a>
+        <a href="#contacto" class="menu-link" data-key="nav.contact">Contacto</a>
     </div>
-</header>
 
-<div class="mobile-menu closed" id="mobileMenu">
-    <a href="#servicios" class="menu-link" data-key="nav.services">Servicios</a>
-    <a href="#sobre" class="menu-link" data-key="nav.about">Sobre</a>
-    <a href="#premios" class="menu-link" data-key="nav.awards">Premios</a>
-    <a href="#artistas" class="menu-link" data-key="nav.artists">Artistas</a>
-    <a href="#galeria" class="menu-link" data-key="nav.gallery">Galería</a>
-    <a href="#contacto" class="menu-link" data-key="nav.contact">Contacto</a>
-</div>
+    <main>
 
-<main>
-
-    <!-- HERO -->
-    <section class="hero-section">
-        <div class="hero-wave-container">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500">
-                <defs>
-                    <linearGradient id="grad-azul" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#003d66;stop-opacity:1" />
-                        <stop offset="50%" style="stop-color:#0066b3;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#003d66;stop-opacity:1" />
-                    </linearGradient>
-                    <linearGradient id="grad-cian" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#0099cc;stop-opacity:1" />
-                        <stop offset="50%" style="stop-color:#00d4ff;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#0099cc;stop-opacity:1" />
-                    </linearGradient>
-                    <linearGradient id="grad-magenta" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#cc00cc;stop-opacity:1" />
-                        <stop offset="50%" style="stop-color:#ff00ff;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#cc00cc;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-                <g id="ondas-azules" opacity="0.6">
-                    <path d="M0,250 C200,70 400,430 600,250 C800,70 1000,430 1200,250" stroke="url(#grad-azul)" stroke-width="2" fill="none"/>
-                    <path d="M0,250 C200,50 400,450 600,250 C800,50 1000,450 1200,250" stroke="url(#grad-azul)" stroke-width="3" fill="none"/>
-                    <path d="M0,250 C200,90 400,410 600,250 C800,90 1000,410 1200,250" stroke="url(#grad-azul)" stroke-width="1.5" fill="none"/>
-                    <path d="M0,250 C200,30 400,470 600,250 C800,30 1000,470 1200,250" stroke="url(#grad-azul)" stroke-width="3.5" fill="none"/>
-                    <path d="M0,250 C200,110 400,390 600,250 C800,110 1000,390 1200,250" stroke="url(#grad-azul)" stroke-width="1.5" fill="none"/>
-                    <path d="M0,250 C200,10 400,490 600,250 C800,10 1000,490 1200,250" stroke="url(#grad-azul)" stroke-width="2.5" fill="none"/>
-                </g>
-                <g id="ondas-cian" opacity="0.85">
-                    <path d="M0,250 C150,110 300,390 450,250 C600,110 750,390 900,250 C1050,110 1200,390 1200,250" stroke="url(#grad-cian)" stroke-width="1.5" fill="none"/>
-                    <path d="M0,250 C150,90 300,410 450,250 C600,90 750,410 900,250 C1050,90 1200,410 1200,250" stroke="url(#grad-cian)" stroke-width="2" fill="none"/>
-                    <path d="M0,250 C150,70 300,430 450,250 C600,70 750,430 900,250 C1050,70 1200,430 1200,250" stroke="url(#grad-cian)" stroke-width="2.5" fill="none"/>
-                    <path d="M0,250 C150,130 300,370 450,250 C600,130 750,370 900,250 C1050,130 1200,370 1200,250" stroke="url(#grad-cian)" stroke-width="1.5" fill="none"/>
-                    <path d="M0,250 C150,50 300,450 450,250 C600,50 750,450 900,250 C1050,50 1200,450 1200,250" stroke="url(#grad-cian)" stroke-width="2.5" fill="none"/>
-                    <path d="M0,250 C150,150 300,350 450,250 C600,150 750,350 900,250 C1050,150 1200,350 1200,250" stroke="url(#grad-cian)" stroke-width="1.5" fill="none"/>
-                    <path d="M0,250 C150,30 300,470 450,250 C600,30 750,470 900,250 C1050,30 1200,470 1200,250" stroke="url(#grad-cian)" stroke-width="2" fill="none"/>
-                    <path d="M0,250 C150,170 300,330 450,250 C600,170 750,330 900,250 C1050,170 1200,330 1200,250" stroke="url(#grad-cian)" stroke-width="1.5" fill="none"/>
-                </g>
-                <g id="ondas-magenta" opacity="0.9">
-                    <path d="M0,250 C100,150 200,350 300,250 C400,150 500,350 600,250 C700,150 800,350 900,250 C1000,150 1100,350 1200,250" stroke="url(#grad-magenta)" stroke-width="1.5" fill="none"/>
-                    <path d="M0,250 C100,130 200,370 300,250 C400,130 500,370 600,250 C700,130 800,370 900,250 C1000,130 1100,370 1200,250" stroke="url(#grad-magenta)" stroke-width="2" fill="none"/>
-                    <path d="M0,250 C100,110 200,390 300,250 C400,110 500,390 600,250 C700,110 800,390 900,250 C1000,110 1100,390 1200,250" stroke="url(#grad-magenta)" stroke-width="2.5" fill="none"/>
-                    <path d="M0,250 C100,170 200,330 300,250 C400,170 500,330 600,250 C700,170 800,330 900,250 C1000,170 1100,330 1200,250" stroke="url(#grad-magenta)" stroke-width="1.5" fill="none"/>
-                    <path d="M0,250 C100,90 200,410 300,250 C400,90 500,410 600,250 C700,90 800,410 900,250 C1000,90 1100,410 1200,250" stroke="url(#grad-magenta)" stroke-width="2" fill="none"/>
-                </g>
-            </svg>
-        </div>
-        <div class="animate-fade-in-up">
-            <h1 class="hero-title" data-key="hero.title">Luis Durán</h1>
-            <div class="w-24 h-0.5 bg-[var(--cian)] mx-auto mb-6"></div>
-            <p class="hero-subtitle" data-key="hero.subtitle">Producción para Eventos</p>
-            <p class="hero-subtitle-line2" data-key="hero.subtitle2">Ingeniería de Sonido</p>
-            <p class="hero-subtitle-line3" data-key="hero.subtitle3">Soporte Técnico</p>
-            <p class="hero-location" data-key="hero.location">Luarca · Valdés · Asturias</p>
-        </div>
-    </section>
-
-    <!-- SERVICIOS -->
-    <section id="servicios">
-        <div class="container">
-            <h2 class="section-title" data-key="services.title">SERVICIOS</h2>
-            <div>
-                <div class="service-item" data-service="1">
-                    <div class="flex items-start gap-5">
-                        <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></svg></div>
-                        <div><h3 class="service-title" data-key="services.item1.title">Sonido en directo</h3><p class="service-description" data-key="services.item1.desc">Conciertos y Festivales · Actos Institucionales y Protocolarios</p></div>
-                    </div>
-                </div>
-                <div class="service-item" data-service="2">
-                    <div class="flex items-start gap-5">
-                        <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-                        <div><h3 class="service-title" data-key="services.item2.title">Soporte técnico y producción ejecutiva</h3><p class="service-description" data-key="services.item2.desc">Coordinación del soporte técnico y logístico para eventos y actos</p></div>
-                    </div>
-                </div>
-                <div class="service-item" data-service="3">
-                    <div class="flex items-start gap-5">
-                        <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="2"/></svg></div>
-                        <div><h3 class="service-title" data-key="services.item3.title">Producción musical</h3><p class="service-description" data-key="services.item3.desc">Grabación en directo · Mezcla y masterización para audio y video</p></div>
-                    </div>
-                </div>
-                <div class="service-item" data-service="4">
-                    <div class="flex items-start gap-5">
-                        <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></div>
-                        <div><h3 class="service-title" data-key="services.item4.title">Consultoría técnica</h3><p class="service-description" data-key="services.item4.desc">Asesoramiento en equipamiento · Análisis de proyectos de sonorización</p></div>
-                    </div>
-                </div>
+        <!-- HERO -->
+        <section class="hero-section">
+            <div class="hero-wave-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500">
+                    <defs>
+                        <linearGradient id="grad-azul" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#003d66;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#0066b3;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#003d66;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="grad-cian" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#0099cc;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#00d4ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0099cc;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="grad-magenta" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#cc00cc;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#ff00ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#cc00cc;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <g id="ondas-azules" opacity="0.6">
+                        <path d="M0,250 C200,70 400,430 600,250 C800,70 1000,430 1200,250" stroke="url(#grad-azul)"
+                            stroke-width="2" fill="none" />
+                        <path d="M0,250 C200,50 400,450 600,250 C800,50 1000,450 1200,250" stroke="url(#grad-azul)"
+                            stroke-width="3" fill="none" />
+                        <path d="M0,250 C200,90 400,410 600,250 C800,90 1000,410 1200,250" stroke="url(#grad-azul)"
+                            stroke-width="1.5" fill="none" />
+                        <path d="M0,250 C200,30 400,470 600,250 C800,30 1000,470 1200,250" stroke="url(#grad-azul)"
+                            stroke-width="3.5" fill="none" />
+                        <path d="M0,250 C200,110 400,390 600,250 C800,110 1000,390 1200,250" stroke="url(#grad-azul)"
+                            stroke-width="1.5" fill="none" />
+                        <path d="M0,250 C200,10 400,490 600,250 C800,10 1000,490 1200,250" stroke="url(#grad-azul)"
+                            stroke-width="2.5" fill="none" />
+                    </g>
+                    <g id="ondas-cian" opacity="0.85">
+                        <path d="M0,250 C150,110 300,390 450,250 C600,110 750,390 900,250 C1050,110 1200,390 1200,250"
+                            stroke="url(#grad-cian)" stroke-width="1.5" fill="none" />
+                        <path d="M0,250 C150,90 300,410 450,250 C600,90 750,410 900,250 C1050,90 1200,410 1200,250"
+                            stroke="url(#grad-cian)" stroke-width="2" fill="none" />
+                        <path d="M0,250 C150,70 300,430 450,250 C600,70 750,430 900,250 C1050,70 1200,430 1200,250"
+                            stroke="url(#grad-cian)" stroke-width="2.5" fill="none" />
+                        <path d="M0,250 C150,130 300,370 450,250 C600,130 750,370 900,250 C1050,130 1200,370 1200,250"
+                            stroke="url(#grad-cian)" stroke-width="1.5" fill="none" />
+                        <path d="M0,250 C150,50 300,450 450,250 C600,50 750,450 900,250 C1050,50 1200,450 1200,250"
+                            stroke="url(#grad-cian)" stroke-width="2.5" fill="none" />
+                        <path d="M0,250 C150,150 300,350 450,250 C600,150 750,350 900,250 C1050,150 1200,350 1200,250"
+                            stroke="url(#grad-cian)" stroke-width="1.5" fill="none" />
+                        <path d="M0,250 C150,30 300,470 450,250 C600,30 750,470 900,250 C1050,30 1200,470 1200,250"
+                            stroke="url(#grad-cian)" stroke-width="2" fill="none" />
+                        <path d="M0,250 C150,170 300,330 450,250 C600,170 750,330 900,250 C1050,170 1200,330 1200,250"
+                            stroke="url(#grad-cian)" stroke-width="1.5" fill="none" />
+                    </g>
+                    <g id="ondas-magenta" opacity="0.9">
+                        <path
+                            d="M0,250 C100,150 200,350 300,250 C400,150 500,350 600,250 C700,150 800,350 900,250 C1000,150 1100,350 1200,250"
+                            stroke="url(#grad-magenta)" stroke-width="1.5" fill="none" />
+                        <path
+                            d="M0,250 C100,130 200,370 300,250 C400,130 500,370 600,250 C700,130 800,370 900,250 C1000,130 1100,370 1200,250"
+                            stroke="url(#grad-magenta)" stroke-width="2" fill="none" />
+                        <path
+                            d="M0,250 C100,110 200,390 300,250 C400,110 500,390 600,250 C700,110 800,390 900,250 C1000,110 1100,390 1200,250"
+                            stroke="url(#grad-magenta)" stroke-width="2.5" fill="none" />
+                        <path
+                            d="M0,250 C100,170 200,330 300,250 C400,170 500,330 600,250 C700,170 800,330 900,250 C1000,170 1100,330 1200,250"
+                            stroke="url(#grad-magenta)" stroke-width="1.5" fill="none" />
+                        <path
+                            d="M0,250 C100,90 200,410 300,250 C400,90 500,410 600,250 C700,90 800,410 900,250 C1000,90 1100,410 1200,250"
+                            stroke="url(#grad-magenta)" stroke-width="2" fill="none" />
+                    </g>
+                </svg>
             </div>
-        </div>
-    </section>
-
-    <!-- SOBRE -->
-    <section id="sobre">
-        <div class="container">
-            <h2 class="section-title" data-key="about.title">SOBRE</h2>
-            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <p data-key="about.p1" style="color: var(--gris);">Ingeniero de sonido con más de 30 años de experiencia en Cuba, España, Italia, Canadá y México.</p>
-                <p data-key="about.p2" style="color: var(--gris);">He trabajado tanto en conciertos y espectáculos en directo como estudios de grabación participando en más de 70 fonogramas con artistas de primer nivel, la familia Milanés (Pablo, Haydée, Suylen, Lynn y Camila), miembros de Buena Vista Social Club como Omara Portuondo, Eliades Ochoa, estrellas de renombre internacional como Cimafunk, Leoni Torres, David Blanco, Ruly Herrera y muchos más.</p>
-                <p data-key="about.p3" style="color: var(--gris);">Vasta experiencia en eventos internacionales como el Festival del Habano, la Feria Internacional de Turismo de La Habana y Varadero, el Festival Jazz Plaza. A lo largo de estos años he realizado espectáculos de alto perfil para las cadenas hoteleras Meliá e Iberostar, además de lugares icónicos como el Cabaret Tropicana, el Gran Teatro de La Habana, el Cabaret Parisien, y en los Carnavales de La Habana y Santiago de Cuba, también en los Carnavales de Las Palmas de Gran Canaria, en la sala Arena de Madrid, y en la Luz de Gas de Barcelona entre muchos mas.</p>
+            <div class="animate-fade-in-up">
+                <h1 class="hero-title" data-key="hero.title">Luis Durán</h1>
+                <div class="w-24 h-0.5 bg-[var(--cian)] mx-auto mb-6"></div>
+                <p class="hero-subtitle" data-key="hero.subtitle">Producción para Eventos</p>
+                <p class="hero-subtitle-line2" data-key="hero.subtitle2">Ingeniería de Sonido</p>
+                <p class="hero-subtitle-line3" data-key="hero.subtitle3">Soporte Técnico</p>
+                <p class="hero-location" data-key="hero.location">Luarca · Valdés · Asturias</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- PREMIOS -->
-    <section id="premios">
-        <div class="container">
-            <h2 class="section-title" data-key="awards.title">PREMIOS Y RECONOCIMIENTOS</h2>
-            <div class="awards-container" id="awardsContainer"></div>
-        </div>
-    </section>
-
-    <!-- ARTISTAS -->
-    <section id="artistas">
-        <div class="container">
-            <h2 class="section-title" data-key="artists.title">ARTISTAS</h2>
-            <div class="artists-grid" id="artistsGrid"></div>
-        </div>
-    </section>
-
-    <!-- GALERÍA -->
-    <section id="galeria">
-        <div class="container-wide">
-            <h2 class="section-title" data-key="gallery.title">GALERÍA</h2>
-            
-            <h3 class="gallery-subtitle" data-key="gallery.photos.title">FOTOS</h3>
-            <div class="gallery-grid" id="fotosGrid"></div>
-            
-            <h3 class="gallery-subtitle" data-key="gallery.videos.title">VIDEOS</h3>
-            <div class="gallery-grid" id="videosGrid"></div>
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto">
-        <div class="container">
-            <h2 class="section-title" data-key="contact.title">CONTACTO</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-lg border border-[var(--bordes)] flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cian)" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/></svg></div>
-                        <div><p class="text-xs text-[var(--gris)] uppercase tracking-wider mb-1" data-key="contact.email.label">Email</p><a href="mailto:luisoduran@gmail.com" style="color: var(--blanco);">luisoduran@gmail.com</a></div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-lg border border-[var(--bordes)] flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cian)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-                        <div><p class="text-xs text-[var(--gris)] uppercase tracking-wider mb-1" data-key="contact.phone.label">Teléfono</p><a href="tel:+34603969750" style="color: var(--blanco);">+34 603 969 750</a></div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-lg border border-[var(--bordes)] flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cian)" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></div>
-                        <div><p class="text-xs text-[var(--gris)] uppercase tracking-wider mb-1" data-key="contact.location.label">Ubicación</p><p style="color: var(--blanco);" data-key="contact.location.value">Luarca, Asturias, España</p></div>
-                    </div>
-                </div>
+        <!-- SERVICIOS -->
+        <section id="servicios">
+            <div class="container">
+                <h2 class="section-title" data-key="services.title">SERVICIOS</h2>
                 <div>
-                    <p class="text-xs text-[var(--gris)] uppercase tracking-wider mb-4" data-key="contact.social.label">Sígueme</p>
-                    <div class="flex gap-4">
-                        <a href="https://linkedin.com/in/luisoduran" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-lg border border-[var(--bordes)] flex items-center justify-center text-[var(--gris)] hover:border-[var(--cian)] hover:text-[var(--cian)] transition-all duration-300"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    <div class="service-item" data-service="1">
+                        <div class="flex items-start gap-5">
+                            <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M2 10v3" />
+                                    <path d="M6 6v11" />
+                                    <path d="M10 3v18" />
+                                    <path d="M14 8v7" />
+                                    <path d="M18 5v13" />
+                                    <path d="M22 10v3" />
+                                </svg></div>
+                            <div>
+                                <h3 class="service-title" data-key="services.item1.title">Sonido en directo</h3>
+                                <p class="service-description" data-key="services.item1.desc">Conciertos y Festivales ·
+                                    Actos Institucionales y Protocolarios</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-item" data-service="2">
+                        <div class="flex items-start gap-5">
+                            <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                                </svg></div>
+                            <div>
+                                <h3 class="service-title" data-key="services.item2.title">Soporte técnico y producción
+                                    ejecutiva</h3>
+                                <p class="service-description" data-key="services.item2.desc">Coordinación del soporte
+                                    técnico y logístico para eventos y actos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-item" data-service="3">
+                        <div class="flex items-start gap-5">
+                            <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <circle cx="12" cy="12" r="2" />
+                                </svg></div>
+                            <div>
+                                <h3 class="service-title" data-key="services.item3.title">Producción musical</h3>
+                                <p class="service-description" data-key="services.item3.desc">Grabación en directo ·
+                                    Mezcla y masterización para audio y video</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-item" data-service="4">
+                        <div class="flex items-start gap-5">
+                            <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg></div>
+                            <div>
+                                <h3 class="service-title" data-key="services.item4.title">Consultoría técnica</h3>
+                                <p class="service-description" data-key="services.item4.desc">Asesoramiento en
+                                    equipamiento · Análisis de proyectos de sonorización</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- SOBRE -->
+        <section id="sobre">
+            <div class="container">
+                <h2 class="section-title" data-key="about.title">SOBRE</h2>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <p data-key="about.p1" style="color: var(--gris);">Ingeniero de sonido con más de 30 años de
+                        experiencia en Cuba, España, Italia, Canadá y México.</p>
+                    <p data-key="about.p2" style="color: var(--gris);">He trabajado tanto en conciertos y espectáculos
+                        en directo como estudios de grabación participando en más de 70 fonogramas con artistas de
+                        primer nivel, la familia Milanés (Pablo, Haydée, Suylen, Lynn y Camila), miembros de Buena Vista
+                        Social Club como Omara Portuondo, Eliades Ochoa, estrellas de renombre internacional como
+                        Cimafunk, Leoni Torres, David Blanco, Ruly Herrera y muchos más.</p>
+                    <p data-key="about.p3" style="color: var(--gris);">Vasta experiencia en eventos internacionales como
+                        el Festival del Habano, la Feria Internacional de Turismo de La Habana y Varadero, el Festival
+                        Jazz Plaza. A lo largo de estos años he realizado espectáculos de alto perfil para las cadenas
+                        hoteleras Meliá e Iberostar, además de lugares icónicos como el Cabaret Tropicana, el Gran
+                        Teatro de La Habana, el Cabaret Parisien, y en los Carnavales de La Habana y Santiago de Cuba,
+                        también en los Carnavales de Las Palmas de Gran Canaria, en la sala Arena de Madrid, y en la Luz
+                        de Gas de Barcelona entre muchos mas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREMIOS -->
+        <section id="premios">
+            <div class="container">
+                <h2 class="section-title" data-key="awards.title">PREMIOS Y RECONOCIMIENTOS</h2>
+                <div class="awards-container" id="awardsContainer"></div>
+            </div>
+        </section>
+
+        <!-- ARTISTAS -->
+        <section id="artistas">
+            <div class="container">
+                <h2 class="section-title" data-key="artists.title">ARTISTAS</h2>
+                <div class="artists-grid" id="artistsGrid"></div>
+            </div>
+        </section>
+
+        <!-- GALERÍA -->
+        <section id="galeria">
+            <div class="container-wide">
+                <h2 class="section-title" data-key="gallery.title">GALERÍA</h2>
+
+                <h3 class="gallery-subtitle" data-key="gallery.photos.title">FOTOS</h3>
+                <div class="gallery-grid" id="fotosGrid"></div>
+
+                <h3 class="gallery-subtitle" data-key="gallery.videos.title">VIDEOS</h3>
+                <div class="gallery-grid" id="videosGrid"></div>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto">
+            <div class="container">
+                <h2 class="section-title" data-key="contact.title">CONTACTO</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-lg border border-[var(--bordes)] flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="var(--cian)" stroke-width="2">
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                    <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-[var(--gris)] uppercase tracking-wider mb-1"
+                                    data-key="contact.email.label">Email</p><a href="mailto:luisoduran@gmail.com"
+                                    style="color: var(--blanco);">luisoduran@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-lg border border-[var(--bordes)] flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="var(--cian)" stroke-width="2">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-[var(--gris)] uppercase tracking-wider mb-1"
+                                    data-key="contact.phone.label">Teléfono</p><a href="tel:+34603969750"
+                                    style="color: var(--blanco);">+34 603 969 750</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-lg border border-[var(--bordes)] flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="var(--cian)" stroke-width="2">
+                                    <path
+                                        d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-[var(--gris)] uppercase tracking-wider mb-1"
+                                    data-key="contact.location.label">Ubicación</p>
+                                <p style="color: var(--blanco);" data-key="contact.location.value">Luarca, Asturias,
+                                    España</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-xs text-[var(--gris)] uppercase tracking-wider mb-4"
+                            data-key="contact.social.label">Sígueme</p>
+                        <div class="flex gap-4">
+                            <a href="https://linkedin.com/in/luisoduran" target="_blank" rel="noopener noreferrer"
+                                class="w-12 h-12 rounded-lg border border-[var(--bordes)] flex items-center justify-center text-[var(--gris)] hover:border-[var(--cian)] hover:text-[var(--cian)] transition-all duration-300"><svg
+                                    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                    <rect x="2" y="9" width="4" height="12" />
+                                    <circle cx="4" cy="4" r="2" />
+                                </svg></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div
+            style="max-width: 64rem; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1rem;">
+            <p class="text-[var(--gris-oscuro)] text-sm" id="copyright" data-key="footer.copyright">© 2025 Luis Durán.
+                Todos los derechos reservados.</p>
+            <p class="text-[var(--gris-oscuro)] text-xs" data-key="footer.tagline">Producción para Eventos · Ingeniería
+                de Sonido · Soporte Técnico · Luarca, Asturias</p>
         </div>
-    </section>
+    </footer>
 
-</main>
+    <script>
+        // ================================================================
+        // DATOS DE PREMIOS
+        // ================================================================
+        const awardsData = {
+            es: {
+                items: [
+                    { year: "2006", type: "grammy", typeText: "NOMINACIÓN LATIN GRAMMY", artist: "David Blanco", album: "Cuando me dijiste adiós" },
+                    { year: "2021", type: "disco-oro", typeText: "DISCO DE ORO", artist: "Festival Las Vegas — Roberto Javier", album: "De nuevo sin ti" },
+                    { year: "2022", type: "disco-oro", typeText: "DISCO DE ORO", artist: "Festival California — Roberto Javier", album: "Espérame" },
+                    { year: "2023", type: "disco-plata", typeText: "DISCO DE PLATA", artist: "Festival California — Roberto Javier", album: "Siempre te amé" },
+                    { year: "2024", type: "nominacion", typeText: "FINALISTA USA Songwriting Comp.", artist: "Roberto Javier", album: "Morena" },
+                    { year: "2005", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "El Despechao" },
+                    { year: "2008", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "La Evolución" },
+                    { year: "2013", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Hipnosis", album: "Revelation" },
+                    { year: "2015", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Adrián Berazaín", album: "Si te hago canción" },
+                    { year: "2019", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Orquesta Aragón & Michel Herrera", album: "" },
+                    { year: "2022", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "Feudalismo Moderno" },
+                    { year: "2023", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Adrián Berazaín", album: "Julián" },
+                    { year: "2023", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Ruly Herrera", album: "Fascinantemente Mundo" }
+                ],
+                resumen: { year: "2003-2024", text: "28 NOMINACIONES A CUBADISCO" }
+            },
+            en: {
+                items: [
+                    { year: "2006", type: "grammy", typeText: "LATIN GRAMMY NOMINATION", artist: "David Blanco", album: "Cuando me dijiste adiós" },
+                    { year: "2021", type: "disco-oro", typeText: "GOLD DISC", artist: "Las Vegas Festival — Roberto Javier", album: "De nuevo sin ti" },
+                    { year: "2022", type: "disco-oro", typeText: "GOLD DISC", artist: "California Festival — Roberto Javier", album: "Espérame" },
+                    { year: "2023", type: "disco-plata", typeText: "SILVER DISC", artist: "California Festival — Roberto Javier", album: "Siempre te amé" },
+                    { year: "2024", type: "nominacion", typeText: "FINALIST USA Songwriting Comp.", artist: "Roberto Javier", album: "Morena" },
+                    { year: "2005", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "El Despechao" },
+                    { year: "2008", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "La Evolución" },
+                    { year: "2013", type: "premio", typeText: "CUBADISCO AWARD", artist: "Hipnosis", album: "Revelation" },
+                    { year: "2015", type: "premio", typeText: "CUBADISCO AWARD", artist: "Adrián Berazaín", album: "Si te hago canción" },
+                    { year: "2019", type: "premio", typeText: "CUBADISCO AWARD", artist: "Orquesta Aragón & Michel Herrera", album: "" },
+                    { year: "2022", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "Feudalismo Moderno" },
+                    { year: "2023", type: "premio", typeText: "CUBADISCO AWARD", artist: "Adrián Berazaín", album: "Julián" },
+                    { year: "2023", type: "premio", typeText: "CUBADISCO AWARD", artist: "Ruly Herrera", album: "Fascinantemente Mundo" }
+                ],
+                resumen: { year: "2003-2024", text: "28 CUBADISCO NOMINATIONS" }
+            }
+        };
 
-<footer class="footer">
-    <div style="max-width: 64rem; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1rem;">
-        <p class="text-[var(--gris-oscuro)] text-sm" id="copyright" data-key="footer.copyright">© 2025 Luis Durán. Todos los derechos reservados.</p>
-        <p class="text-[var(--gris-oscuro)] text-xs" data-key="footer.tagline">Producción para Eventos · Ingeniería de Sonido · Soporte Técnico · Luarca, Asturias</p>
-    </div>
-</footer>
-
-<script>
-    // ================================================================
-    // DATOS DE PREMIOS
-    // ================================================================
-    const awardsData = {
-        es: {
-            items: [
-                { year: "2006", type: "grammy", typeText: "NOMINACIÓN LATIN GRAMMY", artist: "David Blanco", album: "Cuando me dijiste adiós" },
-                { year: "2021", type: "disco-oro", typeText: "DISCO DE ORO", artist: "Festival Las Vegas — Roberto Javier", album: "De nuevo sin ti" },
-                { year: "2022", type: "disco-oro", typeText: "DISCO DE ORO", artist: "Festival California — Roberto Javier", album: "Espérame" },
-                { year: "2023", type: "disco-plata", typeText: "DISCO DE PLATA", artist: "Festival California — Roberto Javier", album: "Siempre te amé" },
-                { year: "2024", type: "nominacion", typeText: "FINALISTA USA Songwriting Comp.", artist: "Roberto Javier", album: "Morena" },
-                { year: "2005", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "El Despechao" },
-                { year: "2008", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "La Evolución" },
-                { year: "2013", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Hipnosis", album: "Revelation" },
-                { year: "2015", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Adrián Berazaín", album: "Si te hago canción" },
-                { year: "2019", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Orquesta Aragón & Michel Herrera", album: "" },
-                { year: "2022", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "Feudalismo Moderno" },
-                { year: "2023", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Adrián Berazaín", album: "Julián" },
-                { year: "2023", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Ruly Herrera", album: "Fascinantemente Mundo" }
-            ],
-            resumen: { year: "2003-2024", text: "28 NOMINACIONES A CUBADISCO" }
-        },
-        en: {
-            items: [
-                { year: "2006", type: "grammy", typeText: "LATIN GRAMMY NOMINATION", artist: "David Blanco", album: "Cuando me dijiste adiós" },
-                { year: "2021", type: "disco-oro", typeText: "GOLD DISC", artist: "Las Vegas Festival — Roberto Javier", album: "De nuevo sin ti" },
-                { year: "2022", type: "disco-oro", typeText: "GOLD DISC", artist: "California Festival — Roberto Javier", album: "Espérame" },
-                { year: "2023", type: "disco-plata", typeText: "SILVER DISC", artist: "California Festival — Roberto Javier", album: "Siempre te amé" },
-                { year: "2024", type: "nominacion", typeText: "FINALIST USA Songwriting Comp.", artist: "Roberto Javier", album: "Morena" },
-                { year: "2005", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "El Despechao" },
-                { year: "2008", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "La Evolución" },
-                { year: "2013", type: "premio", typeText: "CUBADISCO AWARD", artist: "Hipnosis", album: "Revelation" },
-                { year: "2015", type: "premio", typeText: "CUBADISCO AWARD", artist: "Adrián Berazaín", album: "Si te hago canción" },
-                { year: "2019", type: "premio", typeText: "CUBADISCO AWARD", artist: "Orquesta Aragón & Michel Herrera", album: "" },
-                { year: "2022", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "Feudalismo Moderno" },
-                { year: "2023", type: "premio", typeText: "CUBADISCO AWARD", artist: "Adrián Berazaín", album: "Julián" },
-                { year: "2023", type: "premio", typeText: "CUBADISCO AWARD", artist: "Ruly Herrera", album: "Fascinantemente Mundo" }
-            ],
-            resumen: { year: "2003-2024", text: "28 CUBADISCO NOMINATIONS" }
+        function getIconByType(type) {
+            switch (type) {
+                case 'premio': return '🏆';
+                case 'nominacion': return '🎯';
+                case 'disco-oro': return '💿';
+                case 'disco-plata': return '💿';
+                case 'grammy': return '🏆';
+                default: return '•';
+            }
         }
-    };
 
-    function getIconByType(type) {
-        switch(type) {
-            case 'premio': return '🏆';
-            case 'nominacion': return '🎯';
-            case 'disco-oro': return '💿';
-            case 'disco-plata': return '💿';
-            case 'grammy': return '🏆';
-            default: return '•';
+        function getTypeClass(type) {
+            switch (type) {
+                case 'premio': return 'premio';
+                case 'nominacion': return 'nominacion';
+                case 'disco-oro': return 'disco-oro';
+                case 'disco-plata': return 'disco-plata';
+                case 'grammy': return 'grammy';
+                default: return '';
+            }
         }
-    }
 
-    function getTypeClass(type) {
-        switch(type) {
-            case 'premio': return 'premio';
-            case 'nominacion': return 'nominacion';
-            case 'disco-oro': return 'disco-oro';
-            case 'disco-plata': return 'disco-plata';
-            case 'grammy': return 'grammy';
-            default: return '';
-        }
-    }
+        function renderAwards(lang) {
+            const container = document.getElementById('awardsContainer');
+            if (!container) return;
+            const data = awardsData[lang];
 
-    function renderAwards(lang) {
-        const container = document.getElementById('awardsContainer');
-        if (!container) return;
-        const data = awardsData[lang];
-        
-        let html = '';
-        
-        data.items.forEach((award) => {
-            const icon = getIconByType(award.type);
-            const typeClass = getTypeClass(award.type);
-            const albumDisplay = award.album ? ` — ${award.album}` : '';
-            const artistDisplay = award.artist ? award.artist : '';
-            const detailText = artistDisplay + albumDisplay;
-            
-            html += `
+            let html = '';
+
+            data.items.forEach((award) => {
+                const icon = getIconByType(award.type);
+                const typeClass = getTypeClass(award.type);
+                const albumDisplay = award.album ? ` — ${award.album}` : '';
+                const artistDisplay = award.artist ? award.artist : '';
+                const detailText = artistDisplay + albumDisplay;
+
+                html += `
                 <div class="award-row">
                     <div class="award-year">${award.year}</div>
                     <div class="award-type ${typeClass}">
@@ -942,115 +1301,115 @@
                     <div class="award-detail">${detailText || '—'}</div>
                 </div>
             `;
-        });
-        
-        html += `<div class="awards-section-spacer"></div>`;
-        
-        html += `
+            });
+
+            html += `<div class="awards-section-spacer"></div>`;
+
+            html += `
             <div class="award-row-resumen">
                 <div class="resumen-year">📌 ${data.resumen.year}</div>
                 <div class="resumen-text">${data.resumen.text}</div>
             </div>
         `;
-        
-        container.innerHTML = html;
-    }
 
-    // ================================================================
-    // TRADUCCIONES
-    // ================================================================
-    const translations = {
-        es: {
-            "nav.services": "Servicios", "nav.about": "Sobre", "nav.awards": "Premios", "nav.artists": "Artistas", "nav.gallery": "Galería", "nav.contact": "Contacto",
-            "hero.title": "Luis Durán",
-            "hero.subtitle": "Producción para Eventos",
-            "hero.subtitle2": "Ingeniería de Sonido",
-            "hero.subtitle3": "Soporte Técnico",
-            "hero.location": "Luarca · Valdés · Asturias",
-            "about.title": "SOBRE",
-            "about.p1": "Ingeniero de sonido con más de 30 años de experiencia en Cuba, España, Italia, Canadá y México.",
-            "about.p2": "He trabajado tanto en conciertos y espectáculos en directo como estudios de grabación participando en más de 70 fonogramas con artistas de primer nivel, la familia Milanés (Pablo, Haydée, Suylen, Lynn y Camila), miembros de Buena Vista Social Club como Omara Portuondo, Eliades Ochoa, estrellas de renombre internacional como Cimafunk, Leoni Torres, David Blanco, Ruly Herrera y muchos más.",
-            "about.p3": "Vasta experiencia en eventos internacionales como el Festival del Habano, la Feria Internacional de Turismo de La Habana y Varadero, el Festival Jazz Plaza. A lo largo de estos años he realizado espectáculos de alto perfil para las cadenas hoteleras Meliá e Iberostar, además de lugares icónicos como el Cabaret Tropicana, el Gran Teatro de La Habana, el Cabaret Parisien, y en los Carnavales de La Habana y Santiago de Cuba, también en los Carnavales de Las Palmas de Gran Canaria, en la sala Arena de Madrid, y en la Luz de Gas de Barcelona entre muchos mas.",
-            "awards.title": "PREMIOS Y RECONOCIMIENTOS",
-            "services.title": "SERVICIOS",
-            "services.item1.title": "Sonido en directo", "services.item1.desc": "Conciertos y Festivales · Actos Institucionales y Protocolarios",
-            "services.item1.full": "Cobertura técnica integral para eventos de cualquier magnitud. Desde la configuración de sistemas PA de gran formato hasta la mezcla de monitores y FOH, garantizando una experiencia sonora impecable tanto para el artista como para el público.",
-            "services.item2.title": "Soporte técnico y producción ejecutiva", "services.item2.desc": "Coordinación del soporte técnico y logístico para eventos y actos",
-            "services.item2.full": "Gestión y coordinación de todos los recursos técnicos y logísticos necesarios para el éxito de un evento. Incluye planificación detallada, gestión de proveedores especializados y supervisión técnica en tiempo real para asegurar un desarrollo sin fisuras.",
-            "services.item3.title": "Producción musical", "services.item3.desc": "Grabación en directo · Mezcla y masterización para audio y video",
-            "services.item3.full": "Transformación de ideas musicales en productos sonoros de alta calidad. Captura de audio en alta fidelidad, edición digital meticulosa, mezcla balanceada y masterización final cumpliendo con los estándares internacionales de la industria fonográfica.",
-            "services.item4.title": "Consultoría técnica", "services.item4.desc": "Asesoramiento en equipamiento · Análisis de proyectos de sonorización",
-            "services.item4.full": "Asesoramiento estratégico basado en más de 30 años de experiencia. Evaluación de necesidades acústicas, diseño de sistemas de sonorización para recintos y recomendaciones de equipamiento optimizadas según el presupuesto y el objetivo del proyecto.",
-            "artists.title": "ARTISTAS",
-            "artists.list": ["Tesis de Menta", "David Blanco", "Real Project", "Cimafunk", "Leoni Torres", "Haydée Milanés", "Omara Portuondo", "Eliades Ochoa", "Pablo Milanés", "Ruly Herrera"],
-            "gallery.title": "GALERÍA",
-            "gallery.photos.title": "FOTOS",
-            "gallery.videos.title": "VIDEOS",
-            "contact.title": "CONTACTO",
-            "contact.email.label": "Email", "contact.phone.label": "Teléfono", "contact.location.label": "Ubicación", "contact.location.value": "Luarca, Asturias, España", "contact.social.label": "Sígueme",
-            "footer.copyright": "© {year} Luis Durán. Todos los derechos reservados.",
-            "footer.tagline": "Producción para Eventos · Ingeniería de Sonido · Soporte Técnico · Luarca, Asturias"
-        },
-        en: {
-            "nav.services": "Services", "nav.about": "About", "nav.awards": "Awards", "nav.artists": "Artists", "nav.gallery": "Gallery", "nav.contact": "Contact",
-            "hero.title": "Luis Durán",
-            "hero.subtitle": "Event Production",
-            "hero.subtitle2": "Sound Engineering",
-            "hero.subtitle3": "Technical Support",
-            "hero.location": "Luarca · Valdés · Asturias",
-            "about.title": "ABOUT",
-            "about.p1": "Sound engineer with over 30 years of experience in Cuba, Spain, Italy, Canada, and Mexico.",
-            "about.p2": "I have worked both in live concerts and shows as well as in recording studios, participating in more than 70 phonograms with top-level artists: the Milanés family (Pablo, Haydée, Suylen, Lynn, and Camila), members of Buena Vista Social Club such as Omara Portuondo and Eliades Ochoa, and internationally renowned stars like Cimafunk, Leoni Torres, David Blanco, Ruly Herrera, and many more.",
-            "about.p3": "Extensive experience in international events such as the Habano Festival, the Havana and Varadero International Tourism Fair, and the Jazz Plaza Festival. Over the years, I have performed high-profile shows for Meliá and Iberostar hotel chains, as well as iconic venues such as the Tropicana Cabaret, the Gran Teatro de La Habana, the Cabaret Parisien, the Havana and Santiago de Cuba Carnivals, the Las Palmas de Gran Canaria Carnivals, the Arena de Madrid concert hall, and the Luz de Gas in Barcelona, among many others.",
-            "awards.title": "AWARDS & RECOGNITIONS",
-            "services.title": "SERVICES",
-            "services.item1.title": "Live sound", "services.item1.desc": "Concerts and Festivals · Institutional and Protocolary Events",
-            "services.item1.full": "Comprehensive technical coverage for events of any size. From large-format PA system setup to monitor and FOH mixing, ensuring an impeccable sound experience for both the artist and the audience.",
-            "services.item2.title": "Technical support & executive production", "services.item2.desc": "Coordination of technical and logistical support for events and shows",
-            "services.item2.full": "Management and coordination of all technical and logistical resources necessary for a successful event. Includes detailed planning, specialized supplier management, and real-time technical supervision to ensure seamless execution.",
-            "services.item3.title": "Music production", "services.item3.desc": "Live recording · Mixing and mastering for audio and video",
-            "services.item3.full": "Transforming musical ideas into high-quality sound products. High-fidelity audio capture, meticulous digital editing, balanced mixing, and final mastering complying with international phonographic industry standards.",
-            "services.item4.title": "Technical consulting", "services.item4.desc": "Equipment advice · Sound project analysis",
-            "services.item4.full": "Strategic advice based on over 30 years of experience. Evaluation of acoustic needs, design of sound systems for venues, and optimized equipment recommendations according to project budget and objectives.",
-            "artists.title": "ARTISTS",
-            "artists.list": ["Tesis de Menta", "David Blanco", "Real Project", "Cimafunk", "Leoni Torres", "Haydée Milanés", "Omara Portuondo", "Eliades Ochoa", "Pablo Milanés", "Ruly Herrera"],
-            "gallery.title": "GALLERY",
-            "gallery.photos.title": "PHOTOS",
-            "gallery.videos.title": "VIDEOS",
-            "contact.title": "CONTACT",
-            "contact.email.label": "Email", "contact.phone.label": "Phone", "contact.location.label": "Location", "contact.location.value": "Luarca, Asturias, Spain", "contact.social.label": "Follow me",
-            "footer.copyright": "© {year} Luis Durán. All rights reserved.",
-            "footer.tagline": "Event Production · Sound Engineering · Technical Support · Luarca, Asturias"
+            container.innerHTML = html;
         }
-    };
 
-    let currentLang = 'es';
-
-    function updateLanguage(lang) {
-        currentLang = lang;
-        const t = translations[lang];
-        
-        document.querySelectorAll('[data-key]').forEach(el => {
-            const key = el.getAttribute('data-key');
-            let text = t[key];
-            if (text !== undefined) {
-                if (key === 'footer.copyright') text = text.replace('{year}', new Date().getFullYear());
-                el.textContent = text;
+        // ================================================================
+        // TRADUCCIONES
+        // ================================================================
+        const translations = {
+            es: {
+                "nav.services": "Servicios", "nav.about": "Sobre", "nav.awards": "Premios", "nav.artists": "Artistas", "nav.gallery": "Galería", "nav.contact": "Contacto",
+                "hero.title": "Luis Durán",
+                "hero.subtitle": "Producción para Eventos",
+                "hero.subtitle2": "Ingeniería de Sonido",
+                "hero.subtitle3": "Soporte Técnico",
+                "hero.location": "Luarca · Valdés · Asturias",
+                "about.title": "SOBRE",
+                "about.p1": "Ingeniero de sonido con más de 30 años de experiencia en Cuba, España, Italia, Canadá y México.",
+                "about.p2": "He trabajado tanto en conciertos y espectáculos en directo como estudios de grabación participando en más de 70 fonogramas con artistas de primer nivel, la familia Milanés (Pablo, Haydée, Suylen, Lynn y Camila), miembros de Buena Vista Social Club como Omara Portuondo, Eliades Ochoa, estrellas de renombre internacional como Cimafunk, Leoni Torres, David Blanco, Ruly Herrera y muchos más.",
+                "about.p3": "Vasta experiencia en eventos internacionales como el Festival del Habano, la Feria Internacional de Turismo de La Habana y Varadero, el Festival Jazz Plaza. A lo largo de estos años he realizado espectáculos de alto perfil para las cadenas hoteleras Meliá e Iberostar, además de lugares icónicos como el Cabaret Tropicana, el Gran Teatro de La Habana, el Cabaret Parisien, y en los Carnavales de La Habana y Santiago de Cuba, también en los Carnavales de Las Palmas de Gran Canaria, en la sala Arena de Madrid, y en la Luz de Gas de Barcelona entre muchos mas.",
+                "awards.title": "PREMIOS Y RECONOCIMIENTOS",
+                "services.title": "SERVICIOS",
+                "services.item1.title": "Sonido en directo", "services.item1.desc": "Conciertos y Festivales · Actos Institucionales y Protocolarios",
+                "services.item1.full": "Cobertura técnica integral para eventos de cualquier magnitud. Desde la configuración de sistemas PA de gran formato hasta la mezcla de monitores y FOH, garantizando una experiencia sonora impecable tanto para el artista como para el público.",
+                "services.item2.title": "Soporte técnico y producción ejecutiva", "services.item2.desc": "Coordinación del soporte técnico y logístico para eventos y actos",
+                "services.item2.full": "Gestión y coordinación de todos los recursos técnicos y logísticos necesarios para el éxito de un evento. Incluye planificación detallada, gestión de proveedores especializados y supervisión técnica en tiempo real para asegurar un desarrollo sin fisuras.",
+                "services.item3.title": "Producción musical", "services.item3.desc": "Grabación en directo · Mezcla y masterización para audio y video",
+                "services.item3.full": "Transformación de ideas musicales en productos sonoros de alta calidad. Captura de audio en alta fidelidad, edición digital meticulosa, mezcla balanceada y masterización final cumpliendo con los estándares internacionales de la industria fonográfica.",
+                "services.item4.title": "Consultoría técnica", "services.item4.desc": "Asesoramiento en equipamiento · Análisis de proyectos de sonorización",
+                "services.item4.full": "Asesoramiento estratégico basado en más de 30 años de experiencia. Evaluación de necesidades acústicas, diseño de sistemas de sonorización para recintos y recomendaciones de equipamiento optimizadas según el presupuesto y el objetivo del proyecto.",
+                "artists.title": "ARTISTAS",
+                "artists.list": ["Tesis de Menta", "David Blanco", "Real Project", "Cimafunk", "Leoni Torres", "Haydée Milanés", "Omara Portuondo", "Eliades Ochoa", "Pablo Milanés", "Ruly Herrera"],
+                "gallery.title": "GALERÍA",
+                "gallery.photos.title": "FOTOS",
+                "gallery.videos.title": "VIDEOS",
+                "contact.title": "CONTACTO",
+                "contact.email.label": "Email", "contact.phone.label": "Teléfono", "contact.location.label": "Ubicación", "contact.location.value": "Luarca, Asturias, España", "contact.social.label": "Sígueme",
+                "footer.copyright": "© {year} Luis Durán. Todos los derechos reservados.",
+                "footer.tagline": "Producción para Eventos · Ingeniería de Sonido · Soporte Técnico · Luarca, Asturias"
+            },
+            en: {
+                "nav.services": "Services", "nav.about": "About", "nav.awards": "Awards", "nav.artists": "Artists", "nav.gallery": "Gallery", "nav.contact": "Contact",
+                "hero.title": "Luis Durán",
+                "hero.subtitle": "Event Production",
+                "hero.subtitle2": "Sound Engineering",
+                "hero.subtitle3": "Technical Support",
+                "hero.location": "Luarca · Valdés · Asturias",
+                "about.title": "ABOUT",
+                "about.p1": "Sound engineer with over 30 years of experience in Cuba, Spain, Italy, Canada, and Mexico.",
+                "about.p2": "I have worked both in live concerts and shows as well as in recording studios, participating in more than 70 phonograms with top-level artists: the Milanés family (Pablo, Haydée, Suylen, Lynn, and Camila), members of Buena Vista Social Club such as Omara Portuondo and Eliades Ochoa, and internationally renowned stars like Cimafunk, Leoni Torres, David Blanco, Ruly Herrera, and many more.",
+                "about.p3": "Extensive experience in international events such as the Habano Festival, the Havana and Varadero International Tourism Fair, and the Jazz Plaza Festival. Over the years, I have performed high-profile shows for Meliá and Iberostar hotel chains, as well as iconic venues such as the Tropicana Cabaret, the Gran Teatro de La Habana, the Cabaret Parisien, the Havana and Santiago de Cuba Carnivals, the Las Palmas de Gran Canaria Carnivals, the Arena de Madrid concert hall, and the Luz de Gas in Barcelona, among many others.",
+                "awards.title": "AWARDS & RECOGNITIONS",
+                "services.title": "SERVICES",
+                "services.item1.title": "Live sound", "services.item1.desc": "Concerts and Festivals · Institutional and Protocolary Events",
+                "services.item1.full": "Comprehensive technical coverage for events of any size. From large-format PA system setup to monitor and FOH mixing, ensuring an impeccable sound experience for both the artist and the audience.",
+                "services.item2.title": "Technical support & executive production", "services.item2.desc": "Coordination of technical and logistical support for events and shows",
+                "services.item2.full": "Management and coordination of all technical and logistical resources necessary for a successful event. Includes detailed planning, specialized supplier management, and real-time technical supervision to ensure seamless execution.",
+                "services.item3.title": "Music production", "services.item3.desc": "Live recording · Mixing and mastering for audio and video",
+                "services.item3.full": "Transforming musical ideas into high-quality sound products. High-fidelity audio capture, meticulous digital editing, balanced mixing, and final mastering complying with international phonographic industry standards.",
+                "services.item4.title": "Technical consulting", "services.item4.desc": "Equipment advice · Sound project analysis",
+                "services.item4.full": "Strategic advice based on over 30 years of experience. Evaluation of acoustic needs, design of sound systems for venues, and optimized equipment recommendations according to project budget and objectives.",
+                "artists.title": "ARTISTS",
+                "artists.list": ["Tesis de Menta", "David Blanco", "Real Project", "Cimafunk", "Leoni Torres", "Haydée Milanés", "Omara Portuondo", "Eliades Ochoa", "Pablo Milanés", "Ruly Herrera"],
+                "gallery.title": "GALLERY",
+                "gallery.photos.title": "PHOTOS",
+                "gallery.videos.title": "VIDEOS",
+                "contact.title": "CONTACT",
+                "contact.email.label": "Email", "contact.phone.label": "Phone", "contact.location.label": "Location", "contact.location.value": "Luarca, Asturias, Spain", "contact.social.label": "Follow me",
+                "footer.copyright": "© {year} Luis Durán. All rights reserved.",
+                "footer.tagline": "Event Production · Sound Engineering · Technical Support · Luarca, Asturias"
             }
-        });
-        
-        const artistsGrid = document.getElementById('artistsGrid');
-        if (artistsGrid) {
-            const artistsList = t['artists.list'];
-            artistsGrid.innerHTML = artistsList.map(name => `<div class="artist-item"><span class="artist-name">${name}</span></div>`).join('');
-        }
-        
-        renderAwards(lang);
-        
-        const langFlagSvg = document.getElementById('langFlagSvg');
-        const langText = document.getElementById('langText');
-        if (lang === 'es') {
-            langFlagSvg.innerHTML = `
+        };
+
+        let currentLang = 'es';
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                let text = t[key];
+                if (text !== undefined) {
+                    if (key === 'footer.copyright') text = text.replace('{year}', new Date().getFullYear());
+                    el.textContent = text;
+                }
+            });
+
+            const artistsGrid = document.getElementById('artistsGrid');
+            if (artistsGrid) {
+                const artistsList = t['artists.list'];
+                artistsGrid.innerHTML = artistsList.map(name => `<div class="artist-item"><span class="artist-name">${name}</span></div>`).join('');
+            }
+
+            renderAwards(lang);
+
+            const langFlagSvg = document.getElementById('langFlagSvg');
+            const langText = document.getElementById('langText');
+            if (lang === 'es') {
+                langFlagSvg.innerHTML = `
                 <rect width="60" height="40" fill="#012169"/>
                 <path d="M0,0 L60,40 M60,0 L0,40" stroke="white" stroke-width="4"/>
                 <path d="M0,0 L60,40 M60,0 L0,40" stroke="#C8102E" stroke-width="2"/>
@@ -1059,85 +1418,85 @@
                 <rect x="20" y="0" width="20" height="40" fill="#C8102E"/>
                 <rect x="0" y="15" width="60" height="10" fill="#C8102E"/>
             `;
-            langText.textContent = 'EN';
-        } else {
-            langFlagSvg.innerHTML = `
+                langText.textContent = 'EN';
+            } else {
+                langFlagSvg.innerHTML = `
                 <rect width="60" height="40" fill="#AA151B"/>
                 <rect y="10" width="60" height="20" fill="#F1BF00"/>
                 <circle cx="30" cy="20" r="8" fill="#AA151B"/>
                 <circle cx="30" cy="20" r="6" fill="#F1BF00"/>
             `;
-            langText.textContent = 'ES';
-        }
-        
-        document.documentElement.lang = lang === 'es' ? 'es' : 'en';
-    }
-    
-    document.getElementById('langBtn').addEventListener('click', () => updateLanguage(currentLang === 'es' ? 'en' : 'es'));
-    updateLanguage('es');
+                langText.textContent = 'ES';
+            }
 
-    // Header scroll
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) header.classList.add('header-scrolled');
-        else header.classList.remove('header-scrolled');
-    });
-    
-    // Menú móvil
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuLinks = document.querySelectorAll('.menu-link');
-    
-    function toggleMenu() {
-        const isOpen = mobileMenu.classList.contains('closed');
-        if (isOpen) {
-            mobileMenu.classList.remove('closed');
-            menuBtn.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        } else {
+            document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+        }
+
+        document.getElementById('langBtn').addEventListener('click', () => updateLanguage(currentLang === 'es' ? 'en' : 'es'));
+        updateLanguage('es');
+
+        // Header scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) header.classList.add('header-scrolled');
+            else header.classList.remove('header-scrolled');
+        });
+
+        // Menú móvil
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        function toggleMenu() {
+            const isOpen = mobileMenu.classList.contains('closed');
+            if (isOpen) {
+                mobileMenu.classList.remove('closed');
+                menuBtn.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('closed');
+                menuBtn.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
+        menuLinks.forEach(link => link.addEventListener('click', () => {
             mobileMenu.classList.add('closed');
             menuBtn.classList.remove('open');
             document.body.style.overflow = '';
-        }
-    }
-    
-    if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
-    menuLinks.forEach(link => link.addEventListener('click', () => {
-        mobileMenu.classList.add('closed');
-        menuBtn.classList.remove('open');
-        document.body.style.overflow = '';
-    }));
-    
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('closed')) toggleMenu();
-    });
-    
-    // Animación de ondas
-    const azulesPaths = document.querySelectorAll('#ondas-azules path');
-    const cianPaths = document.querySelectorAll('#ondas-cian path');
-    const magentaPaths = document.querySelectorAll('#ondas-magenta path');
-    const allPaths = [...azulesPaths, ...cianPaths, ...magentaPaths];
-    
-    let timeWave = 0;
-    function animateWaves() {
-        timeWave += 0.02;
-        allPaths.forEach((path, index) => {
-            const offset = index * 0.2;
-            const amplitude = 3 + (index % 5) * 1.5;
-            const frequency = 0.6 + (index % 3) * 0.2;
-            const yOffset = Math.sin(timeWave * frequency + offset) * amplitude;
-            path.style.transform = `translateY(${yOffset}px)`;
+        }));
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('closed')) toggleMenu();
         });
-        requestAnimationFrame(animateWaves);
-    }
-    animateWaves();
-    
-    // ================================================================
-    // MODAL DE VIDEO CON BOTÓN DE CIERRE Y CONTROL DE HISTORIAL
-    // ================================================================
-    const videoModal = document.createElement('div');
-    videoModal.className = 'video-modal';
-    videoModal.innerHTML = `
+
+        // Animación de ondas
+        const azulesPaths = document.querySelectorAll('#ondas-azules path');
+        const cianPaths = document.querySelectorAll('#ondas-cian path');
+        const magentaPaths = document.querySelectorAll('#ondas-magenta path');
+        const allPaths = [...azulesPaths, ...cianPaths, ...magentaPaths];
+
+        let timeWave = 0;
+        function animateWaves() {
+            timeWave += 0.02;
+            allPaths.forEach((path, index) => {
+                const offset = index * 0.2;
+                const amplitude = 3 + (index % 5) * 1.5;
+                const frequency = 0.6 + (index % 3) * 0.2;
+                const yOffset = Math.sin(timeWave * frequency + offset) * amplitude;
+                path.style.transform = `translateY(${yOffset}px)`;
+            });
+            requestAnimationFrame(animateWaves);
+        }
+        animateWaves();
+
+        // ================================================================
+        // MODAL DE VIDEO CON BOTÓN DE CIERRE Y CONTROL DE HISTORIAL
+        // ================================================================
+        const videoModal = document.createElement('div');
+        videoModal.className = 'video-modal';
+        videoModal.innerHTML = `
         <div class="video-modal-content">
             <button class="video-modal-close" aria-label="Cerrar">✕</button>
             <video controls preload="metadata" playsinline>
@@ -1145,44 +1504,44 @@
             </video>
         </div>
     `;
-    document.body.appendChild(videoModal);
-    const videoModalVideo = videoModal.querySelector('video');
-    const videoModalClose = videoModal.querySelector('.video-modal-close');
+        document.body.appendChild(videoModal);
+        const videoModalVideo = videoModal.querySelector('video');
+        const videoModalClose = videoModal.querySelector('.video-modal-close');
 
-    function openVideoModal(src) {
-        videoModalVideo.src = src;
-        videoModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        videoModalVideo.play();
-        history.pushState({ modalOpen: true, type: 'video' }, '');
-    }
+        function openVideoModal(src) {
+            videoModalVideo.src = src;
+            videoModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            videoModalVideo.play();
+            history.pushState({ modalOpen: true, type: 'video' }, '');
+        }
 
-    function closeVideoModal() {
-        if (!videoModal.classList.contains('open')) return;
-        videoModalVideo.pause();
-        videoModalVideo.src = '';
-        videoModal.classList.remove('open');
-        document.body.style.overflow = '';
-    }
+        function closeVideoModal() {
+            if (!videoModal.classList.contains('open')) return;
+            videoModalVideo.pause();
+            videoModalVideo.src = '';
+            videoModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
 
-    videoModalClose.addEventListener('click', closeVideoModal);
-    videoModal.addEventListener('click', (e) => {
-        if (e.target === videoModal) closeVideoModal();
-    });
+        videoModalClose.addEventListener('click', closeVideoModal);
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) closeVideoModal();
+        });
 
-    // ================================================================
-    // MODAL DE SERVICIOS ENRIQUECIDO
-    // ================================================================
-    const serviceModal = document.createElement('div');
-    serviceModal.className = 'video-modal'; 
-    serviceModal.innerHTML = `
+        // ================================================================
+        // MODAL DE SERVICIOS ENRIQUECIDO
+        // ================================================================
+        const serviceModal = document.createElement('div');
+        serviceModal.className = 'video-modal';
+        serviceModal.innerHTML = `
         <div class="video-modal-content" style="padding: 0; max-width: 650px; background: rgba(10, 10, 10, 0.98); border: 1px solid rgba(0, 212, 255, 0.3); backdrop-filter: blur(25px); overflow: hidden;">
             <button class="video-modal-close" style="top: 20px; right: 20px; background: rgba(255,255,255,0.05);" aria-label="Cerrar">✕</button>
             
             <div style="display: flex; flex-direction: column;">
                 <!-- Cabecera Visual del Modal -->
                 <div style="padding: 3rem 3rem 1.5rem 3rem; background: linear-gradient(to bottom, rgba(0, 212, 255, 0.05), transparent); display: flex; align-items: center; gap: 1.5rem;">
-                    <div id="serviceModalIcon" style="width: 80px; height: 80px; border-radius: 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--cian); box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);">
+                    <div id="serviceModalIcon" style="min-width: 80px; min-height: 80px; border-radius: 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--cian); box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);">
                         <!-- El SVG se insertará aquí -->
                     </div>
                     <div>
@@ -1198,163 +1557,178 @@
             </div>
         </div>
     `;
-    document.body.appendChild(serviceModal);
-    const serviceModalClose = serviceModal.querySelector('.video-modal-close');
+        document.body.appendChild(serviceModal);
+        const serviceModalClose = serviceModal.querySelector('.video-modal-close');
 
-    function openServiceModal(id, iconSvg) {
-        const t = translations[currentLang];
-        const title = t[`services.item${id}.title`];
-        const content = t[`services.item${id}.full`];
-        
-        document.getElementById('serviceModalTitle').textContent = title;
-        document.getElementById('serviceModalDescription').textContent = content;
-        
-        // Clonamos el icono y lo hacemos más grande
-        const iconContainer = document.getElementById('serviceModalIcon');
-        iconContainer.innerHTML = iconSvg;
-        const svg = iconContainer.querySelector('svg');
-        if (svg) {
-            svg.style.width = '40px';
-            svg.style.height = '40px';
+        function openServiceModal(id, iconSvg) {
+            const t = translations[currentLang];
+            const title = t[`services.item${id}.title`];
+            const content = t[`services.item${id}.full`];
+
+            document.getElementById('serviceModalTitle').textContent = title;
+            document.getElementById('serviceModalDescription').textContent = content;
+
+            // Clonamos el icono y lo hacemos más grande
+            const iconContainer = document.getElementById('serviceModalIcon');
+            iconContainer.innerHTML = iconSvg;
+            const svg = iconContainer.querySelector('svg');
+            if (svg) {
+                svg.style.width = '40px';
+                svg.style.height = '40px';
+            }
+
+            serviceModal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            history.pushState({ modalOpen: true, type: 'service' }, '');
         }
-        
-        serviceModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        history.pushState({ modalOpen: true, type: 'service' }, '');
-    }
 
-    function closeServiceModal() {
-        if (!serviceModal.classList.contains('open')) return;
-        serviceModal.classList.remove('open');
-        document.body.style.overflow = '';
-    }
+        function closeServiceModal() {
+            if (!serviceModal.classList.contains('open')) return;
+            serviceModal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
 
-    serviceModalClose.addEventListener('click', closeServiceModal);
-    serviceModal.addEventListener('click', (e) => {
-        if (serviceModal.querySelector('.video-modal-content').contains(e.target) && e.target !== serviceModalClose) return;
-        closeServiceModal();
-    });
-
-    document.querySelectorAll('.service-item').forEach(item => {
-        item.addEventListener('click', () => {
-            const id = item.getAttribute('data-service');
-            const iconSvg = item.querySelector('.service-icon').innerHTML;
-            openServiceModal(id, iconSvg);
+        serviceModalClose.addEventListener('click', closeServiceModal);
+        serviceModal.addEventListener('click', (e) => {
+            if (serviceModal.querySelector('.video-modal-content').contains(e.target) && e.target !== serviceModalClose) return;
+            closeServiceModal();
         });
-    });
 
-    // ================================================================
-    // LIGHTBOX PARA FOTOS CON BOTÓN DE CIERRE
-    // ================================================================
-    function createLightbox() {
-        const lightbox = document.createElement('div');
-        lightbox.className = 'lightbox';
-        lightbox.innerHTML = `
+        document.querySelectorAll('.service-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const id = item.getAttribute('data-service');
+                const iconSvg = item.querySelector('.service-icon').innerHTML;
+                openServiceModal(id, iconSvg);
+            });
+        });
+
+        // ================================================================
+        // LIGHTBOX PARA FOTOS CON BOTÓN DE CIERRE
+        // ================================================================
+        function createLightbox() {
+            const lightbox = document.createElement('div');
+            lightbox.className = 'lightbox';
+            lightbox.innerHTML = `
             <div class="lightbox-content">
                 <button class="video-modal-close" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); border-radius: 50%; width: 36px; height: 36px; font-size: 1.5rem; z-index: 101;" aria-label="Cerrar">✕</button>
                 <img src="" alt="">
             </div>
         `;
-        document.body.appendChild(lightbox);
-        
-        const closeBtn = lightbox.querySelector('.video-modal-close');
-        closeBtn.addEventListener('click', closeLightbox);
-        
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
+            document.body.appendChild(lightbox);
+
+            const closeBtn = lightbox.querySelector('.video-modal-close');
+            closeBtn.addEventListener('click', closeLightbox);
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+
+            return lightbox;
+        }
+
+        const lightbox = createLightbox();
+        const lightboxImg = lightbox.querySelector('img');
+
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            history.pushState({ modalOpen: true, type: 'image' }, '');
+        }
+
+        function closeLightbox() {
+            if (!lightbox.classList.contains('open')) return;
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+            lightboxImg.src = '';
+        }
+
+        // ================================================================
+        // CONTROL DEL BOTÓN "ATRÁS" DEL NAVEGADOR
+        // ================================================================
+        window.addEventListener('popstate', function (event) {
+            if (videoModal.classList.contains('open')) {
+                closeVideoModal();
+                return;
+            }
+            if (lightbox.classList.contains('open')) {
+                closeLightbox();
+                return;
+            }
+            if (serviceModal.classList.contains('open')) {
+                closeServiceModal();
+                return;
+            }
         });
-        
-        return lightbox;
-    }
 
-    const lightbox = createLightbox();
-    const lightboxImg = lightbox.querySelector('img');
+        // ================================================================
+        // GALERÍA
+        // ================================================================
+        const fotos = ["Foto-01.jpg", "Foto-02.jpg", "Foto-03.jpg", "Foto-04.jpg", "Foto-05.jpg", "Foto-06.jpg", "Foto-07.jpg", "Foto-08.jpg"];
+        const videos = ["Video-01.mp4", "Video-02.mp4", "Video-03.mp4", "Video-04.mp4", "Video-05.mp4", "Video-06.mp4", "Video-07.mp4", "Video-08.mp4"];
 
-    function openLightbox(src) {
-        lightboxImg.src = src;
-        lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        history.pushState({ modalOpen: true, type: 'image' }, '');
-    }
+        const fotosGrid = document.getElementById('fotosGrid');
+        const videosGrid = document.getElementById('videosGrid');
 
-    function closeLightbox() {
-        if (!lightbox.classList.contains('open')) return;
-        lightbox.classList.remove('open');
-        document.body.style.overflow = '';
-        lightboxImg.src = '';
-    }
-
-    // ================================================================
-    // CONTROL DEL BOTÓN "ATRÁS" DEL NAVEGADOR
-    // ================================================================
-    window.addEventListener('popstate', function(event) {
-        if (videoModal.classList.contains('open')) {
-            closeVideoModal();
-            return;
-        }
-        if (lightbox.classList.contains('open')) {
-            closeLightbox();
-            return;
-        }
-        if (serviceModal.classList.contains('open')) {
-            closeServiceModal();
-            return;
-        }
-    });
-
-    // ================================================================
-    // GALERÍA
-    // ================================================================
-    const fotos = ["Foto-01.jpg", "Foto-02.jpg", "Foto-03.jpg", "Foto-04.jpg", "Foto-05.jpg", "Foto-06.jpg", "Foto-07.jpg", "Foto-08.jpg"];
-    const videos = ["Video-01.mp4", "Video-02.mp4", "Video-03.mp4", "Video-04.mp4", "Video-05.mp4", "Video-06.mp4", "Video-07.mp4", "Video-08.mp4"];
-    
-    const fotosGrid = document.getElementById('fotosGrid');
-    const videosGrid = document.getElementById('videosGrid');
-    
-    fotosGrid.innerHTML = fotos.map(foto => `
+        fotosGrid.innerHTML = fotos.map(foto => `
         <div class="gallery-item" data-category="foto">
             <img src="img/${foto}" alt="Luis Durán">
             <div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Foto</span></div>
         </div>
     `).join('');
-    
-    videosGrid.innerHTML = videos.map(video => `
+
+        videosGrid.innerHTML = videos.map(video => `
         <div class="gallery-item video-item" data-category="video" data-video="vid/${video}">
-            <video src="vid/${video}" muted preload="metadata" playsinline width="720" height="720"></video>
+            <div class="video-thumbnail-container" style="width:100%; height:100%; background:#000;">
+                <video src="vid/${video}" 
+                    muted 
+                    preload="metadata" 
+                    playsinline 
+                    style="width:100%; height:100%; object-fit:cover;">
+                </video>
+            </div>
             <div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Video</span></div>
         </div>
-    `).join('');
-    
-    // Asignar eventos a la galería
-    function attachGalleryEvents() {
-        document.querySelectorAll('.gallery-item[data-category="foto"]').forEach(item => {
-            if (item.hasAttribute('data-listener')) return;
-            item.setAttribute('data-listener', 'true');
-            item.addEventListener('click', () => {
-                const img = item.querySelector('img');
-                if (img && img.src) openLightbox(img.src);
+        `).join('');
+
+        // IMPORTANTE: Añade este bloque justo debajo para forzar a Chrome a mostrar el video
+        document.querySelectorAll('.video-item video').forEach(v => {
+            v.addEventListener('loadedmetadata', () => {
+                v.currentTime = 0.5; // Esto mueve el video al segundo 0.5 para que no se vea negro
             });
         });
-        
-        document.querySelectorAll('.video-item').forEach(item => {
-            if (item.hasAttribute('data-listener')) return;
-            item.setAttribute('data-listener', 'true');
-            item.addEventListener('click', () => {
-                const videoSrc = item.getAttribute('data-video');
-                if (videoSrc) openVideoModal(videoSrc);
+
+        // Asignar eventos a la galería
+        function attachGalleryEvents() {
+            document.querySelectorAll('.gallery-item[data-category="foto"]').forEach(item => {
+                if (item.hasAttribute('data-listener')) return;
+                item.setAttribute('data-listener', 'true');
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    if (img && img.src) openLightbox(img.src);
+                });
             });
+
+            document.querySelectorAll('.video-item').forEach(item => {
+                if (item.hasAttribute('data-listener')) return;
+                item.setAttribute('data-listener', 'true');
+                item.addEventListener('click', () => {
+                    const videoSrc = item.getAttribute('data-video');
+                    if (videoSrc) openVideoModal(videoSrc);
+                });
+            });
+        }
+
+        attachGalleryEvents();
+
+        // Forzar renderizado de primer fotograma en Chrome
+        document.querySelectorAll('.video-item video').forEach(v => {
+            v.addEventListener('loadeddata', () => {
+                v.currentTime = 0.1;
+            }, { once: true });
         });
-    }
-    
-    attachGalleryEvents();
-    
-    // Forzar renderizado de primer fotograma en Chrome
-    document.querySelectorAll('.video-item video').forEach(v => {
-        v.addEventListener('loadeddata', () => {
-            v.currentTime = 0.1;
-        }, { once: true });
-    });
-</script>
+    </script>
 
 </body>
+
 </html>
