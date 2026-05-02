@@ -480,7 +480,33 @@
             font-size: 0.65rem;
         }
 
-        /* ESTILOS MODALES CORREGIDOS - BOTÓN DE CIERRE VISIBLE EN AMBOS */
+        /* Thumbnails para videos */
+        .video-thumbnail-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            overflow: hidden;
+        }
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .video-item:hover .video-thumbnail {
+            transform: scale(1.1);
+        }
+        .video-play-icon {
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        .video-item:hover .video-play-icon {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: rgba(0, 212, 255, 0.8);
+        }
+
+        /* Modales */
         .video-modal {
             position: fixed;
             inset: 0;
@@ -517,7 +543,6 @@
             background: #000;
         }
         
-        /* Botón de cierre para ambos modales - AHORA DENTRO Y VISIBLE */
         .video-modal-close {
             position: absolute;
             top: 10px;
@@ -1204,28 +1229,128 @@
     });
 
     // ================================================================
-    // GALERÍA
+    // GALERÍA CON THUMBNAILS DINÁMICOS PARA VIDEOS
     // ================================================================
     const fotos = ["Foto-01.jpg", "Foto-02.jpg", "Foto-03.jpg", "Foto-04.jpg", "Foto-05.jpg", "Foto-06.jpg", "Foto-07.jpg", "Foto-08.jpg"];
     const videos = ["Video-01.mp4", "Video-02.mp4", "Video-03.mp4", "Video-04.mp4", "Video-05.mp4", "Video-06.mp4", "Video-07.mp4", "Video-08.mp4"];
-    
+
     const fotosGrid = document.getElementById('fotosGrid');
     const videosGrid = document.getElementById('videosGrid');
-    
+
+    // Renderizar fotos
     fotosGrid.innerHTML = fotos.map(foto => `
         <div class="gallery-item" data-category="foto">
-            <img src="img/${foto}" alt="Luis Durán">
+            <img src="img/${foto}" alt="Luis Durán" loading="lazy">
             <div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Foto</span></div>
         </div>
     `).join('');
-    
+
+    // Renderizar videos con estructura para thumbnail dinámico
     videosGrid.innerHTML = videos.map(video => `
         <div class="gallery-item video-item" data-category="video" data-video="vid/${video}">
-            <video src="vid/${video}" muted preload="metadata"></video>
+            <div class="video-thumbnail-container" style="position: relative; width: 100%; height: 100%; background: #111;">
+                <canvas class="video-thumbnail" style="width: 100%; height: 100%; object-fit: cover;"></canvas>
+                <video src="vid/${video}" preload="metadata" muted style="display: none;"></video>
+                <div class="video-play-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; background: rgba(0,0,0,0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; opacity: 0.8; transition: opacity 0.3s ease;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+            </div>
             <div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Video</span></div>
         </div>
     `).join('');
-    
+
+    // Función para generar thumbnail desde video usando canvas
+    function generateThumbnail(videoElement, canvasElement) {
+        return new Promise((resolve) => {
+            const seekTime = 0.5;
+            videoElement.currentTime = seekTime;
+            
+            videoElement.addEventListener('seeked', function onSeeked() {
+                videoElement.removeEventListener('seeked', onSeeked);
+                const canvas = canvasElement;
+                const ctx = canvas.getContext('2d');
+                canvas.width = videoElement.videoWidth;
+                canvas.height = videoElement.videoHeight;
+                ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+                canvas.style.objectFit = 'cover';
+                resolve();
+            });
+            
+            setTimeout(() => {
+                if (videoElement.readyState >= 2) {
+                    const canvas = canvasElement;
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = videoElement.videoWidth || 320;
+                    canvas.height = videoElement.videoHeight || 240;
+                    ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                    canvas.style.width = '100%';
+                    canvas.style.height = '100%';
+                    canvas.style.objectFit = 'cover';
+                    resolve();
+                }
+            }, 500);
+        });
+    }
+
+    // Generar thumbnails para todos los videos
+    async function generateAllThumbnails() {
+        const videoItems = document.querySelectorAll('.video-item');
+        
+        for (const item of videoItems) {
+            const video = item.querySelector('video');
+            const canvas = item.querySelector('.video-thumbnail');
+            const container = item.querySelector('.video-thumbnail-container');
+            
+            if (video && canvas) {
+                if (video.readyState === 0) {
+                    await new Promise((resolve) => {
+                        video.addEventListener('loadedmetadata', resolve, { once: true });
+                    });
+                }
+                
+                try {
+                    await generateThumbnail(video, canvas);
+                    if (container) container.style.background = 'transparent';
+                } catch (error) {
+                    console.warn('Error generando thumbnail:', error);
+                    if (container) {
+                        container.style.background = '#1a1a1a';
+                        const playIcon = container.querySelector('.video-play-icon');
+                        if (playIcon) {
+                            playIcon.style.width = '50px';
+                            playIcon.style.height = '50px';
+                            playIcon.style.opacity = '1';
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Inicializar thumbnails después de renderizar
+    setTimeout(() => {
+        generateAllThumbnails();
+    }, 100);
+
+    // Mejorar hover para mostrar el ícono de play más visible
+    document.addEventListener('mouseover', (e) => {
+        const item = e.target.closest('.video-item');
+        if (item) {
+            const playIcon = item.querySelector('.video-play-icon');
+            if (playIcon) playIcon.style.opacity = '1';
+        }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        const item = e.target.closest('.video-item');
+        if (item) {
+            const playIcon = item.querySelector('.video-play-icon');
+            if (playIcon) playIcon.style.opacity = '0.8';
+        }
+    });
+
     // Asignar eventos a la galería
     function attachGalleryEvents() {
         document.querySelectorAll('.gallery-item[data-category="foto"]').forEach(item => {
