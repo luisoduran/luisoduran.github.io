@@ -53,18 +53,26 @@
             left: 0;
             right: 0;
             z-index: 50;
-            transition: all 0.3s ease;
+            transition: padding 0.4s ease, background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            padding: 2rem 0;
+            background: rgba(10, 10, 10, 0);
+            border-bottom: 1px solid transparent;
         }
 
         .header-scrolled {
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .header-inner {
             width: 100%;
-            padding: 0 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -180,13 +188,13 @@
         }
 
         .hero-section {
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding-top: 5rem;
+            padding-top: 2rem;
         }
 
         .hero-wave-container {
@@ -278,9 +286,15 @@
         .service-item {
             padding: 2rem 0;
             border-bottom: 1px solid var(--bordes);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         .service-item:first-child { padding-top: 0; }
         .service-item:last-child { border-bottom: none; }
+        .service-item:hover {
+            background: rgba(0, 212, 255, 0.03);
+            padding-left: 1rem;
+        }
 
         .service-icon {
             flex-shrink: 0;
@@ -733,25 +747,25 @@
         <div class="container">
             <h2 class="section-title" data-key="services.title">SERVICIOS</h2>
             <div>
-                <div class="service-item">
+                <div class="service-item" data-service="1">
                     <div class="flex items-start gap-5">
                         <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></svg></div>
                         <div><h3 class="service-title" data-key="services.item1.title">Sonido en directo</h3><p class="service-description" data-key="services.item1.desc">Conciertos y Festivales · Actos Institucionales y Protocolarios</p></div>
                     </div>
                 </div>
-                <div class="service-item">
+                <div class="service-item" data-service="2">
                     <div class="flex items-start gap-5">
                         <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
                         <div><h3 class="service-title" data-key="services.item2.title">Soporte técnico y producción ejecutiva</h3><p class="service-description" data-key="services.item2.desc">Coordinación del soporte técnico y logístico para eventos y actos</p></div>
                     </div>
                 </div>
-                <div class="service-item">
+                <div class="service-item" data-service="3">
                     <div class="flex items-start gap-5">
                         <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="2"/></svg></div>
                         <div><h3 class="service-title" data-key="services.item3.title">Producción musical</h3><p class="service-description" data-key="services.item3.desc">Grabación en directo · Mezcla y masterización para audio y video</p></div>
                     </div>
                 </div>
-                <div class="service-item">
+                <div class="service-item" data-service="4">
                     <div class="flex items-start gap-5">
                         <div class="service-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></div>
                         <div><h3 class="service-title" data-key="services.item4.title">Consultoría técnica</h3><p class="service-description" data-key="services.item4.desc">Asesoramiento en equipamiento · Análisis de proyectos de sonorización</p></div>
@@ -960,9 +974,13 @@
             "awards.title": "PREMIOS Y RECONOCIMIENTOS",
             "services.title": "SERVICIOS",
             "services.item1.title": "Sonido en directo", "services.item1.desc": "Conciertos y Festivales · Actos Institucionales y Protocolarios",
+            "services.item1.full": "Cobertura técnica integral para eventos de cualquier magnitud. Desde la configuración de sistemas PA de gran formato hasta la mezcla de monitores y FOH, garantizando una experiencia sonora impecable tanto para el artista como para el público.",
             "services.item2.title": "Soporte técnico y producción ejecutiva", "services.item2.desc": "Coordinación del soporte técnico y logístico para eventos y actos",
+            "services.item2.full": "Gestión y coordinación de todos los recursos técnicos y logísticos necesarios para el éxito de un evento. Incluye planificación detallada, gestión de proveedores especializados y supervisión técnica en tiempo real para asegurar un desarrollo sin fisuras.",
             "services.item3.title": "Producción musical", "services.item3.desc": "Grabación en directo · Mezcla y masterización para audio y video",
+            "services.item3.full": "Transformación de ideas musicales en productos sonoros de alta calidad. Captura de audio en alta fidelidad, edición digital meticulosa, mezcla balanceada y masterización final cumpliendo con los estándares internacionales de la industria fonográfica.",
             "services.item4.title": "Consultoría técnica", "services.item4.desc": "Asesoramiento en equipamiento · Análisis de proyectos de sonorización",
+            "services.item4.full": "Asesoramiento estratégico basado en más de 30 años de experiencia. Evaluación de necesidades acústicas, diseño de sistemas de sonorización para recintos y recomendaciones de equipamiento optimizadas según el presupuesto y el objetivo del proyecto.",
             "artists.title": "ARTISTAS",
             "artists.list": ["Tesis de Menta", "David Blanco", "Real Project", "Cimafunk", "Leoni Torres", "Haydée Milanés", "Omara Portuondo", "Eliades Ochoa", "Pablo Milanés", "Ruly Herrera"],
             "gallery.title": "GALERÍA",
@@ -987,9 +1005,13 @@
             "awards.title": "AWARDS & RECOGNITIONS",
             "services.title": "SERVICES",
             "services.item1.title": "Live sound", "services.item1.desc": "Concerts and Festivals · Institutional and Protocolary Events",
+            "services.item1.full": "Comprehensive technical coverage for events of any size. From large-format PA system setup to monitor and FOH mixing, ensuring an impeccable sound experience for both the artist and the audience.",
             "services.item2.title": "Technical support & executive production", "services.item2.desc": "Coordination of technical and logistical support for events and shows",
+            "services.item2.full": "Management and coordination of all technical and logistical resources necessary for a successful event. Includes detailed planning, specialized supplier management, and real-time technical supervision to ensure seamless execution.",
             "services.item3.title": "Music production", "services.item3.desc": "Live recording · Mixing and mastering for audio and video",
+            "services.item3.full": "Transforming musical ideas into high-quality sound products. High-fidelity audio capture, meticulous digital editing, balanced mixing, and final mastering complying with international phonographic industry standards.",
             "services.item4.title": "Technical consulting", "services.item4.desc": "Equipment advice · Sound project analysis",
+            "services.item4.full": "Strategic advice based on over 30 years of experience. Evaluation of acoustic needs, design of sound systems for venues, and optimized equipment recommendations according to project budget and objectives.",
             "artists.title": "ARTISTS",
             "artists.list": ["Tesis de Menta", "David Blanco", "Real Project", "Cimafunk", "Leoni Torres", "Haydée Milanés", "Omara Portuondo", "Eliades Ochoa", "Pablo Milanés", "Ruly Herrera"],
             "gallery.title": "GALLERY",
@@ -1118,7 +1140,7 @@
     videoModal.innerHTML = `
         <div class="video-modal-content">
             <button class="video-modal-close" aria-label="Cerrar">✕</button>
-            <video controls preload="metadata">
+            <video controls preload="metadata" playsinline>
                 <source src="" type="video/mp4">
             </video>
         </div>
@@ -1146,6 +1168,79 @@
     videoModalClose.addEventListener('click', closeVideoModal);
     videoModal.addEventListener('click', (e) => {
         if (e.target === videoModal) closeVideoModal();
+    });
+
+    // ================================================================
+    // MODAL DE SERVICIOS ENRIQUECIDO
+    // ================================================================
+    const serviceModal = document.createElement('div');
+    serviceModal.className = 'video-modal'; 
+    serviceModal.innerHTML = `
+        <div class="video-modal-content" style="padding: 0; max-width: 650px; background: rgba(10, 10, 10, 0.98); border: 1px solid rgba(0, 212, 255, 0.3); backdrop-filter: blur(25px); overflow: hidden;">
+            <button class="video-modal-close" style="top: 20px; right: 20px; background: rgba(255,255,255,0.05);" aria-label="Cerrar">✕</button>
+            
+            <div style="display: flex; flex-direction: column;">
+                <!-- Cabecera Visual del Modal -->
+                <div style="padding: 3rem 3rem 1.5rem 3rem; background: linear-gradient(to bottom, rgba(0, 212, 255, 0.05), transparent); display: flex; align-items: center; gap: 1.5rem;">
+                    <div id="serviceModalIcon" style="width: 80px; height: 80px; border-radius: 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--cian); box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);">
+                        <!-- El SVG se insertará aquí -->
+                    </div>
+                    <div>
+                        <h3 id="serviceModalTitle" style="font-size: 1.8rem; line-height: 1.2; color: var(--blanco); margin: 0;"></h3>
+                    </div>
+                </div>
+
+                <!-- Contenido del Modal -->
+                <div style="padding: 0 3rem 3rem 3rem;">
+                    <div style="width: 60px; height: 2px; background: var(--cian); margin-bottom: 2rem;"></div>
+                    <p id="serviceModalDescription" style="color: rgba(245, 245, 245, 0.8); font-size: 1.15rem; line-height: 1.9; font-weight: 300; margin: 0;"></p>
+                </div>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(serviceModal);
+    const serviceModalClose = serviceModal.querySelector('.video-modal-close');
+
+    function openServiceModal(id, iconSvg) {
+        const t = translations[currentLang];
+        const title = t[`services.item${id}.title`];
+        const content = t[`services.item${id}.full`];
+        
+        document.getElementById('serviceModalTitle').textContent = title;
+        document.getElementById('serviceModalDescription').textContent = content;
+        
+        // Clonamos el icono y lo hacemos más grande
+        const iconContainer = document.getElementById('serviceModalIcon');
+        iconContainer.innerHTML = iconSvg;
+        const svg = iconContainer.querySelector('svg');
+        if (svg) {
+            svg.style.width = '40px';
+            svg.style.height = '40px';
+        }
+        
+        serviceModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        history.pushState({ modalOpen: true, type: 'service' }, '');
+    }
+
+    function closeServiceModal() {
+        if (!serviceModal.classList.contains('open')) return;
+        serviceModal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    serviceModalClose.addEventListener('click', closeServiceModal);
+    serviceModal.addEventListener('click', (e) => {
+        if (serviceModal.querySelector('.video-modal-content').contains(e.target) && e.target !== serviceModalClose) return;
+        closeServiceModal();
+    });
+
+    document.querySelectorAll('.service-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const id = item.getAttribute('data-service');
+            const iconSvg = item.querySelector('.service-icon').innerHTML;
+            openServiceModal(id, iconSvg);
+        });
     });
 
     // ================================================================
@@ -1201,6 +1296,10 @@
             closeLightbox();
             return;
         }
+        if (serviceModal.classList.contains('open')) {
+            closeServiceModal();
+            return;
+        }
     });
 
     // ================================================================
@@ -1221,7 +1320,7 @@
     
     videosGrid.innerHTML = videos.map(video => `
         <div class="gallery-item video-item" data-category="video" data-video="vid/${video}">
-            <video src="vid/${video}" muted preload="metadata"></video>
+            <video src="vid/${video}" muted preload="metadata" playsinline width="720" height="720"></video>
             <div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Video</span></div>
         </div>
     `).join('');
@@ -1248,6 +1347,13 @@
     }
     
     attachGalleryEvents();
+    
+    // Forzar renderizado de primer fotograma en Chrome
+    document.querySelectorAll('.video-item video').forEach(v => {
+        v.addEventListener('loadeddata', () => {
+            v.currentTime = 0.1;
+        }, { once: true });
+    });
 </script>
 
 </body>
