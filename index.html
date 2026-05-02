@@ -480,6 +480,7 @@
             font-size: 0.65rem;
         }
 
+        /* ESTILOS MODALES CORREGIDOS - BOTÓN DE CIERRE VISIBLE EN AMBOS */
         .video-modal {
             position: fixed;
             inset: 0;
@@ -515,25 +516,43 @@
             margin: 0 auto;
             background: #000;
         }
+        
+        /* Botón de cierre para ambos modales - AHORA DENTRO Y VISIBLE */
         .video-modal-close {
             position: absolute;
-            top: -40px;
-            right: 0;
-            background: none;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
             border: none;
-            color: var(--blanco);
-            font-size: 2rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
             cursor: pointer;
-            padding: 0.5rem;
+            padding: 0;
+            border-radius: 50%;
             z-index: 10;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            line-height: 1;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .video-modal-close:hover {
-            color: var(--cian);
+            background: var(--cian);
+            color: var(--negro);
+            transform: scale(1.1);
         }
         @media (max-width: 768px) {
             .video-modal { padding: 1rem; }
-            .video-modal-close { top: -35px; font-size: 1.8rem; }
+            .video-modal-close {
+                top: 8px;
+                right: 8px;
+                width: 32px;
+                height: 32px;
+                font-size: 1.3rem;
+            }
             .video-modal-content video { max-height: 85vh; }
         }
 
@@ -550,8 +569,37 @@
             transition: all 0.3s ease;
         }
         .lightbox.open { opacity: 1; visibility: visible; }
-        .lightbox-content { max-width: 90vw; max-height: 85vh; }
-        .lightbox-content img { max-width: 100%; max-height: 85vh; object-fit: contain; }
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 85vh;
+        }
+        .lightbox-content img { 
+            max-width: 100%; 
+            max-height: 85vh; 
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .lightbox .video-modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 1.5rem;
+            z-index: 101;
+        }
+        @media (max-width: 768px) {
+            .lightbox .video-modal-close {
+                top: 8px;
+                right: 8px;
+                width: 32px;
+                height: 32px;
+                font-size: 1.3rem;
+            }
+        }
 
         .footer {
             padding: 2rem 1.5rem;
@@ -1063,6 +1111,99 @@
     animateWaves();
     
     // ================================================================
+    // MODAL DE VIDEO CON BOTÓN DE CIERRE Y CONTROL DE HISTORIAL
+    // ================================================================
+    const videoModal = document.createElement('div');
+    videoModal.className = 'video-modal';
+    videoModal.innerHTML = `
+        <div class="video-modal-content">
+            <button class="video-modal-close" aria-label="Cerrar">✕</button>
+            <video controls preload="metadata">
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+    `;
+    document.body.appendChild(videoModal);
+    const videoModalVideo = videoModal.querySelector('video');
+    const videoModalClose = videoModal.querySelector('.video-modal-close');
+
+    function openVideoModal(src) {
+        videoModalVideo.src = src;
+        videoModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        videoModalVideo.play();
+        history.pushState({ modalOpen: true, type: 'video' }, '');
+    }
+
+    function closeVideoModal() {
+        if (!videoModal.classList.contains('open')) return;
+        videoModalVideo.pause();
+        videoModalVideo.src = '';
+        videoModal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    videoModalClose.addEventListener('click', closeVideoModal);
+    videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) closeVideoModal();
+    });
+
+    // ================================================================
+    // LIGHTBOX PARA FOTOS CON BOTÓN DE CIERRE
+    // ================================================================
+    function createLightbox() {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <div class="lightbox-content">
+                <button class="video-modal-close" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); border-radius: 50%; width: 36px; height: 36px; font-size: 1.5rem; z-index: 101;" aria-label="Cerrar">✕</button>
+                <img src="" alt="">
+            </div>
+        `;
+        document.body.appendChild(lightbox);
+        
+        const closeBtn = lightbox.querySelector('.video-modal-close');
+        closeBtn.addEventListener('click', closeLightbox);
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        
+        return lightbox;
+    }
+
+    const lightbox = createLightbox();
+    const lightboxImg = lightbox.querySelector('img');
+
+    function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        history.pushState({ modalOpen: true, type: 'image' }, '');
+    }
+
+    function closeLightbox() {
+        if (!lightbox.classList.contains('open')) return;
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+        lightboxImg.src = '';
+    }
+
+    // ================================================================
+    // CONTROL DEL BOTÓN "ATRÁS" DEL NAVEGADOR
+    // ================================================================
+    window.addEventListener('popstate', function(event) {
+        if (videoModal.classList.contains('open')) {
+            closeVideoModal();
+            return;
+        }
+        if (lightbox.classList.contains('open')) {
+            closeLightbox();
+            return;
+        }
+    });
+
+    // ================================================================
     // GALERÍA
     // ================================================================
     const fotos = ["Foto-01.jpg", "Foto-02.jpg", "Foto-03.jpg", "Foto-04.jpg", "Foto-05.jpg", "Foto-06.jpg", "Foto-07.jpg", "Foto-08.jpg"];
@@ -1085,72 +1226,28 @@
         </div>
     `).join('');
     
-    // Modal de video
-    const videoModal = document.createElement('div');
-    videoModal.className = 'video-modal';
-    videoModal.innerHTML = `
-        <div class="video-modal-content">
-            <button class="video-modal-close">&times;</button>
-            <video controls preload="metadata">
-                <source src="" type="video/mp4">
-            </video>
-        </div>
-    `;
-    document.body.appendChild(videoModal);
-    const videoModalVideo = videoModal.querySelector('video');
-    const videoModalClose = videoModal.querySelector('.video-modal-close');
-    
-    function openVideoModal(src) {
-        videoModalVideo.src = src;
-        videoModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        videoModalVideo.play();
-    }
-    
-    function closeVideoModal() {
-        videoModalVideo.pause();
-        videoModalVideo.src = '';
-        videoModal.classList.remove('open');
-        document.body.style.overflow = '';
-    }
-    
-    videoModalClose.addEventListener('click', closeVideoModal);
-    videoModal.addEventListener('click', (e) => {
-        if (e.target === videoModal) closeVideoModal();
-    });
-    
-    document.querySelectorAll('.video-item').forEach(item => {
-        item.addEventListener('click', () => {
-            const videoSrc = item.getAttribute('data-video');
-            if (videoSrc) openVideoModal(videoSrc);
+    // Asignar eventos a la galería
+    function attachGalleryEvents() {
+        document.querySelectorAll('.gallery-item[data-category="foto"]').forEach(item => {
+            if (item.hasAttribute('data-listener')) return;
+            item.setAttribute('data-listener', 'true');
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                if (img && img.src) openLightbox(img.src);
+            });
         });
-    });
-    
-    // Lightbox para fotos
-    function createLightbox() {
-        const lightbox = document.createElement('div');
-        lightbox.className = 'lightbox';
-        lightbox.innerHTML = `<div class="lightbox-content"><img src="" alt=""></div>`;
-        document.body.appendChild(lightbox);
-        lightbox.addEventListener('click', () => lightbox.classList.remove('open'));
-        return lightbox;
+        
+        document.querySelectorAll('.video-item').forEach(item => {
+            if (item.hasAttribute('data-listener')) return;
+            item.setAttribute('data-listener', 'true');
+            item.addEventListener('click', () => {
+                const videoSrc = item.getAttribute('data-video');
+                if (videoSrc) openVideoModal(videoSrc);
+            });
+        });
     }
     
-    const lightbox = createLightbox();
-    const lightboxImg = lightbox.querySelector('img');
-    
-    document.querySelectorAll('.gallery-item[data-category="foto"]').forEach(item => {
-        item.addEventListener('click', () => {
-            const img = item.querySelector('img');
-            if (img) {
-                lightboxImg.src = img.src;
-                lightbox.classList.add('open');
-                document.body.style.overflow = 'hidden';
-            }
-        });
-    });
-    
-    lightbox.addEventListener('click', () => document.body.style.overflow = '');
+    attachGalleryEvents();
 </script>
 
 </body>
