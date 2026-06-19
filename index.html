@@ -979,21 +979,19 @@
   <g id="waves-back"></g>
 
 <g id="monogram" transform="translate(0, -55)">
-    <g filter="url(#letter-glow)" opacity="0.20">
-      <path fill="#f5f6f7" d="M 460,178 L 484,178 L 484,330 L 568,330 L 568,353 L 460,353 Z"/>
-      <path fill="#f5f6f7" d="M 568,178 L 592,178 C 660,178 700,205 700,265.5 C 700,326 660,353 592,353 L 568,353 L 568,330 L 592,330 C 644,330 676,310 676,265.5 C 676,221 644,202 592,202 L 568,202 Z"/>
-      <path fill="#f5f6f7" d="M 568,178 L 592,178 L 592,305 L 568,305 Z"/>
-    </g>
+    <defs>
+      <filter id="glow-cian-3d" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.95"/>
+        <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#80eaff" flood-opacity="0.75"/>
+        <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#80eaff" flood-opacity="0.3"/>
+      </filter>
+    </defs>
 
-    <g filter="url(#letter-shadow)" opacity="0.85" fill="#000">
+    <g filter="url(#glow-cian-3d)" fill="#f5f6f7" stroke="rgba(0,0,0,0.7)" stroke-width="1.2" stroke-linejoin="round">
       <path d="M 460,178 L 484,178 L 484,330 L 568,330 L 568,353 L 460,353 Z"/>
+      
       <path d="M 568,178 L 592,178 C 660,178 700,205 700,265.5 C 700,326 660,353 592,353 L 568,353 L 568,330 L 592,330 C 644,330 676,310 676,265.5 C 676,221 644,202 592,202 L 568,202 Z"/>
-      <path d="M 568,178 L 592,178 L 592,305 L 568,305 Z"/>
-    </g>
-
-    <g fill="#f5f6f7" stroke="rgba(0,0,0,0.8)" stroke-width="2.2" stroke-linejoin="round">
-      <path d="M 460,178 L 484,178 L 484,330 L 568,330 L 568,353 L 460,353 Z"/>
-      <path d="M 568,178 L 592,178 C 660,178 700,205 700,265.5 C 700,326 660,353 592,353 L 568,353 L 568,330 L 592,330 C 644,330 676,310 676,265.5 C 676,221 644,202 592,202 L 568,202 Z"/>
+      
       <path d="M 568,178 L 592,178 L 592,305 L 568,305 Z"/>
     </g>
   </g>
