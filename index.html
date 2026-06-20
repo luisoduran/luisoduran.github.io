@@ -1141,8 +1141,11 @@
         <!-- CONTACTO -->
         <section id="contacto">
             <div class="container">
-                <h2 class="section-title" data-key="contact.title">CONTACTO</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem;">
+                    <h2 class="section-title" data-key="contact.title" style="margin-bottom: 0;">CONTACTO</h2>
+                    <p class="text-xs text-[var(--cian)] uppercase tracking-wider" data-key="contact.form.title">ENVÍAME UN EMAIL</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" style="margin-top: 2.5rem;">
                     <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                         <div class="flex items-center gap-4">
                             <div
@@ -1208,8 +1211,6 @@
                         </div>
                     </div>
                     <div>
-                        <p class="text-xs text-[var(--cian)] uppercase tracking-wider mb-4"
-                            data-key="contact.form.title">ENVÍAME UN MENSAJE</p>
                         <form id="contactForm" style="display: flex; flex-direction: column; gap: 1rem;">
                             <div>
                                 <input type="text" name="nombre" placeholder="Nombre *" required
@@ -1230,18 +1231,10 @@
                                     onblur="this.style.borderColor='var(--bordes)'; this.style.background='rgba(255,255,255,0.03)';">
                             </div>
                             <div>
-                                <select name="tipo" required
-                                    style="width: 100%; padding: 0.75rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid var(--bordes); border-radius: 8px; color: var(--blanco); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; outline: none; transition: all 0.3s ease; cursor: pointer; appearance: none; -webkit-appearance: none;"
+                                <input type="text" name="tipo" placeholder="¿Qué tipo de evento o servicio necesitas?" required
+                                    style="width: 100%; padding: 0.75rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid var(--bordes); border-radius: 8px; color: var(--blanco); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; outline: none; transition: all 0.3s ease;"
                                     onfocus="this.style.borderColor='var(--cian)'; this.style.background='rgba(0,212,255,0.05)';"
                                     onblur="this.style.borderColor='var(--bordes)'; this.style.background='rgba(255,255,255,0.03)';">
-                                    <option value="" disabled selected style="background: var(--negro); color: var(--gris);">Tipo de evento *</option>
-                                    <option value="Concierto" style="background: var(--negro); color: var(--blanco);">Concierto</option>
-                                    <option value="Festival" style="background: var(--negro); color: var(--blanco);">Festival</option>
-                                    <option value="Acto institucional" style="background: var(--negro); color: var(--blanco);">Acto institucional</option>
-                                    <option value="Producción musical" style="background: var(--negro); color: var(--blanco);">Producción musical</option>
-                                    <option value="Consultoría técnica" style="background: var(--negro); color: var(--blanco);">Consultoría técnica</option>
-                                    <option value="Otro" style="background: var(--negro); color: var(--blanco);">Otro</option>
-                                </select>
                             </div>
                             <div>
                                 <textarea name="mensaje" placeholder="Mensaje *" required rows="4"
@@ -1253,7 +1246,7 @@
                                 style="padding: 0.875rem 2rem; background: transparent; border: 1px solid var(--cian); border-radius: 8px; color: var(--cian); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease;"
                                 onmouseover="this.style.background='var(--cian)'; this.style.color='var(--negro)';"
                                 onmouseout="this.style.background='transparent'; this.style.color='var(--cian)';">
-                                ENVIAR MENSAJE
+                                ENVIAR
                             </button>
                             <div id="formMessage" style="display: none; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.85rem; text-align: center;"></div>
                         </form>
@@ -1769,7 +1762,7 @@
                     console.error('Error:', error);
                 } finally {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'ENVIAR MENSAJE';
+                    submitBtn.textContent = 'ENVIAR';
                     submitBtn.style.opacity = '1';
 
                     // Ocultar mensaje después de 6 segundos
