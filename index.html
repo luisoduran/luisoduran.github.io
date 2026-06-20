@@ -74,17 +74,10 @@
             left: 0;
             right: 0;
             z-index: 50;
-            transition: padding 0.4s ease, background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-            padding: 2rem 0;
-            background: rgba(10, 10, 10, 0);
-            border-bottom: 1px solid transparent;
-        }
-
-        .header-scrolled {
+            padding: 0.8rem 0;
             background: rgba(10, 10, 10, 0.7);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            padding: 0.8rem 0;
             border-bottom: 1px solid rgba(0, 212, 255, 0.15);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
@@ -891,6 +884,28 @@
             }
         }
     
+        .home-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            color: var(--cian);
+            border: 1px solid rgba(0, 212, 255, 0.4);
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 35px;
+        }
+
+        .home-btn:hover {
+            background: var(--cian);
+            color: var(--negro);
+            border-color: var(--cian);
+            transform: translateY(-1px);
+        }
+
         /* Estilos del logo animado */
         .wave-layer { mix-blend-mode: screen; }
         #hero-svg { width: 100%; height: auto; display: block; overflow: visible; }
@@ -912,6 +927,12 @@
                     <rect x="0" y="15" width="60" height="10" fill="#C8102E" />
                 </svg>
                 <span id="langText">EN</span>
+            </button>
+            <button class="home-btn" id="homeBtn" aria-label="Inicio" title="Volver al inicio">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+                    <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                </svg>
             </button>
             <button class="menu-btn" id="menuBtn" aria-label="Menú">
                 <span></span>
@@ -1439,11 +1460,9 @@
         document.getElementById('langBtn').addEventListener('click', () => updateLanguage(currentLang === 'es' ? 'en' : 'es'));
         updateLanguage('es');
 
-        // Header scroll
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) header.classList.add('header-scrolled');
-            else header.classList.remove('header-scrolled');
+        // Botón home
+        document.getElementById('homeBtn').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Menú móvil
