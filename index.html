@@ -959,19 +959,19 @@
                 <svg id="hero-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420">
   <defs>
     <linearGradient id="g-azul" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#062a4d"/>
-      <stop offset="50%"  stop-color="#0d7fc4"/>
-      <stop offset="100%" stop-color="#062a4d"/>
+      <stop offset="0%"   stop-color="#0a3a6e"/>
+      <stop offset="50%"  stop-color="#1a9fe0"/>
+      <stop offset="100%" stop-color="#0a3a6e"/>
     </linearGradient>
     <linearGradient id="g-cian" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#0aa0d8"/>
-      <stop offset="50%"  stop-color="#5eeaff"/>
-      <stop offset="100%" stop-color="#0aa0d8"/>
+      <stop offset="0%"   stop-color="#0bbde8"/>
+      <stop offset="50%"  stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#0bbde8"/>
     </linearGradient>
     <linearGradient id="g-magenta" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#b800b8"/>
-      <stop offset="50%"  stop-color="#ff4dff"/>
-      <stop offset="100%" stop-color="#b800b8"/>
+      <stop offset="0%"   stop-color="#cc00cc"/>
+      <stop offset="50%"  stop-color="#ff00ff"/>
+      <stop offset="100%" stop-color="#cc00cc"/>
     </linearGradient>
 
     <filter id="blur-soft" x="-10%" y="-60%" width="120%" height="220%">
@@ -979,21 +979,6 @@
     </filter>
     <filter id="blur-tight" x="-10%" y="-60%" width="120%" height="220%">
       <feGaussianBlur stdDeviation="1.6"/>
-    </filter>
-    <filter id="letter-glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/>
-      <feColorMatrix in="b" type="matrix" values="
-        0 0 0 0 0.2
-        0 0 0 0 0.85
-        0 0 0 0 1
-        0 0 0 1 0" result="tinted"/>
-      <feMerge>
-        <feMergeNode in="tinted"/>
-      </feMerge>
-    </filter>
-    <filter id="letter-shadow" x="-60%" y="-60%" width="220%" height="220%">
-      <feOffset in="SourceGraphic" dx="0" dy="3" result="off"/>
-      <feGaussianBlur in="off" stdDeviation="2"/>
     </filter>
   </defs>
 
@@ -1732,85 +1717,89 @@
         
 (function () {
   const W = 1200, H = 420, CY = H / 2;
-  const N = 40; // puntos por curva — visualmente idéntico a 70, menos cómputo
+  const N = 40;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Catmull-Rom -> smooth bezier path
-  function smoothPath(points) {
-    let d = `M ${points[0].x.toFixed(1)},${points[0].y.toFixed(1)}`;
-    for (let i = 0; i < points.length - 1; i++) {
-      const p0 = points[i === 0 ? i : i - 1];
-      const p1 = points[i];
-      const p2 = points[i + 1];
-      const p3 = points[i + 2 === points.length ? i + 1 : i + 2];
-      const c1x = p1.x + (p2.x - p0.x) / 6;
-      const c1y = p1.y + (p2.y - p0.y) / 6;
-      const c2x = p2.x - (p3.x - p1.x) / 6;
-      const c2y = p2.y - (p3.y - p1.y) / 6;
-      d += ` C ${c1x.toFixed(1)},${c1y.toFixed(1)} ${c2x.toFixed(1)},${c2y.toFixed(1)} ${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
+  // Envelope pre-computado una sola vez — nunca cambia entre frames
+  const ENV = new Float32Array(N + 1);
+  for (let i = 0; i <= N; i++) {
+    const x = (W * i) / N;
+    const floor = 0.02;
+    ENV[i] = floor + (1 - floor) * Math.pow(Math.sin(Math.PI * x / W), 1.2);
+  }
+
+  // Catmull-Rom -> smooth bezier path (Math.round en vez de toFixed)
+  function smoothPath(pts) {
+    let d = `M ${Math.round(pts[0]|0)},${Math.round(pts[1])}`;
+    const len = (N + 1) * 2;
+    for (let i = 0; i < N; i++) {
+      const i0 = (i === 0 ? 0 : i - 1) * 2;
+      const i1 = i * 2;
+      const i2 = (i + 1) * 2;
+      const i3 = (i + 2 >= N + 1 ? N : i + 2) * 2;
+      const c1x = pts[i1]   + (pts[i2]   - pts[i0])   / 6;
+      const c1y = pts[i1+1] + (pts[i2+1] - pts[i0+1]) / 6;
+      const c2x = pts[i2]   - (pts[i3]   - pts[i1])   / 6;
+      const c2y = pts[i2+1] - (pts[i3+1] - pts[i1+1]) / 6;
+      d += ` C ${Math.round(c1x)},${Math.round(c1y)} ${Math.round(c2x)},${Math.round(c2y)} ${Math.round(pts[i2])},${Math.round(pts[i2+1])}`;
     }
     return d;
   }
 
-  // Envelope: pinches toward the edges, bulges in the middle (lens / eye shape)
-  function envelope(x) {
-    const floor = 0.02;
-    return floor + (1 - floor) * Math.pow(Math.sin(Math.PI * x / W), 1.2);
-  }
-
-  function buildStrand(opts) {
-    const { amp, freq, phase, freq2, amp2, baseline } = opts;
-    const pts = [];
+  function buildStrand(amp, amp2, freq, freq2, phase, baseline, out) {
+    const f1 = freq  / W * Math.PI * 2;
+    const f2 = freq2 / W * Math.PI * 2;
+    const ph2 = phase * 1.7;
     for (let i = 0; i <= N; i++) {
       const x = (W * i) / N;
-      const env = envelope(x);
-      const y = CY + baseline
-        + env * amp * Math.sin((freq * x) / W * Math.PI * 2 + phase)
-        + env * amp2 * Math.sin((freq2 * x) / W * Math.PI * 2 + phase * 1.7);
-      pts.push({ x, y });
+      const env = ENV[i];
+      out[i * 2]     = x;
+      out[i * 2 + 1] = CY + baseline
+        + env * amp  * Math.sin(f1 * x + phase)
+        + env * amp2 * Math.sin(f2 * x + ph2);
     }
-    return pts;
   }
 
   function rand(min, max) { return min + Math.random() * (max - min); }
 
   const groups = [
-    { name: 'magenta', count: 7, gradient: 'url(#g-magenta)', ampR: [40, 80],  freqR: [2.0, 2.9], strokeR: [1, 2.2], opacity: 0.55, baselineR: [-55, -25] },
-    { name: 'cian',    count: 7, gradient: 'url(#g-cian)',    ampR: [50, 90],  freqR: [1.7, 2.5], strokeR: [1, 2.2], opacity: 0.60, baselineR: [-15,  15] },
-    { name: 'azul',    count: 4, gradient: 'url(#g-azul)',    ampR: [40, 75],  freqR: [1.3, 1.8], strokeR: [1, 1.8], opacity: 0.45, baselineR: [ 25,  55] }
+    { name: 'magenta', count: 7, gradient: 'url(#g-magenta)', ampR: [40, 80],  freqR: [2.0, 2.9], strokeR: [1, 2.2], opacity: 0.70, baselineR: [-55, -25] },
+    { name: 'cian',    count: 7, gradient: 'url(#g-cian)',    ampR: [50, 90],  freqR: [1.7, 2.5], strokeR: [1, 2.2], opacity: 0.75, baselineR: [-15,  15] },
+    { name: 'azul',    count: 4, gradient: 'url(#g-azul)',    ampR: [40, 75],  freqR: [1.3, 1.8], strokeR: [1, 1.8], opacity: 0.60, baselineR: [ 25,  55] }
   ];
 
   const wavesBack  = document.getElementById('waves-back');
   const wavesFront = document.getElementById('waves-front');
   const strands = [];
 
+  // Buffer reutilizable — cero allocations por frame
+  const ptsBuf = new Float32Array((N + 1) * 2);
+
   groups.forEach(g => {
     for (let i = 0; i < g.count; i++) {
       const params = {
-        amp:      rand(...g.ampR),
+        amp:      rand(g.ampR[0],    g.ampR[1]),
         amp2:     rand(8, 22),
-        freq:     rand(...g.freqR),
+        freq:     rand(g.freqR[0],   g.freqR[1]),
         freq2:    rand(4.5, 6.5),
         phase:    rand(0, Math.PI * 2),
-        baseline: rand(...g.baselineR),
+        baseline: rand(g.baselineR[0], g.baselineR[1]),
         speed:    rand(0.55, 1.05) * (Math.random() < 0.5 ? 1 : -1)
       };
 
-      const sw = rand(...g.strokeR);
+      const sw = rand(g.strokeR[0], g.strokeR[1]);
       const isFront = i % 7 === 0;
       const targetGroup = isFront ? wavesFront : wavesBack;
 
-      // soft blurred halo
       const halo = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       halo.setAttribute('stroke', g.gradient);
       halo.setAttribute('stroke-width', sw * 3.2);
       halo.setAttribute('fill', 'none');
-      halo.setAttribute('opacity', g.opacity * 0.35);
+      halo.setAttribute('opacity', g.opacity * 0.38);
       halo.setAttribute('filter', 'url(#blur-soft)');
       halo.classList.add('wave-layer');
       targetGroup.appendChild(halo);
 
-      // crisp core line
       const core = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       core.setAttribute('stroke', g.gradient);
       core.setAttribute('stroke-width', sw);
@@ -1825,29 +1814,24 @@
   });
 
   function renderAll(t) {
-    strands.forEach(s => {
-      const p = s.params;
-      const d = smoothPath(buildStrand({
-        amp: p.amp, amp2: p.amp2,
-        freq: p.freq, freq2: p.freq2,
-        phase: p.phase + t * p.speed,
-        baseline: p.baseline
-      }));
-      s.halo.setAttribute('d', d);
-      s.core.setAttribute('d', d);
-    });
+    for (let s = 0; s < strands.length; s++) {
+      const { params: p, halo, core } = strands[s];
+      buildStrand(p.amp, p.amp2, p.freq, p.freq2, p.phase + t * p.speed, p.baseline, ptsBuf);
+      const d = smoothPath(ptsBuf);
+      halo.setAttribute('d', d);
+      core.setAttribute('d', d);
+    }
   }
 
   renderAll(0);
 
   if (!reduceMotion) {
-    // Delta-time real: la velocidad es idéntica en cualquier dispositivo/FPS
     const SPEED = 1.0;
     let lastTs = null;
     let t = 0;
     function loop(ts) {
       if (lastTs !== null) {
-        const dt = Math.min((ts - lastTs) / 1000, 0.05); // cap a 50ms para evitar saltos
+        const dt = Math.min((ts - lastTs) / 1000, 0.05);
         t += dt * SPEED;
         renderAll(t);
       }
