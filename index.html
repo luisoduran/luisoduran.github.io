@@ -953,10 +953,10 @@
       <stop offset="100%" stop-color="#b800b8"/>
     </linearGradient>
 
-    <filter id="blur-soft" x="-60%" y="-60%" width="220%" height="220%">
+    <filter id="blur-soft" x="-10%" y="-60%" width="120%" height="220%">
       <feGaussianBlur stdDeviation="6"/>
     </filter>
-    <filter id="blur-tight" x="-60%" y="-60%" width="220%" height="220%">
+    <filter id="blur-tight" x="-10%" y="-60%" width="120%" height="220%">
       <feGaussianBlur stdDeviation="1.6"/>
     </filter>
     <filter id="letter-glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -1713,6 +1713,7 @@
         
 (function () {
   const W = 1200, H = 420, CY = H / 2;
+  const N = 40; // puntos por curva — visualmente idéntico a 70, menos cómputo
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Catmull-Rom -> smooth bezier path
@@ -1740,7 +1741,6 @@
 
   function buildStrand(opts) {
     const { amp, freq, phase, freq2, amp2, baseline } = opts;
-    const N = 70;
     const pts = [];
     for (let i = 0; i <= N; i++) {
       const x = (W * i) / N;
@@ -1756,32 +1756,32 @@
   function rand(min, max) { return min + Math.random() * (max - min); }
 
   const groups = [
-    { name: 'magenta',  count: 9,  gradient: 'url(#g-magenta)',  ampR: [40, 80],  freqR: [2.0, 2.9], strokeR: [1, 2.2],  opacity: 0.55, baselineR: [-55, -25] },
-    { name: 'cian',     count: 9,  gradient: 'url(#g-cian)',     ampR: [50, 90],  freqR: [1.7, 2.5], strokeR: [1, 2.2],  opacity: 0.60, baselineR: [-15, 15] },
-    { name: 'azul',     count: 6,  gradient: 'url(#g-azul)',     ampR: [40, 75],  freqR: [1.3, 1.8], strokeR: [1, 1.8],  opacity: 0.45, baselineR: [25, 55] }
+    { name: 'magenta', count: 7, gradient: 'url(#g-magenta)', ampR: [40, 80],  freqR: [2.0, 2.9], strokeR: [1, 2.2], opacity: 0.55, baselineR: [-55, -25] },
+    { name: 'cian',    count: 7, gradient: 'url(#g-cian)',    ampR: [50, 90],  freqR: [1.7, 2.5], strokeR: [1, 2.2], opacity: 0.60, baselineR: [-15,  15] },
+    { name: 'azul',    count: 4, gradient: 'url(#g-azul)',    ampR: [40, 75],  freqR: [1.3, 1.8], strokeR: [1, 1.8], opacity: 0.45, baselineR: [ 25,  55] }
   ];
 
-  const wavesBack = document.getElementById('waves-back');
+  const wavesBack  = document.getElementById('waves-back');
   const wavesFront = document.getElementById('waves-front');
-  const strands = []; // keep params for animation
+  const strands = [];
 
   groups.forEach(g => {
     for (let i = 0; i < g.count; i++) {
       const params = {
-        amp: rand(...g.ampR),
-        amp2: rand(8, 22),
-        freq: rand(...g.freqR),
-        freq2: rand(4.5, 6.5),
-        phase: rand(0, Math.PI * 2),
+        amp:      rand(...g.ampR),
+        amp2:     rand(8, 22),
+        freq:     rand(...g.freqR),
+        freq2:    rand(4.5, 6.5),
+        phase:    rand(0, Math.PI * 2),
         baseline: rand(...g.baselineR),
-        speed: rand(0.55, 1.05) * (Math.random() < 0.5 ? 1 : -1)
+        speed:    rand(0.55, 1.05) * (Math.random() < 0.5 ? 1 : -1)
       };
 
       const sw = rand(...g.strokeR);
-      const isFront = i % 7 === 0; // a few strands drift in front of the letters
+      const isFront = i % 7 === 0;
       const targetGroup = isFront ? wavesFront : wavesBack;
 
-      // soft blurred halo (wide, low opacity)
+      // soft blurred halo
       const halo = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       halo.setAttribute('stroke', g.gradient);
       halo.setAttribute('stroke-width', sw * 3.2);
@@ -1805,31 +1805,34 @@
     }
   });
 
-  function render(points, el) {
-    el.setAttribute('d', smoothPath(points));
-  }
-
   function renderAll(t) {
     strands.forEach(s => {
       const p = s.params;
-      const pts = buildStrand({
+      const d = smoothPath(buildStrand({
         amp: p.amp, amp2: p.amp2,
         freq: p.freq, freq2: p.freq2,
         phase: p.phase + t * p.speed,
         baseline: p.baseline
-      });
-      render(pts, s.halo);
-      render(pts, s.core);
+      }));
+      s.halo.setAttribute('d', d);
+      s.core.setAttribute('d', d);
     });
   }
 
   renderAll(0);
 
   if (!reduceMotion) {
+    // Delta-time real: la velocidad es idéntica en cualquier dispositivo/FPS
+    const SPEED = 1.0;
+    let lastTs = null;
     let t = 0;
-    function loop() {
-      t += 0.016;
-      renderAll(t);
+    function loop(ts) {
+      if (lastTs !== null) {
+        const dt = Math.min((ts - lastTs) / 1000, 0.05); // cap a 50ms para evitar saltos
+        t += dt * SPEED;
+        renderAll(t);
+      }
+      lastTs = ts;
       requestAnimationFrame(loop);
     }
     requestAnimationFrame(loop);
