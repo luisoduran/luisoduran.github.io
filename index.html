@@ -1289,40 +1289,44 @@
         // ================================================================
         const awardsData = {
             es: {
-                items: [
+                internacionales: [
                     { year: "2006", type: "grammy", typeText: "NOMINACIÓN LATIN GRAMMY", artist: "David Blanco", album: "Cuando me dijiste adiós" },
                     { year: "2021", type: "disco-oro", typeText: "DISCO DE ORO", artist: "Festival Las Vegas — Roberto Javier", album: "De nuevo sin ti" },
                     { year: "2022", type: "disco-oro", typeText: "DISCO DE ORO", artist: "Festival California — Roberto Javier", album: "Espérame" },
                     { year: "2023", type: "disco-plata", typeText: "DISCO DE PLATA", artist: "Festival California — Roberto Javier", album: "Siempre te amé" },
-                    { year: "2024", type: "nominacion", typeText: "FINALISTA USA Songwriting Comp.", artist: "Roberto Javier", album: "Morena" },
+                    { year: "2024", type: "nominacion", typeText: "FINALISTA USA Songwriting Comp.", artist: "Roberto Javier", album: "Morena" }
+                ],
+                cubadisco: [
                     { year: "2005", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "El Despechao" },
                     { year: "2008", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "La Evolución" },
                     { year: "2013", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Hipnosis", album: "Revelation" },
                     { year: "2015", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Adrián Berazaín", album: "Si te hago canción" },
-                    { year: "2019", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Orquesta Aragón & Michel Herrera", album: "" },
+                    { year: "2019", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Orquesta Aragón & Michel Herrera", album: "DVD Aniversario" },
                     { year: "2022", type: "premio", typeText: "PREMIO CUBADISCO", artist: "David Blanco", album: "Feudalismo Moderno" },
                     { year: "2023", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Adrián Berazaín", album: "Julián" },
                     { year: "2023", type: "premio", typeText: "PREMIO CUBADISCO", artist: "Ruly Herrera", album: "Fascinantemente Mundo" }
                 ],
-                resumen: { year: "2003-2024", text: "28 NOMINACIONES A CUBADISCO" }
+                resumen: { year: "2003 - 2024", text: "28 NOMINACIONES A CUBADISCO" }
             },
             en: {
-                items: [
+                internacionales: [
                     { year: "2006", type: "grammy", typeText: "LATIN GRAMMY NOMINATION", artist: "David Blanco", album: "Cuando me dijiste adiós" },
                     { year: "2021", type: "disco-oro", typeText: "GOLD DISC", artist: "Las Vegas Festival — Roberto Javier", album: "De nuevo sin ti" },
                     { year: "2022", type: "disco-oro", typeText: "GOLD DISC", artist: "California Festival — Roberto Javier", album: "Espérame" },
                     { year: "2023", type: "disco-plata", typeText: "SILVER DISC", artist: "California Festival — Roberto Javier", album: "Siempre te amé" },
-                    { year: "2024", type: "nominacion", typeText: "FINALIST USA Songwriting Comp.", artist: "Roberto Javier", album: "Morena" },
+                    { year: "2024", type: "nominacion", typeText: "FINALIST USA Songwriting Comp.", artist: "Roberto Javier", album: "Morena" }
+                ],
+                cubadisco: [
                     { year: "2005", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "El Despechao" },
                     { year: "2008", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "La Evolución" },
                     { year: "2013", type: "premio", typeText: "CUBADISCO AWARD", artist: "Hipnosis", album: "Revelation" },
                     { year: "2015", type: "premio", typeText: "CUBADISCO AWARD", artist: "Adrián Berazaín", album: "Si te hago canción" },
-                    { year: "2019", type: "premio", typeText: "CUBADISCO AWARD", artist: "Orquesta Aragón & Michel Herrera", album: "" },
+                    { year: "2019", type: "premio", typeText: "CUBADISCO AWARD", artist: "Orquesta Aragón & Michel Herrera", album: "DVD Aniversario" },
                     { year: "2022", type: "premio", typeText: "CUBADISCO AWARD", artist: "David Blanco", album: "Feudalismo Moderno" },
                     { year: "2023", type: "premio", typeText: "CUBADISCO AWARD", artist: "Adrián Berazaín", album: "Julián" },
                     { year: "2023", type: "premio", typeText: "CUBADISCO AWARD", artist: "Ruly Herrera", album: "Fascinantemente Mundo" }
                 ],
-                resumen: { year: "2003-2024", text: "28 CUBADISCO NOMINATIONS" }
+                resumen: { year: "2003 - 2024", text: "28 CUBADISCO NOMINATIONS" }
             }
         };
 
@@ -1355,7 +1359,10 @@
 
             let html = '';
 
-            data.items.forEach((award) => {
+            // Sección 1: Premios Internacionales USA
+            html += `<p class="gallery-subtitle" style="margin-top: 0;">🌎 ${lang === 'es' ? 'PREMIOS INTERNACIONALES USA' : 'USA INTERNATIONAL AWARDS'}</p>`;
+
+            data.internacionales.forEach((award) => {
                 const icon = getIconByType(award.type);
                 const typeClass = getTypeClass(award.type);
                 const albumDisplay = award.album ? ` — ${award.album}` : '';
@@ -1375,10 +1382,34 @@
 
             html += `<div class="awards-section-spacer"></div>`;
 
+            // Sección 2: Cubadisco y Nominaciones
+            html += `<p class="gallery-subtitle">🏆 ${lang === 'es' ? 'CUBADISCO Y NOMINACIONES' : 'CUBADISCO AND NOMINATIONS'}</p>`;
+
+            data.cubadisco.forEach((award) => {
+                const icon = getIconByType(award.type);
+                const typeClass = getTypeClass(award.type);
+                const albumDisplay = award.album ? ` — ${award.album}` : '';
+                const artistDisplay = award.artist ? award.artist : '';
+                const detailText = artistDisplay + albumDisplay;
+
+                html += `
+                <div class="award-row">
+                    <div class="award-year">${award.year}</div>
+                    <div class="award-type ${typeClass}">
+                        <span class="award-icon">${icon}</span> ${award.typeText}
+                    </div>
+                    <div class="award-detail">${detailText || '—'}</div>
+                </div>
+            `;
+            });
+
+            html += `<div class="awards-section-spacer"></div>`;
+
+            // Resumen
             html += `
-            <div class="award-row-resumen">
-                <div class="resumen-year">📌 ${data.resumen.year}</div>
-                <div class="resumen-text">${data.resumen.text}</div>
+            <div class="award-row-resumen" style="display: flex; flex-wrap: nowrap; align-items: baseline; gap: 0.5rem;">
+                <span style="color: var(--cian); font-weight: 600; font-size: 0.8rem; white-space: nowrap;">📌 ${data.resumen.year}</span>
+                <span style="color: var(--dorado); font-weight: 500; font-size: 0.8rem; letter-spacing: 0.05em;">${data.resumen.text}</span>
             </div>
         `;
 
