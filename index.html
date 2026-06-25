@@ -1020,7 +1020,7 @@
     </linearGradient>
 
     <filter id="blur-soft" x="-10%" y="-60%" width="120%" height="220%">
-      <feGaussianBlur stdDeviation="6"/>
+      <feGaussianBlur stdDeviation="3"/>
     </filter>
     <filter id="blur-tight" x="-10%" y="-60%" width="120%" height="220%">
       <feGaussianBlur stdDeviation="1.6"/>
@@ -1950,7 +1950,7 @@
         
 (function () {
   const W = 1200, H = 420, CY = H / 2;
-  const N = 40;
+  const N = 20;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Envelope pre-computado una sola vez — nunca cambia entre frames
@@ -1995,17 +1995,11 @@
 
   function rand(min, max) { return min + Math.random() * (max - min); }
 
-  const isMobile = window.matchMedia('(max-width: 767px)').matches;
-
-  // En móvil las ondas se renderizan a ~136px de alto (390px × 420/1200),
-  // amplitudes mayores las hacen visualmente presentes sin cambiar desktop.
-  const groups = isMobile ? [
-    { name: 'magenta', count: 7, gradient: 'url(#g-magenta)', ampR: [75, 140], freqR: [2.0, 2.9], strokeR: [1, 2.2], opacity: 0.70, baselineR: [-55, -25] },
-    { name: 'cian',    count: 7, gradient: 'url(#g-cian)',    ampR: [90, 160], freqR: [1.7, 2.5], strokeR: [1, 2.2], opacity: 0.75, baselineR: [-15,  15] },
-    { name: 'azul',    count: 4, gradient: 'url(#g-azul)',    ampR: [70, 130], freqR: [1.3, 1.8], strokeR: [1, 1.8], opacity: 0.60, baselineR: [ 25,  55] }
-  ] : [
-    { name: 'magenta', count: 7, gradient: 'url(#g-magenta)', ampR: [40, 80],  freqR: [2.0, 2.9], strokeR: [1, 2.2], opacity: 0.80, baselineR: [-55, -25] },
-    { name: 'cian',    count: 7, gradient: 'url(#g-cian)',    ampR: [50, 90],  freqR: [1.7, 2.5], strokeR: [1, 2.2], opacity: 0.80, baselineR: [-15,  15] },
+  // Config unificada — desktop y móvil
+  // 16 strands (6+6+4) · N=20 · blur=3 · halo op=0.20 · 30fps
+  const groups = [
+    { name: 'magenta', count: 6, gradient: 'url(#g-magenta)', ampR: [40, 80],  freqR: [2.0, 2.9], strokeR: [1, 2.2], opacity: 0.80, baselineR: [-55, -25] },
+    { name: 'cian',    count: 6, gradient: 'url(#g-cian)',    ampR: [50, 90],  freqR: [1.7, 2.5], strokeR: [1, 2.2], opacity: 0.80, baselineR: [-15,  15] },
     { name: 'azul',    count: 4, gradient: 'url(#g-azul)',    ampR: [40, 75],  freqR: [1.3, 1.8], strokeR: [1, 1.8], opacity: 0.80, baselineR: [ 25,  55] }
   ];
 
@@ -2036,7 +2030,7 @@
       halo.setAttribute('stroke', g.gradient);
       halo.setAttribute('stroke-width', sw * 3.2);
       halo.setAttribute('fill', 'none');
-      halo.setAttribute('opacity', g.opacity * 0.38);
+      halo.setAttribute('opacity', g.opacity * 0.20);
       halo.setAttribute('filter', 'url(#blur-soft)');
       halo.classList.add('wave-layer');
       targetGroup.appendChild(halo);
@@ -2068,17 +2062,20 @@
 
   if (!reduceMotion) {
     const SPEED = 1.0;
+    const FPS_CAP = 1000 / 30;
     let lastTs = null;
+    let lastCap = 0;
     let t = 0;
     let rafId = null;
     let isVisible = true;
     let isInView = true;
 
     function loop(ts) {
-      if (lastTs !== null) {
+      if (lastTs !== null && ts - lastCap >= FPS_CAP) {
         const dt = Math.min((ts - lastTs) / 1000, 0.05);
         t += dt * SPEED;
         renderAll(t);
+        lastCap = ts;
       }
       lastTs = ts;
       rafId = requestAnimationFrame(loop);
