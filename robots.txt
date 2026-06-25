@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.luisduran.es/sitemap.xml
+
+# Bloquear archivos innecesarios para rastreadores
+Disallow: /img/og-image.jpg
+
+# Crawl-delay opcional para bots agresivos
+Crawl-delay: 10
