@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <rect width="180" height="180" fill="#0a0a0a"/>
+  <g fill="#f5f6f7" transform="translate(20,39) scale(0.583) translate(-460,-178)">
+    <path fill-rule="evenodd" d="M 460,178 L 484,178 L 484,330 L 568,330 L 568,178 L 592,178 C 660,178 700,205 700,265.5 C 700,326 660,353 592,353 L 460,353 Z M 568,305 L 568,330 L 592,330 C 644,330 676,310 676,265.5 C 676,221 644,202 592,202 L 592,305 Z"/>
+  </g>
+</svg>
