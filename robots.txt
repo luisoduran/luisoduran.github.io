@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.luisduran.es/sitemap.xml
+Sitemap: https://luisoduran.github.io/sitemap.xml
 
 # Bloquear archivos innecesarios para rastreadores
 Disallow: /img/og-image.jpg
