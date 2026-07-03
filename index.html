@@ -2115,10 +2115,10 @@
     { name: 'azul',    count: 4, gradient: 'url(#g-azul)',    ampR: [40, 75],  freqR: [1.3, 1.8], strokeR: [1, 1.8], opacity: 0.80, baselineR: [ 25,  55] }
   ];
 
-  // Compensación parcial del escalado en móvil (50%) — evita ondas demasiado grandes
+  // 1.5x de amplitud en móvil para mantener proporción visual respecto a desktop
   const svgEl = document.getElementById('hero-svg');
   const rawScale = svgEl ? W / svgEl.getBoundingClientRect().width : 1;
-  const ampScale = 1 + (rawScale - 1) * 0.5;
+  const ampScale = rawScale > 1.2 ? 1.5 : 1;
 
   const wavesBack  = document.getElementById('waves-back');
   const wavesFront = document.getElementById('waves-front');
