@@ -2008,14 +2008,14 @@
         const videosGrid = document.getElementById('videosGrid');
 
         const fotoAlts = [
-            'Luis Durán en la consola de mezclas durante un concierto en directo',
-            'Configuración de sistemas de sonido PA para evento en Asturias',
-            'Luis Durán ajustando monitores de escenario en festivales',
-            'Producción técnica de audio en evento corporativo',
-            'Ingeniería de sonido en sala de grabación profesional',
-            'Luis Durán supervisando la sonorización de un concierto',
-            'Mesa de mezclas FOH en producción de eventos en directo',
-            'Preparación técnica de equipo de audio para festival'
+            'Luis Durán en consola durante grabación de Ruly Herrera en PM Records',
+            'Sesión de mezcla con Ruly Herrera y Real Project en PM Records',
+            'Producción musical de Ruly Herrera en PM Records, La Habana',
+            'Mesa de mezclas en PM Records, sesión de Ruly Herrera',
+            'Luis Durán en directo en el Teatro Karl Marx con Soundcraft Serie Five',
+            'Sonido en directo para evento de Televisión Cubana',
+            'Grabación en directo en el Festival de Jazz de Trinidad y Tobago',
+            'Clase de ingeniería de sonido en el Instituto Superior de Arte de La Habana'
         ];
         fotosGrid.innerHTML = fotos.map((foto, idx) => {
             const thumb = foto.replace(/(\.[^.]+)$/, '-thumb$1');
@@ -2026,13 +2026,24 @@
         </div>
     `}).join('');
 
-        videosGrid.innerHTML = videos.map(video => {
+        const videoAlts = [
+            'Alfonso Peña - Pablo Milanes, Gypsy Kings',
+            'Ruly Herrera - Real Project, Roberto Fonseca',
+            'Reinier Lopez - Leoni Torres, El Flamingo',
+            'Roberto Perdomo - Tesis de Menta',
+            'Fito Martinez - Willy Chirino, Carlos Varela',
+            'David Blanco - David Blanco y su Grupo',
+            'Livan Marrero - Graduado del SAE Institute Barcelona',
+            'Claudio Pairot - Puntilla Enterprises, Miami Florida'
+        ];
+        videosGrid.innerHTML = videos.map((video, idx) => {
             const thumb = video.replace(/(\.[^.]+)$/, '-thumb.jpg');
             return `
         <div class="gallery-item video-item" data-category="video" data-video="vid/${video}">
             <div class="video-thumbnail-container" style="width:100%; height:100%; background:#000;">
                 <video src="vid/${video}" 
                     poster="vid/thumbs/${thumb}"
+                    title="${videoAlts[idx % videoAlts.length]}"
                     muted 
                     preload="none" 
                     playsinline 
