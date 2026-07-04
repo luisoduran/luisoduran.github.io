@@ -113,8 +113,10 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
     <style>
         * {
@@ -130,7 +132,7 @@
             --magenta: #ff00ff;
             --blanco: #f5f5f5;
             --gris: #aaaaaa;
-            --gris-oscuro: #666666;
+            --gris-oscuro: #797979;
             --bordes: #222222;
             --dorado: #ffd700;
             --plata: #c0c0c0;
@@ -1064,7 +1066,7 @@
 
     <header class="header" id="header">
         <div class="header-inner">
-            <button class="lang-btn" id="langBtn">
+            <button class="lang-btn" id="langBtn" aria-label="Cambiar idioma">
                 <svg class="lang-flag" id="langFlagSvg" width="20" height="15" viewBox="0 0 60 40">
                     <rect width="60" height="40" fill="#012169" />
                     <path d="M0,0 L60,40 M60,0 L0,40" stroke="white" stroke-width="4" />
@@ -1361,6 +1363,7 @@
                                 data-key="contact.social.label">Sígueme</p>
                             <div class="flex gap-4" style="transform: translateY(-1.25rem);">
                                 <a href="https://linkedin.com/in/luisoduran" target="_blank" rel="noopener noreferrer"
+                                    aria-label="Perfil de LinkedIn de Luis Durán"
                                     class="w-12 h-12 rounded-lg border border-[var(--bordes)] flex items-center justify-center text-[var(--gris)] hover:border-[var(--cian)] hover:text-[var(--cian)] transition-all duration-300"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2">
@@ -1369,6 +1372,14 @@
                                         <rect x="2" y="9" width="4" height="12" />
                                         <circle cx="4" cy="4" r="2" />
                                     </svg></a>
+                                <!-- GOOGLE BUSINESS PROFILE: cuando tengas el enlace corto, añádelo así:
+                                <a href="TU_ENLACE_GOOGLE_BUSINESS" target="_blank" rel="noopener noreferrer"
+                                    aria-label="Perfil de Google Business de Luis Durán"
+                                    class="w-12 h-12 rounded-lg border border-[var(--bordes)] flex items-center justify-center text-[var(--gris)] hover:border-[var(--cian)] hover:text-[var(--cian)] transition-all duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                                </a>
+                                También añade en el JSON-LD Schema.org, dentro de "sameAs": "TU_ENLACE_GOOGLE_BUSINESS"
+                                -->
                             </div>
                         </div>
                     </div>
@@ -1996,26 +2007,43 @@
         const fotosGrid = document.getElementById('fotosGrid');
         const videosGrid = document.getElementById('videosGrid');
 
-        fotosGrid.innerHTML = fotos.map(foto => `
-        <div class="gallery-item" data-category="foto">
-            <img src="img/${foto}" alt="Luis Durán — Ingeniería de Sonido en evento" loading="lazy">
+        const fotoAlts = [
+            'Luis Durán en la consola de mezclas durante un concierto en directo',
+            'Configuración de sistemas de sonido PA para evento en Asturias',
+            'Luis Durán ajustando monitores de escenario en festivales',
+            'Producción técnica de audio en evento corporativo',
+            'Ingeniería de sonido en sala de grabación profesional',
+            'Luis Durán supervisando la sonorización de un concierto',
+            'Mesa de mezclas FOH en producción de eventos en directo',
+            'Preparación técnica de equipo de audio para festival'
+        ];
+        fotosGrid.innerHTML = fotos.map((foto, idx) => {
+            const thumb = foto.replace(/(\.[^.]+)$/, '-thumb$1');
+            return `
+        <div class="gallery-item" data-category="foto" data-full="img/${foto}">
+            <img src="img/thumbs/${thumb}" alt="${fotoAlts[idx % fotoAlts.length]}" loading="lazy" width="300" height="300">
             <div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Foto</span></div>
         </div>
-    `).join('');
+    `}).join('');
 
-        videosGrid.innerHTML = videos.map(video => `
+        videosGrid.innerHTML = videos.map(video => {
+            const thumb = video.replace(/(\.[^.]+)$/, '-thumb.jpg');
+            return `
         <div class="gallery-item video-item" data-category="video" data-video="vid/${video}">
             <div class="video-thumbnail-container" style="width:100%; height:100%; background:#000;">
                 <video src="vid/${video}" 
+                    poster="vid/thumbs/${thumb}"
                     muted 
                     preload="none" 
                     playsinline 
                     style="width:100%; height:100%; object-fit:cover;">
+                    <track kind="captions" src="" srclang="es" label="Español" default>
                 </video>
             </div>
             <div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Video</span></div>
         </div>
-        `).join('');
+        `;
+        }).join('');
 
         // Cargar metadatos solo cuando el vídeo entra en el viewport
         const videoLazyObserver = new IntersectionObserver((entries) => {
@@ -2039,8 +2067,10 @@
                 if (item.hasAttribute('data-listener')) return;
                 item.setAttribute('data-listener', 'true');
                 item.addEventListener('click', () => {
+                    const fullSrc = item.getAttribute('data-full');
                     const img = item.querySelector('img');
-                    if (img && img.src) openLightbox(img.src);
+                    const src = fullSrc || (img && img.src);
+                    if (src) openLightbox(src);
                 });
             });
 
