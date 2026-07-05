@@ -2021,7 +2021,7 @@
             const thumb = foto.replace(/(\.[^.]+)$/, '-thumb$1');
             return `
         <div class="gallery-item" data-category="foto" data-full="img/${foto}">
-            <img src="img/thumbs/${thumb}" alt="${fotoAlts[idx % fotoAlts.length]}" loading="lazy" width="300" height="300">
+            <img src="img/thumbs/${thumb}" alt="${fotoAlts[idx % fotoAlts.length]}" title="${fotoAlts[idx % fotoAlts.length]}" loading="lazy" width="300" height="300">
             <div class="gallery-overlay"><span class="text-xs text-[var(--cian)] uppercase tracking-wider">Foto</span></div>
         </div>
     `}).join('');
